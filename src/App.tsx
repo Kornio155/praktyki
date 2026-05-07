@@ -23,24 +23,32 @@ const App: React.FC = () => {
                 </div>
             </section>
 
-            {/* ABOUT */}
-            <section className="Contact">
-
-
-                    <div className="Contact-grid">
-                        {[
-                            { title: 'Email', desc: 'Jakiś krótki opis' },
-                            { title: 'Telefon', desc: 'Jakiś krótki opis' },
-                            { title: 'Lokalizacja', desc: 'Jakiś krótki opis' },
-                            { title: 'Dojazd', desc: 'I tu też jakiś krótki opis' }
-                        ].map((item, index) => (
-                            <div className="Contact-card" key={index}>
-                                <h3>{item.title}</h3>
-                                <p>{item.desc}</p>
-                            </div>
+            {/* Contact */}
+            <section className="Contact"> {/* LEWA STRONA */}
+                <div className="Contact-left">
+                    {[ { title: 'Email', desc: 'twoj@email.pl' },
+                        { title: 'Telefon', desc: '+48 000 000 000' },
+                        { title: 'Lokalizacja', desc: 'Ul. Olimpijska 1' },
+                        { title: 'Dojazd', desc: 'Oferuję dojazd do klienta' } ]
+                        .map((item, index) => (
+                            <div className="Contact-card" key={index}><h3>{item.title}</h3> <p>{item.desc}</p> </div>
                         ))}
+                </div>
+                {/* PRAWA STRONA */}
+                <div className="Contact-right">
+                    <div className="Contact-card">
+                        <h3>Instagram</h3>
+                        <p>@moveability</p>
                     </div>
-
+                    <div className="Contact-card">
+                        <h3>Facebook</h3>
+                        <p>MoveAbility</p>
+                    </div>
+                    <div className="Big-card">
+                        <h3>Umów trening</h3>
+                        <p> Skontaktuj się mailowo lub telefonicznie, aby ustalić szczegóły współpracy. </p>
+                    </div>
+                </div>
             </section>
 
             {/* OFFER */}
