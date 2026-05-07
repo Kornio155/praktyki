@@ -53,7 +53,7 @@ const App: React.FC = () => {
 
             {/* OFFER */}
             <section className="offer">
-                <h2>Pełna Oferta</h2>
+                <h2>Nasze Oferty</h2>
 
                 <div className="offer-grid">
                     {[
@@ -64,6 +64,7 @@ const App: React.FC = () => {
                     ].map((item, index) => (
                         <div className="card" key={index}>
                             <h3>{item.title}</h3>
+                            <img src={`https://picsum.photos/200/200?random=${index}`}/>
                             <p>{item.desc}</p>
                         </div>
                     ))}
@@ -80,7 +81,15 @@ const App: React.FC = () => {
                     ładna nie jest, jakiego to sprzętu tam nie ma itp
                 </p>
 
-                <button className="btn dark" >Sprawdź lokalizacje</button>
+                <button
+                    className="btn dark"
+                    onClick={() =>
+                        window.open(
+                            "https://www.google.com/maps/place/MOVEABILITY/@53.7824221,20.4407337,16.75z/data=!4m6!3m5!1s0x46e27ed90860c20d:0x2015610d16d18d5e!8m2!3d53.7822516!4d20.4424293!16s%2Fg%2F11gfhx06jp?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D",
+                            "_blank"
+                        )
+                    }
+                >Sprawdź lokalizacje</button>
             </section>
 
             {/* BEFORE AFTER */}
