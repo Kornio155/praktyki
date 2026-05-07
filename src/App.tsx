@@ -26,21 +26,21 @@ const App: React.FC = () => {
             {/* ABOUT */}
             <section className="Contact">
 
-                <div className="about-text">
-                    <div className="offer-grid">
+
+                    <div className="Contact-grid">
                         {[
-                            { title: 'Treningi medyczne', desc: 'Jakiś krótki opis' },
-                            { title: 'Treningi funkcjonalne', desc: 'Jakiś krótki opis' },
-                            { title: 'Odchudzanie', desc: 'Jakiś krótki opis' },
-                            { title: 'Treningi motoryczne', desc: 'I tu też jakiś krótki opis' }
+                            { title: 'Email', desc: 'Jakiś krótki opis' },
+                            { title: 'Telefon', desc: 'Jakiś krótki opis' },
+                            { title: 'Lokalizacja', desc: 'Jakiś krótki opis' },
+                            { title: 'Dojazd', desc: 'I tu też jakiś krótki opis' }
                         ].map((item, index) => (
-                            <div className="card" key={index}>
+                            <div className="Contact-card" key={index}>
                                 <h3>{item.title}</h3>
                                 <p>{item.desc}</p>
                             </div>
                         ))}
                     </div>
-                </div>
+
             </section>
 
             {/* OFFER */}
