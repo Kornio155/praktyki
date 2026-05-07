@@ -24,13 +24,22 @@ const App: React.FC = () => {
             </section>
 
             {/* ABOUT */}
-            <section className="about">
-                <div className="about-img">
-                    <img src="https://picsum.photos/800/800" alt="about" />
-                </div>
+            <section className="Contact">
 
                 <div className="about-text">
-                    <h2>Opis Trenera,<br />wykształcenie itp</h2>
+                    <div className="offer-grid">
+                        {[
+                            { title: 'Treningi medyczne', desc: 'Jakiś krótki opis' },
+                            { title: 'Treningi funkcjonalne', desc: 'Jakiś krótki opis' },
+                            { title: 'Odchudzanie', desc: 'Jakiś krótki opis' },
+                            { title: 'Treningi motoryczne', desc: 'I tu też jakiś krótki opis' }
+                        ].map((item, index) => (
+                            <div className="card" key={index}>
+                                <h3>{item.title}</h3>
+                                <p>{item.desc}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
@@ -63,7 +72,7 @@ const App: React.FC = () => {
                     ładna nie jest, jakiego to sprzętu tam nie ma itp
                 </p>
 
-                <button className="btn dark">Sprawdź lokalizacje</button>
+                <button className="btn dark" >Sprawdź lokalizacje</button>
             </section>
 
             {/* BEFORE AFTER */}
