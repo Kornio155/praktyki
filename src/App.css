@@ -1,0 +1,241 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  width: 100%;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  min-height: 100vh;
+  background: black;
+  color: white;
+}
+
+.hero-left {
+  flex: 1;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-left h1 {
+  font-size: 60px;
+  line-height: 1.1;
+  margin-bottom: 30px;
+}
+
+.hero-right {
+  flex: 1;
+}
+
+.hero-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ABOUT */
+.about {
+  display: flex;
+  min-height: 100vh;
+  background: #262423;
+}
+
+.about-img {
+  flex: 1;
+}
+
+.about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 60px;
+}
+
+.about-text h2 {
+  font-size: 40px;
+}
+
+/* OFFER */
+.offer {
+  background: black;
+  color: white;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.offer h2 {
+  font-size: 50px;
+  margin-bottom: 40px;
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: #111;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.card h3 {
+  color: #06273c;
+  margin-bottom: 10px;
+}
+
+/* LOCATION */
+.location {
+  padding: 80px 40px;
+  text-align: center;
+  background: #fff1e2;
+}
+
+.location h2 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+/* BUTTONS */
+.btn {
+  background: #ccfe06;
+  border: none;
+  padding: 15px 25px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.btn.dark {
+  background: black;
+  color: white;
+}
+
+/* 🔥 RESPONSYWNOŚĆ */
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .about {
+    flex-direction: column;
+  }
+
+  .offer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-left h1 {
+    font-size: 40px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .hero-left {
+    padding: 40px 20px;
+  }
+
+  .about-text {
+    padding: 40px 20px;
+  }
+
+  .offer {
+    padding: 40px 20px;
+  }
+
+  .location {
+    padding: 40px 20px;
+  }
+
+  .offer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-left h1 {
+    font-size: 32px;
+  }
+
+  .offer h2,
+  .location h2 {
+    font-size: 32px;
+  }
+}
+
+/* BEFORE AFTER */
+.before-after {
+  background: black;
+  color: white;
+
+  padding: 80px 20px;
+}
+
+.before-after h2 {
+  font-size: 60px;
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+.ba-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 250px);
+  gap: 20px;
+  justify-content: center;
+}
+
+.ba-item img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.ba-item p {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* CONTACT */
+.contact {
+  background: #ccfe06;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 50px;
+  margin-bottom: 40px;
+}
+
+.contact-grid {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  flex-wrap: wrap;
+}
+
+.contact-grid div {
+  max-width: 300px;
+}
+
+.contact h3 {
+  margin-bottom: 10px;
+}
