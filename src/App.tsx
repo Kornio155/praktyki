@@ -36,13 +36,14 @@ const App: React.FC = () => {
                 </div>
                 {/* PRAWA STRONA */}
                 <div className="Contact-right">
-                    <div className="Contact-card">
-                        <h3>Instagram</h3>
-                        <p>@moveability</p>
+                    <div className="Contact-card" id="sociale1">
+                        <a href="https://www.instagram.com/moveability_adam_rybaczyk/">
+                            <img src="https://i.postimg.cc/fTQk4PM1/icons8-instagram-logo-100.png" alt="Instagram" />
+                        </a>
                     </div>
-                    <div className="Contact-card">
+                    <div className="Contact-card" id="sociale2">
                         <a href="https://www.facebook.com/Moveability.Olsztyn?locale=pl_PL">
-                            <img src="https://github.com/Kornio155/praktyki/blob/6efce2d4b23bf42ab033e53e0fd80566b36b1871/src/assets/" alt="Facebook" />
+                            <img src="https://i.postimg.cc/9McqjNds/icons8-facebook-logo-100.png" alt="Facebook" />
                         </a>
                     </div>
                     <div className="Big-card">

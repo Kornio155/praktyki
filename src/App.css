@@ -331,3 +331,15 @@
     transform: translateX(-50%);
   }
 }
+
+#sociale1 {
+  display: flex;
+  align-items: center;      /* pionowo */
+  justify-content: center;  /* poziomo */
+}
+
+#sociale2 {
+  display: flex;
+  align-items: center;      /* pionowo */
+  justify-content: center;  /* poziomo */
+}
