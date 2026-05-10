@@ -26,7 +26,7 @@ const App: React.FC = () => {
             {/* Contact */}
             <section className="Contact"> {/* LEWA STRONA */}
                 <div className="Contact-left">
-                    {[ { title: 'Email', desc: 'twoj@email.pl' },
+                    {[ { title: 'Email' , desc: 'twoj@email.pl' },
                         { title: 'Telefon', desc: '+48 000 000 000' },
                         { title: 'Lokalizacja', desc: 'Ul. Olimpijska 1' },
                         { title: 'Dojazd', desc: 'Oferuję dojazd do klienta' } ]
@@ -41,8 +41,9 @@ const App: React.FC = () => {
                         <p>@moveability</p>
                     </div>
                     <div className="Contact-card">
-                        <h3>Facebook</h3>
-                        <p>MoveAbility</p>
+                        <a href="https://www.facebook.com/Moveability.Olsztyn?locale=pl_PL">
+                            <img src="https://github.com/Kornio155/praktyki/blob/6efce2d4b23bf42ab033e53e0fd80566b36b1871/src/assets/" alt="Facebook" />
+                        </a>
                     </div>
                     <div className="Big-card">
                         <h3>Umów trening</h3>
