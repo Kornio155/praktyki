@@ -42,7 +42,7 @@ const App: React.FC = () => {
                     </div>
                     <div className="Contact-card">
                         <a href="https://www.facebook.com/Moveability.Olsztyn?locale=pl_PL">
-                            <img src="https://github.com/Kornio155/praktyki/blob/6efce2d4b23bf42ab033e53e0fd80566b36b1871/src/assets/" alt="Facebook" />
+                            <img src="https://github.com/Kornio155/praktyki/blob/6efce2d4b23bf42ab033e53e0fd80566b36b1871/src/assets/icons8" alt="Facebook" />
                         </a>
                     </div>
                     <div className="Big-card">
