@@ -96,16 +96,22 @@ const App: React.FC = () => {
             <section className="section before-after">
                 <h2>Przed i po</h2>
 
-                <div className="ba-grid">
-                    {[1, 2, 3, 4].map((item) => (
-                        <div className="ba-item" key={item}>
-                            <img src={`https://picsum.photos/300/300?random=${item}`} alt="before after" />
-                            <p>
-                                Opis treningów klienta oraz jego<br />
-                                wiek i imię
-                            </p>
-                        </div>
-                    ))}
+                <div className="ba-slider">
+                    <div className="ba-track">
+                        {[1, 2, 3, 4, 1, 2, 3, 4].map((item, index) => (
+                            <div className="ba-item" key={index}>
+                                <img
+                                    src={`https://picsum.photos/300/300?random=${item}`}
+                                    alt="before after"
+                                />
+                                <p>
+                                    Opis treningów klienta oraz jego
+                                    <br />
+                                    wiek i imię
+                                </p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
