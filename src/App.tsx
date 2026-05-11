@@ -1,7 +1,47 @@
 import React from 'react'
 import './App.css'
+import { useState } from 'react'
+
 
 const App: React.FC = () => {
+    const [openCard, setOpenCard] = useState<number | null>(null)
+
+    const offers = [
+        {
+            title: 'Treningi medyczne',
+            desc: 'wróć do sprawności bez bólu',
+            details: 'Jeśli jesteś po urazie, masz przeciążenia lub dolegliwości bólowe, ten trening pomoże Ci poprawić sprawność, zmniejszyć ból i bezpiecznie wrócić do aktywności, żebyś znów mógł czuć się pewnie we własnym ciele i funkcjonować bez ograniczeń.'
+        },
+        {
+            title: 'Treningi funkcjonalne',
+            desc: 'zdrowe funkcjonowanie na co dzień',
+            details: 'dużo siedzisz? ten trening jest dla ciebie. świetnie sprawdzi się jako rekompensata siedzącego trybu życia. Trening funkcjonalny omoże Ci lepiej "funkcjonować" w codziennych czynnościach'
+        },
+        {
+            title: 'Odchudzanie',
+            desc: 'tłuszcz się pali!',
+            details: 'Jeśli Twoim celem jest pozbycie się nadmiernych kilogramów, , ten trening połączy intensywną pracę z dopasowaniem do Twoich możliwości, dzięki czemu efekty będą widoczne, a proces bezpieczny.'
+        },
+        {
+            title: 'Treningi motoryczne',
+            desc: 'lepsze wyniki w twojej dyscyplinie',
+            details: 'Jeśli jesteś sportowcem lub osobą regularnie trenującą, ten trening pomoże Ci rozwinąć siłę, szybkość, moc i koordynację czyli efekty Twojej pracy'
+        },
+        {
+            title: 'Treningi ogólnorozwojowe',
+            desc: 'coś więcej niż siła',
+            details: 'popraw kondycję, siłę, sprawność i samopoczucie!  ten wszechstronny trening da Ci solidną bazę do lepszej sprawności, większej energii na co dzień i zdrowszego stylu życia. \n' +
+                'Niekonwencjonalne ćwiczenia z dziedzin streetmovement, animaln movement lub gimnastyki pomogą ci się rozwinąć, i dodadzą nutkę świetnej zabawy!'
+        },
+        {
+            title: 'Gry i zabawy',
+            desc: 'aktywność, integracja, dobra zabawa!',
+            details: 'Jeśli szukasz aktywnej formy zajęć dla grup zapraszam do kontaktu! Prowadzę szereg gier i zabaw ruchowych, które zapewnią ruch, integrację i pozytywne doświadczenia w dobrej atmosferze w każdej ekipie!'
+        }
+    ]
+
+    const toggleCard = (index: number) => {
+        setOpenCard(openCard === index ? null : index)}
     return (
         <div className="app">
 
@@ -77,24 +117,47 @@ const App: React.FC = () => {
 
             {/* OFFER */}
             <section className="offer">
+
                 <h2>Nasze Oferty</h2>
 
                 <div className="offer-grid">
-                    {[
-                        { title: 'Treningi medyczne', desc: 'Jakiś krótki opis' },
-                        { title: 'Treningi funkcjonalne', desc: 'Jakiś krótki opis' },
-                        { title: 'Odchudzanie', desc: 'Jakiś krótki opis' },
-                        { title: 'Treningi motoryczne', desc: 'I tu też jakiś krótki opis' }
-                    ].map((item, index) => (
+
+                    {offers.map((item, index) => (
+
                         <div className="card" key={index}>
-                            <h3>{item.title}</h3>
-                            <img src={`https://picsum.photos/200/200?random=${index}`}/>
-                            <p>{item.desc}</p>
+                            {openCard === index ? (
+                                <div className="card-inner details-card">
+                                    <h3>{item.title}</h3>
+                                    <p>{item.details}</p>
+
+                                    <button className="details-btn" onClick={() => toggleCard(index)}>
+                                        Zamknij
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className="card-inner">
+                                    <h3>{item.title}</h3>
+
+                                    <div className="img-wrapper">
+                                        <img
+                                            className="offer-grid-img"
+                                            src={`https://picsum.photos/300/200?random=${index}`}
+                                        />
+                                    </div>
+
+                                    <p className="card-desc">{item.desc}</p>
+
+                                    <button className="details-btn" onClick={() => toggleCard(index)}>
+                                        Pokaż szczegóły
+                                    </button>
+                                </div>
+                            )}
                         </div>
+
                     ))}
+
                 </div>
 
-                <button className="btn">Skontaktuj się z nami</button>
             </section>
 
             {/* LOCATION */}

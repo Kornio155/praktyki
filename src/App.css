@@ -277,7 +277,11 @@
 /* BOX */
 .Contact-card,
 .Big-card {
-  background: #111;
+  position: relative;
+  overflow: hidden;
+
+  background: white;
+  border-radius: 16px;
   padding: 20px;
   border-radius: 8px;
 
@@ -312,8 +316,7 @@
 .offer {
   background: #231F20;
   color: white;
-  padding: 20px 200px;
-  text-align: center;
+  padding: 80px 40px;
 }
 
 .offer h2 {
@@ -323,23 +326,99 @@
 
 .offer-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   margin-bottom: 40px;
 
   justify-items: center;
 }
 
+.offer-grid-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+
+  transition: transform 0.4s ease;
+}
+
 .card {
-  background: #231F20;
+  background: #fff1e2;
   padding: 20px;
-  border-radius: 8px;
-  width: 75%;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.card-desc {
+  padding: 10px;
+  color: black;
+}
+
+.details-card {
+  background: white;
+  color: black;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+  border-radius: 12px;
+  opacity: 0;
+  transform: scale(0.98);
+  animation: fadeIn 0.2s forwards;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+.card-inner {
+  width: 100%;
+  overflow: hidden;
 }
 
 .card h3 {
   color: #06273c;
   margin-bottom: 10px;
+  font-size: 19px;
+}
+.details-btn {
+  margin-top: auto;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: black;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.details-btn:hover {
+  background: #333;
+}
+
+.details-card p {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.img-wrapper {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.img-wrapper:hover .offer-grid-img {
+  transform: scale(1.15);
 }
 
 /* LOCATION */
