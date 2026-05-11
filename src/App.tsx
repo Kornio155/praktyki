@@ -5,29 +5,51 @@ const App: React.FC = () => {
     return (
         <div className="app">
 
-            {/* HERO */}
-            <section className="hero">
-                <div className="hero-left">
-                    <h1>
-                        It's time to <br />
-                        be healthy <br />
-                        and in <br />
-                        great shape
-                    </h1>
-
-                    <button className="btn">Skontaktuj się już dziś</button>
+            {/* NAVBAR */}
+            <nav className="navbar">
+                <div className="logo">
+                    <img src={`https://imglink.cc/cdn/1iRVnCicOP.svg`} />
                 </div>
 
-                <div className="hero-right">
-                    <img src="https://picsum.photos/800/1000" alt="trainer" />
+                <ul className="navbar-links">
+                    <li>Kontakt</li>
+                    <li>Oferta</li>
+                    <li>Efekty</li>
+                    <li>O mnie</li>
+                </ul>
+
+                <button className="navbar-btn">
+                    Umów trening
+                </button>
+            </nav>
+
+            {/* HERO */}
+            <section className="hero">
+                <div className="hero-overlay"></div>
+
+                <div className="hero-content">
+                    <h1>
+                        IT'S TIME TO <br />
+                        BE HEALTHY <br />
+                        AND IN <br />
+                        GREAT SHAPE
+                    </h1>
+
+                    <p>
+                        Personal training, mobility & performance
+                    </p>
+
+                    <button className="btn hero-btn">
+                        Skontaktuj się już dziś
+                    </button>
                 </div>
             </section>
 
             {/* Contact */}
             <section className="Contact"> {/* LEWA STRONA */}
                 <div className="Contact-left">
-                    {[ { title: 'Email' , desc: 'twoj@email.pl' },
-                        { title: 'Telefon', desc: '+48 000 000 000' },
+                    {[ { title: 'Email' , desc: 'kontakt.mvab@gmail.com' },
+                        { title: 'Telefon', desc: '+48 695 275 809' },
                         { title: 'Lokalizacja', desc: 'Ul. Olimpijska 1' },
                         { title: 'Dojazd', desc: 'Oferuję dojazd do klienta' } ]
                         .map((item, index) => (
