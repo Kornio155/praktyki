@@ -1,9 +1,49 @@
 import React from 'react'
 import './App.css'
 import { useState } from 'react'
+import ContactModal from "./ContactModal";
 
 
 const App: React.FC = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    /* useState'y do formularza */
+    const [name, setName] = useState("");
+    const [contactType, setContactType] =
+        useState<"email" | "phone">("email");
+
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+
+    const [message, setMessage] = useState(
+        "Cześć! proszę o kontakt w sprawie współpracy!"
+    );
+    /* koniec useState'ów do formularza */
+
+    /* funkcje do formularza */
+
+    const handlePhoneChange = (value: string) => {
+        const numbersOnly =
+            value.replace(/\D/g, "").slice(0, 9);
+
+        setPhone(numbersOnly);
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        console.log({
+            name,
+            contactType,
+            email,
+            phone,
+            message,
+        });
+    };
+
+    /*-----------------------------------------------*/
+
+
     const [openCard, setOpenCard] = useState<number | null>(null)
 
     const offers = [
@@ -61,11 +101,7 @@ const App: React.FC = () => {
 
                 <button
                     className="navbar-btn"
-                    onClick={() =>
-                        document.getElementById("contact")?.scrollIntoView({
-                            behavior: "smooth"
-                        })
-                    }
+                    onClick={() => setIsModalOpen(true)}
                 >
                     Umów trening
                 </button>
@@ -95,15 +131,39 @@ const App: React.FC = () => {
             </section>
 
             {/* Contact */}
-            <section id="contact" className="Contact" > {/* LEWA STRONA */}
+            <section id="contact" className="Contact" >
+                {/* LEWA STRONA */}
                 <div className="Contact-left">
-                    {[ { title: 'Email' , desc: 'kontakt.mvab@gmail.com' },
+                    {[
+                        { title: 'Email', desc: 'kontakt.mvab@gmail.com' },
                         { title: 'Telefon', desc: '+48 695 275 809' },
-                        { title: 'Lokalizacja', desc: 'Ul. Olimpijska 1' },
-                        { title: 'Dojazd', desc: 'Oferuję dojazd do klienta' } ]
-                        .map((item, index) => (
-                            <div className="Contact-card" key={index}><h3>{item.title}</h3> <p>{item.desc}</p> </div>
-                        ))}
+                        {
+                            title: 'Lokalizacja',
+                            desc: 'Ul. Olimpijska 1',
+                            button: true
+                        },
+                        { title: 'Dojazd', desc: 'Oferuję dojazd do klienta' }
+                    ].map((item, index) => (
+                        <div className="Contact-card" key={index}>
+                            <h3>{item.title}</h3>
+
+                            <p>{item.desc}</p>
+
+                            {item.button && (
+                                <button
+                                    className="location-on-map-btn"
+                                    onClick={() =>
+                                        window.open(
+                                            "https://www.google.com/maps/place/MOVEABILITY/@53.7824221,20.4407337,16.75z/data=!4m6!3m5!1s0x46e27ed90860c20d:0x2015610d16d18d5e!8m2!3d53.7822516!4d20.4424293!16s%2Fg%2F11gfhx06jp?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D",
+                                            "_blank"
+                                        )
+                                    }
+                                >
+                                    Sprawdź lokalizację
+                                </button>
+                            )}
+                        </div>
+                    ))}
                 </div>
                 {/* PRAWA STRONA */}
                 <div className="Contact-right">
@@ -169,24 +229,7 @@ const App: React.FC = () => {
 
             </section>
 
-            {/* LOCATION */}
-            <section className="location">
-                <h2>Lokalizacja</h2>
-                <p>
-                    Tu bym dał krótki opis jaka ta lokalizacja
-                    ładna nie jest, jakiego to sprzętu tam nie ma itp
-                </p>
 
-                <button
-                    className="btn dark"
-                    onClick={() =>
-                        window.open(
-                            "https://www.google.com/maps/place/MOVEABILITY/@53.7824221,20.4407337,16.75z/data=!4m6!3m5!1s0x46e27ed90860c20d:0x2015610d16d18d5e!8m2!3d53.7822516!4d20.4424293!16s%2Fg%2F11gfhx06jp?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D",
-                            "_blank"
-                        )
-                    }
-                >Sprawdź lokalizacje</button>
-            </section>
 
             {/* BEFORE AFTER */}
             <section id="before-after" className="section before-after">
@@ -210,6 +253,122 @@ const App: React.FC = () => {
                     </div>
                 </div>
             </section>
+
+            {/* ContactForm */}
+            <section className="ContactForm">
+
+                <div className="contact-form-container">
+
+                    <h2>Umów trening</h2>
+
+                    <form onSubmit={handleSubmit} className="contact-form">
+
+                        <div className="form-group">
+                            <label>Imię*</label>
+
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                placeholder="Twoje imię"
+                                required
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label>Forma kontaktu*</label>
+
+                            <div className="contact-choice">
+
+                                <label>
+                                    <input
+                                        type="radio"
+                                        checked={contactType === "email"}
+                                        onChange={() => setContactType("email")}
+                                    />
+                                    Email
+                                </label>
+
+                                <label>
+                                    <input
+                                        type="radio"
+                                        checked={contactType === "phone"}
+                                        onChange={() => setContactType("phone")}
+                                    />
+                                    Telefon
+                                </label>
+
+                            </div>
+                        </div>
+
+                        {contactType === "email" ? (
+                            <div className="form-group">
+
+                                <label>Email*</label>
+
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="twoj@email.com"
+                                    required
+                                />
+
+                            </div>
+                        ) : (
+                            <div className="form-group">
+
+                                <label>Numer telefonu*</label>
+
+                                <div className="phone-input-wrapper">
+
+                        <span className="phone-prefix">
+                            +48
+                        </span>
+
+                                    <input
+                                        type="tel"
+                                        value={phone}
+                                        onChange={(e) =>
+                                            handlePhoneChange(e.target.value)
+                                        }
+                                        placeholder="123456789"
+                                        maxLength={9}
+                                        required
+                                    />
+
+                                </div>
+
+                            </div>
+                        )}
+
+                        <div className="form-group">
+
+                            <label>Wiadomość</label>
+
+                            <textarea
+                                rows={5}
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                                placeholder="Cześć! proszę o kontakt w sprawie współpracy!"
+                            />
+
+                        </div>
+
+                        <button type="submit" className="submit-btn">
+                            Wyślij
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+            <ContactModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            />
 
             {/* CONTACT */}
             <section className="section contact">

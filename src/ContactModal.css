@@ -1,0 +1,270 @@
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.7);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 99999;
+
+    padding: 20px;
+}
+
+.contact-modal {
+    width: 100%;
+    max-width: 550px;
+
+    background: #231f20;
+    color: white;
+
+    border-radius: 24px;
+
+    padding: 40px;
+
+    position: relative;
+
+    animation: modalFade 0.25s ease;
+}
+
+@keyframes modalFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.contact-modal h2 {
+    margin-bottom: 30px;
+    font-size: 36px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 14px;
+
+    padding: 16px;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition: 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: white;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+/* WYBÓR SPOSOBU KONTAKTU */
+
+.contact-choice {
+    display: flex;
+    gap: 14px;
+
+    width: 100%;
+}
+
+.contact-choice label {
+    position: relative;
+
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 16px 20px;
+
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-weight: 600;
+    font-size: 15px;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition: all 0.25s ease;
+}
+
+/* ukrycie default radio */
+.contact-choice input[type="radio"] {
+    display: none;
+}
+
+/* hover */
+.contact-choice label:hover {
+    transform: translateY(-2px);
+
+    background: rgba(255, 255, 255, 0.1);
+
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* aktywny */
+.contact-choice label:has(input:checked) {
+    background: white;
+    color: black;
+
+    border-color: white;
+
+    box-shadow:
+            0 10px 30px rgba(255, 255, 255, 0.12),
+            inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+/* animowany glow */
+.contact-choice label::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -1px;
+
+    border-radius: inherit;
+
+    opacity: 0;
+
+    transition: opacity 0.3s ease;
+
+    background:
+            linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.35),
+                    transparent 40%,
+                    transparent 60%,
+                    rgba(255,255,255,0.15)
+            );
+}
+
+.contact-choice label:has(input:checked)::before {
+    opacity: 1;
+}
+
+/* KONIEC WYBORU */
+
+.phone-input-wrapper {
+    display: flex;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border-radius: 14px;
+
+    overflow: hidden;
+}
+
+.phone-prefix {
+    padding: 16px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    font-weight: bold;
+}
+
+.phone-input-wrapper input {
+    border: none;
+    background: transparent;
+}
+
+.submit-btn {
+    margin-top: 10px;
+
+    height: 56px;
+
+    border: none;
+    border-radius: 999px;
+
+    background: white;
+    color: black;
+
+    font-weight: 800;
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .contact-modal {
+        padding: 30px 20px;
+    }
+
+    .contact-modal h2 {
+        font-size: 28px;
+    }
+}
