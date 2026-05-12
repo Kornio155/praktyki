@@ -5,6 +5,10 @@
   font-family: Arial, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .app {
   width: 100%;
 }
@@ -59,6 +63,11 @@
   gap: 40px;
 
   list-style: none;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
 }
 
 .navbar-links li {

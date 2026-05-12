@@ -47,20 +47,29 @@ const App: React.FC = () => {
 
             {/* NAVBAR */}
             <nav className="navbar">
-                <div className="logo">
-                    <img src={`https://imglink.cc/cdn/1iRVnCicOP.svg`} />
-                </div>
+
+                <a href="#" className="logo">
+                    <img src="https://imglink.cc/cdn/1iRVnCicOP.svg" />
+                </a>
 
                 <ul className="navbar-links">
-                    <li>Kontakt</li>
-                    <li>Oferta</li>
-                    <li>Efekty</li>
+                    <li><a href="#contact">Kontakt</a></li>
+                    <li><a href="#offer">Oferta</a></li>
+                    <li><a href="#before-after">Efekty</a></li>
                     <li>O mnie</li>
                 </ul>
 
-                <button className="navbar-btn">
+                <button
+                    className="navbar-btn"
+                    onClick={() =>
+                        document.getElementById("contact")?.scrollIntoView({
+                            behavior: "smooth"
+                        })
+                    }
+                >
                     Umów trening
                 </button>
+
             </nav>
 
             {/* HERO */}
@@ -86,7 +95,7 @@ const App: React.FC = () => {
             </section>
 
             {/* Contact */}
-            <section className="Contact"> {/* LEWA STRONA */}
+            <section id="contact" className="Contact" > {/* LEWA STRONA */}
                 <div className="Contact-left">
                     {[ { title: 'Email' , desc: 'kontakt.mvab@gmail.com' },
                         { title: 'Telefon', desc: '+48 695 275 809' },
@@ -116,7 +125,7 @@ const App: React.FC = () => {
             </section>
 
             {/* OFFER */}
-            <section className="offer">
+            <section id="offer" className="offer">
 
                 <h2>Nasze Oferty</h2>
 
@@ -180,7 +189,7 @@ const App: React.FC = () => {
             </section>
 
             {/* BEFORE AFTER */}
-            <section className="section before-after">
+            <section id="before-after" className="section before-after">
                 <h2>Przed i po</h2>
 
                 <div className="ba-slider">
