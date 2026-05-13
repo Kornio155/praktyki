@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./ContactModal.css";
+import "../ContactModal.css";
 
 type ContactModalProps = {
     isOpen: boolean;
