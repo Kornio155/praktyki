@@ -420,15 +420,27 @@ html {
   background: white;
   color: black;
   min-height: 300px;
+  max-height: 300px; /* blokuje rozciąganie */
+
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   padding: 30px;
   border-radius: 12px;
+
   opacity: 0;
   transform: scale(0.98);
   animation: fadeIn 0.2s forwards;
-  }
+
+  overflow: hidden; /* ukrywa nadmiar */
+}
+
+.details-card p {
+  overflow-y: auto; /* scroll gdy tekst za długi */
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
 
   @keyframes fadeIn {
     to {
