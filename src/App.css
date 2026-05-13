@@ -895,9 +895,9 @@ html {
 
   border-radius: 14px;
 
-  transition: 0.25s ease;
+  transition:  0.25s ease;
 
-  overflow: hidden;
+  overflow:  hidden;
 }
 
 .social-btn img {
