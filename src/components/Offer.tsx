@@ -13,7 +13,9 @@ const OfferSection: React.FC = () => {
 
                 {offers.map((item, index) => (
 
-                    <div className="card" key={index}>
+                    <div className="card" key={index}
+                         onClick={() => navigate(`/offer/${index}`)}
+                         style={{ cursor: "pointer" }}>
                             <div className="card-inner">
                                 <h3>{item.title}</h3>
 
@@ -28,7 +30,10 @@ const OfferSection: React.FC = () => {
 
                                 <button
                                     className="details-btn"
-                                    onClick={() => navigate(`/offer/${index}`)}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        navigate(`/offer/${index}`);
+                                    }}
                                 >
                                     Więcej
                                 </button>
