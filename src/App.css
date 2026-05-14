@@ -367,8 +367,8 @@ html {
 
 .offer-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: 30px;
   margin-bottom: 40px;
 
   justify-items: center;
@@ -376,7 +376,7 @@ html {
 
 .offer-grid-img {
   width: 100%;
-  height: 200px;
+  height: 300px;
   object-fit: cover;
 
   transition: transform 0.4s ease;
@@ -398,48 +398,32 @@ html {
 
 .card {
   background: #fff1e2;
-  padding: 20px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 
   width: 100%;
   max-width: 320px;
-  box-sizing: border-box;
+  min-height: 520px;
+
   display: flex;
   flex-direction: column;
-  position: relative;
-  border-radius: 16px;
+
+  border-radius: 15px;
   overflow: hidden;
+
+  padding: 0;
+  aspect-ratio: 3 / 5;
 }
 
 .card-desc {
-  padding: 10px;
   color: black;
-}
-
-.details-card {
-  background: white;
-  color: black;
-  min-height: 300px;
-  max-height: 300px; /* blokuje rozciąganie */
-
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  flex: 1;
+  align-items: center;
 
-  padding: 30px;
-  border-radius: 12px;
-
-  opacity: 0;
-  transform: scale(0.98);
-  animation: fadeIn 0.2s forwards;
-
-  overflow: hidden; /* ukrywa nadmiar */
-}
-
-.details-card p {
-  overflow-y: auto; /* scroll gdy tekst za długi */
-  word-break: break-word;
-  overflow-wrap: anywhere;
+  padding: 20px;
+  font-size: 20px;
+  text-align: center;
 }
 
   @keyframes fadeIn {
@@ -449,22 +433,30 @@ html {
     }
   }
 
-.card-inner {
-  width: 100%;
-  overflow: hidden;
-}
-
 .card h3 {
-  color: #06273c;
-  margin-bottom: 10px;
+  background: black;
+  color: white;
+
+  margin: 0;
+  padding: 20px;
+
   font-size: 19px;
+  text-align: center;
 }
 .details-btn {
   margin-top: auto;
-  padding: 12px;
+
+  display: block;
+  width: fit-content;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 12px 24px;
+
   border: none;
   border-radius: 10px;
-  background: black;
+  background: #231F20;
   color: white;
   cursor: pointer;
   transition: 0.3s;
@@ -474,14 +466,8 @@ html {
   background: #333;
 }
 
-.details-card p {
-  word-break: break-word;
-  overflow-wrap: anywhere;
-}
-
 .img-wrapper {
-  overflow: hidden;
-  border-radius: 12px;
+  flex-shrink: 0;
 }
 
 .img-wrapper:hover .offer-grid-img {
