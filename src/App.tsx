@@ -8,27 +8,43 @@ import FooterContact from "./components/FooterContact.tsx";
 import ContactForm from "./components/ContactForm.tsx";
 import ContactSection from "./components/ContactSection.tsx";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import OfferDetails from "./pages/OfferDetails";
+
+const Home = () => (
+    <>
+        <Hero />
+        <ContactSection />
+        <OfferSection />
+        <BeforeAfterSection />
+        <ContactForm />
+    </>
+);
 
 const App: React.FC = () => {
 
-    /*-----------------------------------------------*/
-
     return (
-        <div className="app">
-            <Navbar/>
+        <BrowserRouter>
 
-            <Hero/>
+            <div className="app">
 
-            <ContactSection/>
+                <Navbar />
 
-            <OfferSection/>
+                <Routes>
+                    <Route path="/" element={<Home />} />
 
-            <BeforeAfterSection/>
+                    <Route
+                        path="/offer/:id"
+                        element={<OfferDetails />}
+                    />
+                </Routes>
 
-            <ContactForm/>
+                <FooterContact />
 
-            <FooterContact/>
-        </div>
+            </div>
+
+        </BrowserRouter>
     )
 }
 

@@ -1,13 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import {offers} from "../data/offers.ts";
+import { useNavigate } from "react-router-dom";
 
 const OfferSection: React.FC = () => {
-    const [openCard, setOpenCard] = useState<number | null>(null);
-
-    const toggleCard = (index: number) => {
-        setOpenCard(openCard === index ? null : index);
-    };
-
+    const navigate = useNavigate();
     return (
         <section id="offer" className="offer">
 
@@ -18,20 +14,6 @@ const OfferSection: React.FC = () => {
                 {offers.map((item, index) => (
 
                     <div className="card" key={index}>
-                        {openCard === index ? (
-                            <div className="card-inner details-card">
-                                <h3>{item.title}</h3>
-
-                                <p>{item.details}</p>
-
-                                <button
-                                    className="details-btn"
-                                    onClick={() => toggleCard(index)}
-                                >
-                                    Zamknij
-                                </button>
-                            </div>
-                        ) : (
                             <div className="card-inner">
                                 <h3>{item.title}</h3>
 
@@ -46,12 +28,11 @@ const OfferSection: React.FC = () => {
 
                                 <button
                                     className="details-btn"
-                                    onClick={() => toggleCard(index)}
+                                    onClick={() => navigate(`/offer/${index}`)}
                                 >
-                                    Pokaż szczegóły
+                                    Więcej
                                 </button>
                             </div>
-                        )}
                     </div>
 
                 ))}
