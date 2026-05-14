@@ -1,6 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
+import ContactModal from "./ContactModal.tsx";
+import "../styleSheets/ContactSection.css";
 const ContactSection: React.FC = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
+        <>
 
 <section id="contact" className="Contact" >
     {/* LEWA STRONA */}
@@ -50,9 +55,23 @@ const ContactSection: React.FC = () => {
         </div>
         <div className="Big-card">
             <h3>Poproś o kontakt</h3>
-            <p> Skontaktuj się mailowo lub telefonicznie, aby ustalić szczegóły współpracy. </p>
+            <p>
+                Skontaktuj się mailowo lub telefonicznie, aby ustalić szczegóły współpracy.
+            </p>
+
+            <button
+                className="big-card-btn"
+                onClick={() => setIsModalOpen(true)}
+            >
+                Otwórz formularz
+            </button>
         </div>
     </div>
-</section>)}
+</section>
+            <ContactModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            />
+            </>)}
 
 export default ContactSection;

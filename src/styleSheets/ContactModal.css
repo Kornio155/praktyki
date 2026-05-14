@@ -1,0 +1,215 @@
+.cm-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.7);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+
+    padding: 20px;
+}
+
+.cm-box {
+    width: 100%;
+    max-width: 550px;
+
+    background: #231f20;
+    color: white;
+
+    border-radius: 24px;
+
+    padding: 40px;
+
+    position: relative;
+
+    animation: cmFade .25s ease;
+}
+
+@keyframes cmFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* CLOSE */
+
+.cm-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.1);
+    color: white;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cm-close:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* FORM */
+
+.cm-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.cm-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cm-group label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.cm-group input,
+.cm-group textarea {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    box-sizing: border-box;
+}
+
+.cm-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* CHOICE */
+
+.cm-choice {
+    display: flex;
+    gap: 12px;
+
+    background: rgba(255,255,255,0.06);
+    padding: 6px;
+
+    border-radius: 999px;
+}
+
+.cm-option {
+    flex: 1;
+
+    border: none;
+
+    padding: 12px 16px;
+
+    border-radius: 999px;
+
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.cm-option:hover {
+    color: white;
+}
+
+.cm-option.active {
+    background: white;
+    color: black;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* PHONE */
+
+.cm-phone {
+    display: flex;
+    align-items: center;
+
+    background: white;
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+.cm-prefix {
+    padding: 0 14px;
+
+    color: #231f20;
+    font-weight: 700;
+
+    background: rgba(0,0,0,0.04);
+
+    border-right: 1px solid rgba(0,0,0,0.12);
+
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.cm-phone input {
+    border: none;
+    outline: none;
+
+    padding: 14px;
+}
+
+/* SUBMIT */
+
+.cm-submit {
+    background: white;
+    color: black;
+
+    border: none;
+    border-radius: 999px;
+
+    padding: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.cm-submit:hover {
+    background: #eee;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .cm-box {
+        padding: 30px 20px;
+    }
+}
