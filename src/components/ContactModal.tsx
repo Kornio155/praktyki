@@ -74,7 +74,7 @@ export default function ContactModal({
                     ×
                 </button>
 
-                <h2>Umów trening</h2>
+                <h2>Poproś o kontakt</h2>
 
                 <form onSubmit={handleSubmit} className="contact-form">
                     <div className="form-group">

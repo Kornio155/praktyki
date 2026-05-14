@@ -49,7 +49,7 @@ const ContactSection: React.FC = () => {
             </a>
         </div>
         <div className="Big-card">
-            <h3>Umów trening</h3>
+            <h3>Poproś o kontakt</h3>
             <p> Skontaktuj się mailowo lub telefonicznie, aby ustalić szczegóły współpracy. </p>
         </div>
     </div>

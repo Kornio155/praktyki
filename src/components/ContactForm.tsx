@@ -42,7 +42,7 @@ const ContactForm: React.FC = () => {
 
         <div className="contact-form-container">
 
-        <h2>Umów trening</h2>
+        <h2>Poproś o kontakt</h2>
 
         <form onSubmit={handleSubmit} className="contact-form">
 
