@@ -320,8 +320,12 @@ html {
 .Big-card {
   position: relative;
   overflow: hidden;
-
-  background: #231F20;
+  /*background: #28282B;*/
+  /*background: #0F0B0A;*/
+  /*background: #232323;*/
+  /*background: #121213;*/
+  background: #1B1813;
+  /*background: #231F20; - orginalny */
   border-radius: 16px;
   padding: 20px;
   border-radius: 8px;
@@ -355,7 +359,12 @@ html {
 
 /* OFFER */
 .offer {
-  background: #231F20;
+  /*background: #28282B;*/
+  /*background: #0F0B0A;*/
+  /*background: #232323;*/
+  /*background: #121213;*/
+  background: #1B1813;
+  /*background: #231F20; - orginalny */
   color: white;
   padding: 80px 40px;
 }
@@ -434,7 +443,7 @@ html {
   }
 
 .card h3 {
-  background: black;
+  background: #06273c;
   color: white;
 
   margin: 0;
@@ -471,7 +480,7 @@ html {
 }
 
 .img-wrapper:hover .offer-grid-img {
-  transform: scale(1.15);
+  transform: scale(1.10);
 }
 
 
@@ -480,7 +489,7 @@ html {
 
 /* BUTTONS */
 .btn {
-  background: #06273c;;
+  background: #06273c;
   border: none;
   padding: 15px 25px;
   cursor: pointer;
@@ -548,7 +557,12 @@ html {
 
 /* BEFORE AFTER */
 .before-after {
-  background: #231F20;
+  /*background: #28282B;*/
+  /*background: #0F0B0A;*/
+  /*background: #232323;*/
+  /*background: #121213;*/
+  background: #1B1813;
+  /*background: #231F20; - orginalny*/
   color: white;
 
   padding: 80px 20px;
@@ -635,7 +649,12 @@ html {
 
 /* CONTACT */
 .contact {
-  background: #231F20;;
+  /*background: #28282B;*/
+  /*background: #0F0B0A;*/
+  /*background: #232323;*/
+  /*background: #121213;*/
+  background: #1B1813;
+  /*background: #231F20; - orginalny*/
   padding: 80px 20px;
   text-align: center;
   color: white ;
@@ -719,7 +738,12 @@ html {
 /* stopka*/
 .footer-contact {
   padding: 80px 8%;
-  background: #0f0f0f;
+  /*background: #28282B;*/
+  /*background: #0F0B0A;*/
+  /*background: #232323;*/
+  /*background: #121213;*/
+  background: #1B1813;
+  /*background: #0f0f0f; - orginalny*/
   color: white;
 }
 
@@ -764,7 +788,12 @@ html {
   display: flex;
   gap: 16px;
 
-  background: #181818;
+  /*background: #28282B;*/
+  /*background: #0F0B0A;*/
+  /*background: #232323;*/
+  /*background: #121213;*/
+  background: #1B1813;
+  /*background: #181818; - orginaly */
   border: 1px solid rgba(255,255,255,0.06);
 
   border-radius: 16px;

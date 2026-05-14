@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
                     className="navbar-btn"
                     onClick={() => setIsModalOpen(true)}
                 >
-                    Umów trening
+                    Poproś o kontakt
                 </button>
             </nav>
 
