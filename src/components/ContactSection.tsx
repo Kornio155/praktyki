@@ -11,19 +11,20 @@ const ContactSection: React.FC = () => {
     {/* LEWA STRONA */}
     <div className="Contact-left">
         {[
-            { title: 'Email', desc: 'kontakt.mvab@gmail.com' },
-            { title: 'Telefon', desc: '+48 695 275 809' },
+            { title: 'Email', desc1: 'kontakt.mvab@gmail.com' },
+            { title: 'Telefon', desc1: '+48 695 275 809' },
             {
                 title: 'Lokalizacja',
-                desc: 'Ul. Olimpijska 1',
+                desc1: 'Ul. Olimpijska 1',
                 button: true
             },
-            { title: 'Dojazd', desc: 'Oferuję dojazd do klienta' }
+            { title: 'Godziny otwarcia', desc1: 'pn.- pt.: 08:15-21:00', desc2: 'sob., ndz.: nieczynne' }
         ].map((item, index) => (
             <div className="Contact-card" key={index}>
                 <h3>{item.title}</h3>
 
-                <p>{item.desc}</p>
+                <p>{item.desc1}</p>
+                <p>{item.desc2}</p>
 
                 {item.button && (
                     <button

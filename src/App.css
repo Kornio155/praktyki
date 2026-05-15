@@ -608,43 +608,7 @@ html {
   }
 }
 
-/* BEFORE AFTER */
-.before-after {
-  /*background: #28282B;*/
-  /*background: #0F0B0A;*/
-  /*background: #232323;*/
-  /*background: #121213;*/
-  background: #1B1813;
-  /*background: #231F20; - orginalny*/
-  color: white;
 
-  padding: 80px 20px;
-}
-
-.before-after h2 {
-  font-size: 60px;
-  margin-bottom: 50px;
-  text-align: left;
-}
-
-.ba-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 250px);
-  gap: 20px;
-  justify-content: center;
-}
-
-.ba-item img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-}
-
-.ba-item p {
-  margin-top: 10px;
-  font-size: 14px;
-  text-align: center;
-}
 
 /* ContactForm */
 
@@ -687,48 +651,9 @@ html {
   margin-bottom: 10px;
 }
 
-/* Tu jest przesuwanie */
 
-.before-after {
-  overflow: hidden;
-  padding: 40px 0;
-}
 
-.ba-slider {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
 
-.ba-track {
-  display: flex;
-  gap: 20px;
-  width: max-content;
-  animation: scrollSlider 20s linear infinite;
-}
-
-.ba-item {
-  min-width: 300px;
-  text-align: center;
-  flex-shrink: 0;
-}
-
-.ba-item img {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-@keyframes scrollSlider {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
 
 #sociale1 {
   display: flex;

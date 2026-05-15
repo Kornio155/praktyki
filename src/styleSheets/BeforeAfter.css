@@ -1,0 +1,238 @@
+.before-after {
+    background: #1b1813;
+    color: white;
+    padding: 80px 0; /* FULL BLEED */
+    overflow: hidden;
+}
+
+.before-after h2 {
+    font-size: 60px;
+    margin: 0 20px 50px;
+    text-align: left;
+}
+
+/* =========================
+   WRAPPER (FULL BLEED HERO)
+========================= */
+
+.ba-wrapper {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* =========================
+   VIEWPORT
+========================= */
+
+.ba-viewport {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* =========================
+   TRACK
+========================= */
+
+.ba-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.6s ease-in-out;
+    will-change: transform;
+}
+
+/* =========================
+   ITEM (5 slotów)
+========================= */
+
+.ba-item {
+    flex: 0 0 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    padding: 0 10px; /* 🔥 kontrola odstępu */
+
+
+
+    border-radius: 14px;
+
+
+}
+
+.ba-item.active {
+
+    z-index: 2;
+
+}
+
+/* =========================
+   IMAGE (overflow feel)
+========================= */
+
+.ba-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;
+    object-fit: cover;
+
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+.ba-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.55);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* =========================
+   ARROWS (OVER IMAGE!)
+========================= */
+
+.ba-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+    border: none;
+
+    background: rgba(0,0,0,0.45);
+    color: white;
+
+    font-size: 28px;
+    cursor: pointer;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all 0.25s ease;
+}
+
+/* show on hover */
+.ba-wrapper:hover .ba-arrow {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* hover effect */
+.ba-arrow:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-50%) scale(1.15);
+}
+
+.ba-arrow.left {
+    left: 15px;
+}
+
+.ba-arrow.right {
+    right: 15px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 1023px) {
+    .ba-item {
+        flex: 0 0 80%;
+    }
+
+    .ba-item img {
+        width: 100%;
+    }
+}
+
+/* =========================
+   DESKTOP FULL HERO FEEL
+========================= */
+
+@media (min-width: 1024px) {
+    .ba-item {
+        flex: 0 0 20%;
+    }
+
+    .ba-item img {
+        width: 94%;
+    }
+}
+
+@media (max-width: 1023px) {
+
+    /* nadal full width hero */
+    .ba-wrapper {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+    }
+
+    /* 3 elementy zamiast 5 */
+    .ba-item {
+        flex: 0 0 33.3333%;
+    }
+
+    /* większy, czytelny centralny obraz */
+    .ba-item img {
+        width: 92%;
+    }
+
+    /* mocniejsze wyśrodkowanie feel */
+    .ba-track {
+        justify-content: center;
+    }
+
+    /* active bardziej widoczny */
+    .ba-item.active {
+        transform: scale(1.12);
+        z-index: 3;
+    }
+
+    /* strzałki większe i łatwiejsze w klikaniu */
+    .ba-arrow {
+        width: 52px;
+        height: 52px;
+        font-size: 26px;
+        opacity: 1; /* na mobile zawsze widoczne */
+        pointer-events: auto;
+        background: rgba(0,0,0,0.55);
+    }
+}
+
+.ba-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+@media (max-width: 1023px) {
+
+    /* brak strzałek na mobile */
+    .ba-arrow {
+        display: none;
+    }
+}
