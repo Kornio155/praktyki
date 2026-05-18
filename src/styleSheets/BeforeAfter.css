@@ -236,3 +236,56 @@
         display: none;
     }
 }
+
+/* FIX: tylko obraz jest klikalny */
+.ba-image-wrapper {
+    position: relative;
+    cursor: pointer;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+/* usuwa "klikane powietrze" */
+.ba-item {
+    padding: 0 10px;
+}
+
+/* hover tylko na realnym zdjęciu */
+.ba-image-wrapper:hover img {
+    transform: scale(1.03);
+    transition: transform 0.25s ease;
+}
+
+/* overlay lepiej przypięty do obrazka */
+.ba-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 90%;              /* 🔥 KLUCZOWE */
+    max-width: 90%;
+    box-sizing: border-box;
+
+    background: rgba(0,0,0,0.55);
+    padding: 10px 14px;
+    border-radius: 10px;
+
+    font-size: 14px;
+    text-align: center;
+
+    pointer-events: none;
+}
+
+/* obraz */
+.ba-image-wrapper img {
+    width: 100%;
+    display: block;
+    border-radius: 14px;
+    transition: opacity 0.35s ease, transform 0.25s ease;
+}
+
+/* lepszy UX na active */
+.ba-item.active {
+    z-index: 3;
+}
