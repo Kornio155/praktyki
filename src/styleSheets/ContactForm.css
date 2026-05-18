@@ -1,6 +1,6 @@
 .cf-section {
     width: 100%;
-    background: #fff1e2;
+    background: #E4F0F6;
 
     padding: 60px 10px;
 
@@ -21,7 +21,7 @@
 
 /* PRZYCISK */
 .cf-button {
-    background: #231f20;
+    background: #1b1813;;
     color: white;
 
     border: none;
@@ -51,7 +51,7 @@
     width: 100%;
     max-width: 1400px;
 
-    background: #231f20;
+    background: #1b1813;
     color: white;
 
     border-radius: 30px;

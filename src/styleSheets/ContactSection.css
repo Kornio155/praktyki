@@ -10,7 +10,7 @@
     width: 100%;
     padding: 80px;
 
-    background: #fff1e2;
+    background: #E4F0F6;
     color: white;
 
     box-sizing: border-box;
@@ -30,7 +30,7 @@
     display: block;
     margin: 15px auto 0;
 
-    background: #fff1e2;
+    background: #E4F0F6;
     color: black;
 
     border: none;
@@ -111,7 +111,7 @@
 .big-card-btn {
     margin-top: 16px;
 
-    background: #fff1e2;
+    background: #E4F0F6;
     color: black;
 
     border: none;
