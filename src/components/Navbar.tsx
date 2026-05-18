@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
                     <li><a href="/#contact">Kontakt</a></li>
                     <li><a href="/#offer">Oferta</a></li>
                     <li><a href="/#before-after">Efekty</a></li>
-                    <li><a href="/#about">O mnie</a></li>
+                    <li><Link to="/about">O mnie</Link></li>
                 </ul>
 
                 <button
