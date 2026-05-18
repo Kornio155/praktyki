@@ -1,6 +1,7 @@
 import React from "react";
 import {offers} from "../data/offers.ts";
 import { useNavigate } from "react-router-dom";
+import "../styleSheets/OfferSection.css"
 
 const OfferSection: React.FC = () => {
     const navigate = useNavigate();
