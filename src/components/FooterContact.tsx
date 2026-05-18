@@ -4,12 +4,6 @@ const FooterContact: React.FC = () => {
     return (
         <section className="footer-contact">
 
-            <div className="footer-contact-header">
-                <span>Kontakt</span>
-                <h2>Lokalizacja, godziny i kontakt</h2>
-                <p>Skontaktuj się telefonicznie, mailowo lub przez social media.</p>
-            </div>
-
             <div className="footer-contact-row">
 
                 {/* LOKALIZACJA */}
@@ -18,13 +12,11 @@ const FooterContact: React.FC = () => {
                     <div className="footer-icon">📍</div>
 
                     <div className="footer-content">
-                        <h3>Lokalizacja</h3>
-                        <p>Olimpijska</p>
-                        <p>10-001 Olsztyn</p>
-
+                        <h3>Maciej Krzywda</h3>
+                        <p>debil z powołania</p>
                         <div className="line"></div>
 
-                        <p className="muted">Możliwy dojazd do klienta</p>
+                        <p className="muted">programista z przymusu</p>
                     </div>
 
                 </div>
@@ -35,14 +27,12 @@ const FooterContact: React.FC = () => {
                     <div className="footer-icon">🕒</div>
 
                     <div className="footer-content">
-                        <h3>Godziny</h3>
-
-                        <p className="strong">Poniedziałek – Piątek</p>
-                        <p>8:15 – 21:00</p>
+                        <h3>Patryk Witkowski</h3>
+                        <p>jedyna osoba która wie co robi</p>
 
                         <div className="line"></div>
 
-                        <p className="muted">Weekend: zamknięte</p>
+                        <p className="muted">w pokoju pełnym gałganów</p>
                     </div>
 
                 </div>
@@ -53,41 +43,18 @@ const FooterContact: React.FC = () => {
                     <div className="footer-icon">✉️</div>
 
                     <div className="footer-content">
-                        <h3>Kontakt</h3>
+                        <h3>Kornel Janiuk</h3>
 
-                        <p>+48 695 275 809</p>
-                        <p>kontakt.mvab@gmail.com</p>
+                        <p>nie znam chłopa</p>
 
                         <div className="line"></div>
 
-                        <div className="social-buttons">
-
-                            <a
-                                href="https://www.instagram.com/moveability_adam_rybaczyk/"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="social-btn instagram"
-                            >
-                                <img src="https://i.postimg.cc/fTQk4PM1/icons8-instagram-logo-100.png" alt="Instagram" />
-                            </a>
-
-                            <a
-                                href="https://www.facebook.com/Moveability.Olsztyn?locale=pl_PL"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="social-btn facebook"
-                            >
-                                <img src="https://i.postimg.cc/9McqjNds/icons8-facebook-logo-100.png" alt="Facebook" />
-                            </a>
-
+                        <p className="muted">nie no naprawde nigdy chłopa nawet nie widziałem</p>
                         </div>
 
                     </div>
 
                 </div>
-
-            </div>
-
         </section>
     );
 };
