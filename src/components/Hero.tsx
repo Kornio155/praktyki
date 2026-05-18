@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
                 </h1>
 
                 <p>
-                    Personal training, mobility & performance
+                    Treningi personalne, medyczne, funkcjonalne, motoryczne
                 </p>
 
                 <button className="btn hero-btn">

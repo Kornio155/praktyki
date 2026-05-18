@@ -77,7 +77,7 @@ export default function BeforeAfter() {
 
     return (
         <section className="section before-after">
-            <h2>Przed i po</h2>
+            <h2>Efekty</h2>
 
             <div
                 className="ba-wrapper"

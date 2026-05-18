@@ -7,25 +7,30 @@ const OfferSection: React.FC = () => {
     return (
         <section id="offer" className="offer">
 
-            <h2>Nasze Oferty</h2>
+            <h2>Oferty</h2>
 
             <div className="offer-grid">
 
                 {offers.map((item, index) => (
 
-                    <div className="card" key={index}
-                         onClick={() => navigate(`/offer/${item.title}`)}
-                         style={{ cursor: "pointer" }}>
-                            <div className="card-inner">
-                                <h3>{item.title}</h3>
+                    <div
+                        className="card"
+                        key={index}
+                        onClick={() => navigate(`/offer/${item.title}`)}
+                        style={{ cursor: "pointer" }}
+                    >
+                        <div className="card-inner">
 
-                                <div className="img-wrapper">
-                                    <img
-                                        className="offer-grid-img"
-                                        src={`https://picsum.photos/300/200?random=${index}`}
-                                    />
-                                </div>
+                            <h3>{item.title}</h3>
 
+                            <div className="img-wrapper">
+                                <img
+                                    className="offer-grid-img"
+                                    src={`https://picsum.photos/300/200?random=${index}`}
+                                />
+                            </div>
+
+                            <div className="card-content">
                                 <p className="card-desc">{item.desc}</p>
 
                                 <button
@@ -38,6 +43,8 @@ const OfferSection: React.FC = () => {
                                     Więcej
                                 </button>
                             </div>
+
+                        </div>
                     </div>
 
                 ))}
