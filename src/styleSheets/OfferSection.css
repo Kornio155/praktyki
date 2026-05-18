@@ -143,7 +143,7 @@
 
     border: none;
     border-radius: 10px;
-    background: #231F20;
+    background:#1B1813;
     color: white;
     cursor: pointer;
 
@@ -168,4 +168,27 @@
     flex-shrink: 0;
 }
 
+.services {
+    background: #1B1813;
+    color: white;
+    padding: 80px 40px;
+    border-top: 2px solid rgba(199,166,106,0.3);
+}
+
+.services h2 {
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+
+.services .card {
+    transform: scale(0.95);
+    opacity: 0.95;
+    border-color: rgba(199,166,106,0.2);
+}
+
+.services .card:hover {
+    transform: scale(1);
+    opacity: 1;
+    border-color: #c7a66a;
+}
 
