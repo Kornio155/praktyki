@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
+import ContactModal from "./ContactModal";
 
 const Hero: React.FC = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     return (
         <section className="hero">
             <div className="hero-overlay"></div>
@@ -17,10 +19,16 @@ const Hero: React.FC = () => {
                     Treningi personalne, medyczne, funkcjonalne, motoryczne
                 </p>
 
-                <button className="btn hero-btn">
+                <button className="btn hero-btn"
+                        onClick={() => setIsModalOpen(true)}
+                >
                     Poproś o kontakt
                 </button>
             </div>
+            <ContactModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            />
         </section>
     );
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ContactModal from "./ContactModal";
 
+
 const Navbar: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
