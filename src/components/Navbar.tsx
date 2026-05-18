@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import ContactModal from "./ContactModal";
 
 const Navbar: React.FC = () => {
@@ -8,15 +9,15 @@ const Navbar: React.FC = () => {
         <>
             <nav className="navbar">
 
-                <a href="#" className="logo">
+                <Link to="/" className="logo">
                     <img src="https://imglink.cc/cdn/1iRVnCicOP.svg" />
-                </a>
+                </Link>
 
                 <ul className="navbar-links">
-                    <li><a href="#contact">Kontakt</a></li>
-                    <li><a href="#offer">Oferta</a></li>
-                    <li><a href="#before-after">Efekty</a></li>
-                    <li>O mnie</li>
+                    <li><a href="/#contact">Kontakt</a></li>
+                    <li><a href="/#offer">Oferta</a></li>
+                    <li><a href="/#before-after">Efekty</a></li>
+                    <li><a href="/#about">O mnie</a></li>
                 </ul>
 
                 <button
