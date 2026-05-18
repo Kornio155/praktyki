@@ -86,7 +86,7 @@ export default function BeforeAfter() {
     };
 
     return (
-        <section className="section before-after">
+        <section id="before-after" className="before-after">
             <h2>Efekty</h2>
 
             <div
