@@ -44,7 +44,7 @@ export default function BeforeAfter() {
 
         intervalRef.current = setInterval(() => {
             setIndex((prev) => (prev + 1) % items.length);
-        }, 5000);
+        }, 3000);
 
         return () => {
             if (intervalRef.current) {
