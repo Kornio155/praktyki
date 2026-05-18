@@ -1,50 +1,136 @@
-export const offers = [
+export type OfferPerk = {
+    icon: string;
+    label: string;
+    details: string;
+};
+
+export type Offer = {
+    title: string;
+    desc?: string;
+    details: string;
+    perks?: OfferPerk[];
+};
+
+export const offers: Offer[] = [
     {
         title: 'Treningi medyczne',
         desc: 'wróć do sprawności bez bólu',
-        details: 'Jeśli jesteś po urazie, masz przeciążenia lub dolegliwości bólowe, ten trening pomoże Ci poprawić sprawność, zmniejszyć ból i bezpiecznie wrócić do aktywności, żebyś znów mógł czuć się pewnie we własnym ciele i funkcjonować bez ograniczeń.'
+        details:
+            'Jeśli jesteś po urazie, masz przeciążenia lub dolegliwości bólowe, ten trening pomoże Ci poprawić sprawność, zmniejszyć ból i bezpiecznie wrócić do aktywności, żebyś znów mógł czuć się pewnie we własnym ciele i funkcjonować bez ograniczeń.',
+        perks: [
+            { icon: '🚀', label: 'Szybka poprawa', details: 'Pierwsze efekty w krótkim czasie' },
+            { icon: '🎯', label: 'Indywidualnie', details: 'Dopasowanie do Twojego stanu zdrowia' },
+            { icon: '🔒', label: 'Bezpieczeństwo', details: 'Trening bez ryzyka pogłębienia urazu' },
+            { icon: '🧠', label: 'Reedukacja ruchu', details: 'Poprawa wzorców ruchowych' },
+            { icon: '📈', label: 'Postęp', details: 'Stałe monitorowanie wyników' }
+        ]
     },
+
     {
         title: 'Treningi funkcjonalne',
         desc: 'zdrowe funkcjonowanie na co dzień',
-        details: 'dużo siedzisz? ten trening jest dla ciebie. świetnie sprawdzi się jako rekompensata siedzącego trybu życia. Trening funkcjonalny omoże Ci lepiej "funkcjonować" w codziennych czynnościach'
+        details:
+            'dużo siedzisz? ten trening jest dla ciebie. świetnie sprawdzi się jako rekompensata siedzącego trybu życia. Trening funkcjonalny może Ci lepiej "funkcjonować" w codziennych czynnościach',
+        perks: [
+            { icon: '🧠', label: 'Lepsze ciało', details: 'Poprawa codziennego ruchu' },
+            { icon: '⚡', label: 'Energia', details: 'Więcej siły na co dzień' },
+            { icon: '🏃', label: 'Mobilność', details: 'Lepsza sprawność ruchowa' },
+            { icon: '🪑', label: 'Anty-siedzenie', details: 'Rekompensata siedzącego trybu życia' },
+            {icon: '🚀', label: 'Szybka poprawa', details: 'Pierwsze efekty w krótkim czasie'}
+        ]
     },
+
     {
         title: 'Odchudzanie',
         desc: 'tłuszcz się pali!',
-        details: 'Jeśli Twoim celem jest pozbycie się nadmiernych kilogramów, , ten trening połączy intensywną pracę z dopasowaniem do Twoich możliwości, dzięki czemu efekty będą widoczne, a proces bezpieczny.'
+        details:
+            'Jeśli Twoim celem jest pozbycie się nadmiernych kilogramów, ten trening połączy intensywną pracę z dopasowaniem do Twoich możliwości, dzięki czemu efekty będą widoczne, a proces bezpieczny.',
+        perks: [
+            { icon: '🔥', label: 'Spalanie', details: 'Skuteczna redukcja tkanki tłuszczowej' },
+            { icon: '📉', label: 'Kontrola', details: 'Monitorowanie postępów' },
+            { icon: '🥗', label: 'Styl życia', details: 'Zmiana nawyków żywieniowych' },
+            { icon: '⚖️', label: 'Balans', details: 'Zdrowe tempo redukcji' },
+            { icon: '🧠', label: 'Reedukacja ruchu', details: 'Poprawa wzorców ruchowych' },
+            { icon: '📈', label: 'Postęp', details: 'Stałe monitorowanie wyników' }
+        ]
     },
+
     {
         title: 'Treningi motoryczne',
         desc: 'lepsze wyniki w twojej dyscyplinie',
-        details: 'Jeśli jesteś sportowcem lub osobą regularnie trenującą, ten trening pomoże Ci rozwinąć siłę, szybkość, moc i koordynację czyli efekty Twojej pracy'
+        details:
+            'Jeśli jesteś sportowcem lub osobą regularnie trenującą, ten trening pomoże Ci rozwinąć siłę, szybkość, moc i koordynację czyli efekty Twojej pracy',
+        perks: [
+            { icon: '🏃', label: 'Szybkość', details: 'Poprawa dynamiki ruchu' },
+            { icon: '💪', label: 'Siła', details: 'Większa moc w sporcie' },
+            { icon: '⚡', label: 'Eksplozywność', details: 'Lepszy start i reakcja' },
+            { icon: '🎯', label: 'Precyzja', details: 'Lepsza kontrola ruchu' },
+            { icon: '⚡', label: 'Energia', details: 'Więcej siły na co dzień' },
+            { icon: '🏃', label: 'Mobilność', details: 'Lepsza sprawność ruchowa' },
+            { icon: '🪑', label: 'Anty-siedzenie', details: 'Rekompensata siedzącego trybu życia' },
+            {icon: '🚀', label: 'Szybka poprawa', details: 'Pierwsze efekty w krótkim czasie'}
+        ]
     },
+
     {
         title: 'Treningi ogólnorozwojowe',
         desc: 'coś więcej niż siła',
-        details: 'popraw kondycję, siłę, sprawność i samopoczucie!  ten wszechstronny trening da Ci solidną bazę do lepszej sprawności, większej energii na co dzień i zdrowszego stylu życia. \n' +
-            'Niekonwencjonalne ćwiczenia z dziedzin streetmovement, animaln movement lub gimnastyki pomogą ci się rozwinąć, i dodadzą nutkę świetnej zabawy!'
+        details:
+            'popraw kondycję, siłę, sprawność i samopoczucie! ten wszechstronny trening da Ci solidną bazę do lepszej sprawności, większej energii na co dzień i zdrowszego stylu życia.',
+        perks: [
+            { icon: '🌍', label: 'Całe ciało', details: 'Rozwój ogólnej sprawności' },
+            { icon: '🎯', label: 'Balans', details: 'Harmonia siły i mobilności' },
+            { icon: '⚡', label: 'Energia', details: 'Więcej siły na co dzień' },
+            { icon: '🧘', label: 'Zdrowie', details: 'Lepsze samopoczucie' }
+        ]
     },
+
     {
         title: 'Plany treningowe',
         desc: 'plan pod kątem twoich potrzeb',
-        details: 'Najlepszy plan treningowy to taki, który jest dopasowany do Twoich możliwości treningowych!  Nie każdy ma możliwośc trenowania 4-5 razy w tygodniu po dwie godziny. Dlatego przygotowuję plany ćwiczeń uwględniające to, że nie mieszkasz na siłowni i masz wiele innych obowiązków w życiu prócz cwiczeń.  \n'
+        details:
+            'Najlepszy plan treningowy to taki, który jest dopasowany do Twoich możliwości treningowych! Nie każdy ma możliwość trenowania 4-5 razy w tygodniu po dwie godziny.',
+        perks: [
+            { icon: '📋', label: 'Plan', details: 'Dopasowany harmonogram' },
+            { icon: '🎯', label: 'Cel', details: 'Skupienie na efektach' },
+            { icon: '📊', label: 'Struktura', details: 'Jasny system treningowy' },
+            { icon: '⏱️', label: 'Efektywność', details: 'Maksimum efektu w czasie' }
+        ]
     },
+
     {
         title: 'treningi dla dwojga / w małych grupach',
         desc: 'druga osoba to najlepsza motywacja i lepsza cena;)!',
-        details: 'Wszystkie rodzaje treningów mogą być również realizowane w parach lub małych grupach. To świetne rozwiązanie, jeśli chcesz ćwiczyć z partnerem, znajomymi lub rodziną!\n' +
-            'To nie tylko dodatkowa motywacja, ale też przyjemniejsza forma wspólnego spędzania czasu.\n' +
-            'Taki typu trening wciąż zachowuje indywidualne podejście i wysoką jakość, ale jednocześnie pozwala obniżyć koszt na osobę.\n' +
-            'Skontaktuj się ze mną, a dobierzemy najlepszą formę treningu dla Ciebie i Twojej grupy'
+        details:
+            'Wszystkie rodzaje treningów mogą być również realizowane w parach lub małych grupach...',
+        perks: [
+            { icon: '🤝', label: 'Wspólna motywacja', details: 'Trening z partnerem lub grupą' },
+            { icon: '💰', label: 'Niższy koszt', details: 'Cena na osobę jest niższa' },
+            { icon: '🔥', label: 'Rywalizacja', details: 'Większa motywacja przez rywalizację' },
+            { icon: '🎉', label: 'Atmosfera', details: 'Więcej zabawy w grupie' }
+        ]
     },
+
     {
         title: 'Gry i zabawy',
         desc: 'aktywność, integracja, dobra zabawa!',
-        details: 'Jeśli szukasz aktywnej formy zajęć dla grup zapraszam do kontaktu! Prowadzę szereg gier i zabaw ruchowych, które zapewnią ruch, integrację i pozytywne doświadczenia w dobrej atmosferze w każdej ekipie!'
+        details:
+            'Jeśli szukasz aktywnej formy zajęć dla grup zapraszam do kontaktu!...',
+        perks: [
+            { icon: '🎉', label: 'Zabawa', details: 'Aktywność w dobrej atmosferze' },
+            { icon: '🤸', label: 'Ruch', details: 'Aktywność fizyczna przez gry' },
+            { icon: '👥', label: 'Integracja', details: 'Budowanie relacji w grupie' }
+        ]
     },
+
     {
         title: 'personal training sessions in English',
-        details: 'I provide personal training sessions in English – perfect for international clients living in Poland or anyone who feels more comfortable communicating in English. Feel free to reach out and book your session – I’ll be happy to help you achieve your fitness goals.For more information, feel free to contact me using any of the available options on my website or by clicking the button below See you on trainings!'
+        details:
+            'I provide personal training sessions in English – perfect for international clients living in Poland...',
+        perks: [
+            { icon: '🇬🇧', label: 'English', details: 'Trening w języku angielskim' },
+            { icon: '🌍', label: 'International', details: 'Dla klientów z zagranicy' },
+            { icon: '💬', label: 'Communication', details: 'Jasne instrukcje po angielsku' }
+        ]
     }
-]
+];

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { offers } from "../data/offers";
-import "../styleSheets/OfferDetailsPage.css"
+import "../styleSheets/OfferDetailsPage.css";
 
 const OfferDetails = () => {
     const { title } = useParams();
@@ -11,18 +11,7 @@ const OfferDetails = () => {
         return <h2>Nie znaleziono oferty</h2>;
     }
 
-    const perks = [
-        { icon: "🚀", label: "Szybka realizacja", details: "Odpowiadamy i działamy w 24h" },
-        { icon: "🎯", label: "Precyzja", details: "Dopasowanie do Twoich potrzeb" },
-        { icon: "💡", label: "Kreatywność", details: "Nowoczesne i świeże pomysły" },
-        { icon: "🤝", label: "Współpraca", details: "Stały kontakt i wsparcie" },
-        { icon: "🔒", label: "Bezpieczeństwo", details: "Pewne i sprawdzone rozwiązania" },
-        {icon: "🔒", label: "Bezpieczeństwo", details: "Pewne i sprawdzone rozwiązania"},
-        {icon: "🔒", label: "Bezpieczeństwo", details: "Pewne i sprawdzone rozwiązania"}
-
-    ];
-
-
+    const perks = offer.perks ?? [];
 
     return (
         <section className="offer-details">
@@ -45,9 +34,7 @@ const OfferDetails = () => {
 
                     <h1>{offer.title}</h1>
 
-                    <p>
-                        {offer.details}
-                    </p>
+                    <p>{offer.details}</p>
 
                     <button className="offer-details-btn">
                         Poproś o kontakt
@@ -57,8 +44,10 @@ const OfferDetails = () => {
 
                 <div className="offer-perks-orbit">
                     <div className="orbit">
+
                         {perks.map((item, index) => {
-                            const angle = (index / perks.length) * 2 * Math.PI - Math.PI / 2;
+                            const angle =
+                                (index / perks.length) * 2 * Math.PI - Math.PI / 2;
 
                             const radius = 120 + perks.length * 2;
 
@@ -80,8 +69,8 @@ const OfferDetails = () => {
                                     </div>
 
                                     <span className="orbit-label">
-                        {item.label}
-                    </span>
+                                        {item.label}
+                                    </span>
 
                                     <div className="orbit-tooltip">
                                         {item.details}
@@ -89,6 +78,7 @@ const OfferDetails = () => {
                                 </div>
                             );
                         })}
+
                     </div>
                 </div>
 
