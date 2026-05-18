@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
                 </p>
 
                 <button className="btn hero-btn">
-                    Skontaktuj się już dziś
+                    Poproś o kontakt
                 </button>
             </div>
         </section>
