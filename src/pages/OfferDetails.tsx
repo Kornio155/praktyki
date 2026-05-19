@@ -53,8 +53,12 @@ const OfferDetails = () => {
                     </div>
 
                     <div className="offer-perks-orbit">
-                        <div className="orbit">
 
+                        <h2 className="offer-perks-title">
+                            w ramach współpracy otrzymujesz:
+                        </h2>
+
+                        <div className="orbit">
                             {perks.map((item, index) => {
                                 const angle =
                                     (index / perks.length) * 2 * Math.PI - Math.PI / 2;
@@ -82,8 +86,8 @@ const OfferDetails = () => {
                                         </div>
 
                                         <span className="orbit-label">
-                                            {item.label}
-                                        </span>
+                        {item.label}
+                    </span>
 
                                         <div className="orbit-tooltip">
                                             {item.details}
@@ -91,7 +95,6 @@ const OfferDetails = () => {
                                     </div>
                                 );
                             })}
-
                         </div>
                     </div>
 
