@@ -1,5 +1,7 @@
+import type { IconName } from '../assets/icons';
+
 export type OfferPerk = {
-    icon: string;
+    icon: IconName;
     label: string;
     details: string;
 };
@@ -20,11 +22,12 @@ export const offers: Offer[] = [
         details:
             'Jeśli jesteś po urazie, masz przeciążenia lub dolegliwości bólowe, ten trening pomoże Ci poprawić sprawność, zmniejszyć ból i bezpiecznie wrócić do aktywności, żebyś znów mógł czuć się pewnie we własnym ciele i funkcjonować bez ograniczeń.',
         perks: [
-            { icon: '🚀', label: 'Szybka poprawa', details: 'Pierwsze efekty w krótkim czasie' },
-            { icon: '🎯', label: 'Indywidualnie', details: 'Dopasowanie do Twojego stanu zdrowia' },
-            { icon: '🔒', label: 'Bezpieczeństwo', details: 'Trening bez ryzyka pogłębienia urazu' },
-            { icon: '🧠', label: 'Reedukacja ruchu', details: 'Poprawa wzorców ruchowych' },
-            { icon: '📈', label: 'Postęp', details: 'Stałe monitorowanie wyników' }
+            { icon: 'lifting', label: 'Dopasowany trening', details: 'Trening pod dolegliwości' },
+            { icon: 'therapy', label: 'Program naprawczy', details: 'Ćwiczenia rehabilitacyjne' },
+            { icon: 'stretching', label: 'Rozgrzewka', details: 'Indywidualna mobilizacja' },
+            { icon: 'support', label: 'Wsparcie 24/7', details: 'Stały kontakt' },
+            { icon: 'heart', label: 'Zaangażowanie', details: 'Pełna opieka procesowa' },
+            { icon: 'light_bulb', label: 'Wiedza', details: 'Doświadczenie terapeutyczne' }
         ]
     },
 
@@ -35,11 +38,11 @@ export const offers: Offer[] = [
         details:
             'dużo siedzisz? ten trening jest dla ciebie. świetnie sprawdzi się jako rekompensata siedzącego trybu życia. Trening funkcjonalny może Ci lepiej "funkcjonować" w codziennych czynnościach',
         perks: [
-            { icon: '🧠', label: 'Lepsze ciało', details: 'Poprawa codziennego ruchu' },
-            { icon: '⚡', label: 'Energia', details: 'Więcej siły na co dzień' },
-            { icon: '🏃', label: 'Mobilność', details: 'Lepsza sprawność ruchowa' },
-            { icon: '🪑', label: 'Anty-siedzenie', details: 'Rekompensata siedzącego trybu życia' },
-            { icon: '🚀', label: 'Szybka poprawa', details: 'Pierwsze efekty w krótkim czasie' }
+            { icon: 'lifting', label: 'Dopasowany trening', details: 'Trening pod Twoje potrzeby' },
+            { icon: 'therapy', label: 'Program naprawczy', details: 'Ćwiczenia korekcyjne' },
+            { icon: 'stretching', label: 'Rozgrzewka', details: 'Mobilizacja funkcjonalna' },
+            { icon: 'support', label: 'Wsparcie 24/7', details: 'Stały kontakt' },
+            { icon: 'heart', label: 'Zaangażowanie', details: 'Pełne prowadzenie' }
         ]
     },
 
@@ -50,12 +53,14 @@ export const offers: Offer[] = [
         details:
             'Jeśli Twoim celem jest pozbycie się nadmiernych kilogramów, ten trening połączy intensywną pracę z dopasowaniem do Twoich możliwości, dzięki czemu efekty będą widoczne, a proces bezpieczny.',
         perks: [
-            { icon: '🔥', label: 'Spalanie', details: 'Skuteczna redukcja tkanki tłuszczowej' },
-            { icon: '📉', label: 'Kontrola', details: 'Monitorowanie postępów' },
-            { icon: '🥗', label: 'Styl życia', details: 'Zmiana nawyków żywieniowych' },
-            { icon: '⚖️', label: 'Balans', details: 'Zdrowe tempo redukcji' },
-            { icon: '🧠', label: 'Reedukacja ruchu', details: 'Poprawa wzorców ruchowych' },
-            { icon: '📈', label: 'Postęp', details: 'Stałe monitorowanie wyników' }
+            { icon: 'map', label: 'Poradnik odchudzania', details: 'Kompletny przewodnik redukcji' },
+            { icon: 'lifting', label: 'Dopasowany trening', details: 'Treningi pod redukcję tkanki tłuszczowej' },
+            { icon: 'therapy', label: 'Program naprawczy', details: 'Ćwiczenia wspierające ruch i zdrowie' },
+            { icon: 'waistline', label: 'Pomiary składu ciała', details: 'Monitorowanie zmian sylwetki' },
+            { icon: 'calculator', label: 'Kalorie', details: 'Obliczone zapotrzebowanie energetyczne' },
+            { icon: 'nutrition', label: 'Wytyczne żywieniowe', details: 'Indywidualne zalecenia dietetyczne' },
+            { icon: 'support', label: 'Wsparcie 24/7', details: 'Stały kontakt i analiza postępów' },
+            { icon: 'light_bulb', label: 'Wiedza', details: 'Edukacja i doświadczenie' }
         ]
     },
 
@@ -66,14 +71,15 @@ export const offers: Offer[] = [
         details:
             'Jeśli jesteś sportowcem lub osobą regularnie trenującą, ten trening pomoże Ci rozwinąć siłę, szybkość, moc i koordynację czyli efekty Twojej pracy',
         perks: [
-            { icon: '🏃', label: 'Szybkość', details: 'Poprawa dynamiki ruchu' },
-            { icon: '💪', label: 'Siła', details: 'Większa moc w sporcie' },
-            { icon: '⚡', label: 'Eksplozywność', details: 'Lepszy start i reakcja' },
-            { icon: '🎯', label: 'Precyzja', details: 'Lepsza kontrola ruchu' },
-            { icon: '⚡', label: 'Energia', details: 'Więcej siły na co dzień' },
-            { icon: '🏃', label: 'Mobilność', details: 'Lepsza sprawność ruchowa' },
-            { icon: '🪑', label: 'Anty-siedzenie', details: 'Rekompensata siedzącego trybu życia' },
-            { icon: '🚀', label: 'Szybka poprawa', details: 'Pierwsze efekty w krótkim czasie' }
+            { icon: 'waistline', label: 'Diagnostyka', details: 'Analiza słabych punktów' },
+            { icon: 'lifting', label: 'Dopasowany trening', details: 'Trening pod Twoje potrzeby' },
+            { icon: 'therapy', label: 'Program naprawczy', details: 'Ćwiczenia korekcyjne' },
+            { icon: 'waistline', label: 'Pomiary', details: 'Monitoring progresu' },
+            { icon: 'calculator', label: 'Zapotrzebowanie', details: 'Analiza energetyczna' },
+            { icon: 'nutrition', label: 'Wytyczne', details: 'Wsparcie żywieniowe' },
+            { icon: 'support', label: 'Wsparcie 24/7', details: 'Stała kontrola procesu' },
+            { icon: 'heart', label: 'Zaangażowanie', details: 'Rozwój sportowy' },
+            { icon: 'light_bulb', label: 'Wiedza', details: 'Ekspercka analiza' }
         ]
     },
 
@@ -84,10 +90,13 @@ export const offers: Offer[] = [
         details:
             'popraw kondycję, siłę, sprawność i samopoczucie! ten wszechstronny trening da Ci solidną bazę do lepszej sprawności, większej energii na co dzień i zdrowszego stylu życia.',
         perks: [
-            { icon: '🌍', label: 'Całe ciało', details: 'Rozwój ogólnej sprawności' },
-            { icon: '🎯', label: 'Balans', details: 'Harmonia siły i mobilności' },
-            { icon: '⚡', label: 'Energia', details: 'Więcej siły na co dzień' },
-            { icon: '🧘', label: 'Zdrowie', details: 'Lepsze samopoczucie' }
+            { icon: 'lifting', label: 'Dopasowany trening', details: 'Trening pod Twoje potrzeby' },
+            { icon: 'stretching', label: 'Rozgrzewka', details: 'Indywidualna mobilizacja' },
+            { icon: 'therapy', label: 'Program naprawczy', details: 'Ćwiczenia korekcyjne' },
+            { icon: 'nutrition', label: 'Wytyczne', details: 'Podstawy żywienia' },
+            { icon: 'support', label: 'Wsparcie 24/7', details: 'Stały kontakt' },
+            { icon: 'heart', label: 'Zaangażowanie', details: 'Pełne prowadzenie procesu' },
+            { icon: 'light_bulb', label: 'Wiedza', details: 'Edukacja treningowa' }
         ]
     },
 
@@ -98,10 +107,13 @@ export const offers: Offer[] = [
         details:
             'Najlepszy plan treningowy to taki, który jest dopasowany do Twoich możliwości treningowych! Nie każdy ma możliwość trenowania 4-5 razy w tygodniu po dwie godziny.',
         perks: [
-            { icon: '📋', label: 'Plan', details: 'Dopasowany harmonogram' },
-            { icon: '🎯', label: 'Cel', details: 'Skupienie na efektach' },
-            { icon: '📊', label: 'Struktura', details: 'Jasny system treningowy' },
-            { icon: '⏱️', label: 'Efektywność', details: 'Maksimum efektu w czasie' }
+            { icon: 'lifting', label: 'Dopasowany trening', details: 'Trening pod Twoje możliwości' },
+            { icon: 'stretching', label: 'Rozgrzewka', details: 'Uwzględniona w planie' },
+            { icon: 'map', label: 'Plan treningowy', details: 'Struktura z progresją i RIR' },
+            { icon: 'calculator', label: 'Analiza', details: 'Pomiary i kontrola postępów' },
+            { icon: 'nutrition', label: 'Wytyczne', details: 'Zalecenia żywieniowe' },
+            { icon: 'support', label: 'Wsparcie 24/7', details: 'Stałe korekty planu' },
+            { icon: 'light_bulb', label: 'Wiedza', details: 'Coaching i analiza' }
         ]
     },
 
@@ -111,12 +123,7 @@ export const offers: Offer[] = [
         desc: 'druga osoba to najlepsza motywacja i lepsza cena;)!',
         details:
             'Wszystkie rodzaje treningów mogą być również realizowane w parach lub małych grupach...',
-        perks: [
-            { icon: '🤝', label: 'Wspólna motywacja', details: 'Trening z partnerem lub grupą' },
-            { icon: '💰', label: 'Niższy koszt', details: 'Cena na osobę jest niższa' },
-            { icon: '🔥', label: 'Rywalizacja', details: 'Większa motywacja przez rywalizację' },
-            { icon: '🎉', label: 'Atmosfera', details: 'Więcej zabawy w grupie' }
-        ]
+
     },
 
     {
@@ -125,11 +132,7 @@ export const offers: Offer[] = [
         desc: 'aktywność, integracja, dobra zabawa!',
         details:
             'Jeśli szukasz aktywnej formy zajęć dla grup zapraszam do kontaktu!...',
-        perks: [
-            { icon: '🎉', label: 'Zabawa', details: 'Aktywność w dobrej atmosferze' },
-            { icon: '🤸', label: 'Ruch', details: 'Aktywność fizyczna przez gry' },
-            { icon: '👥', label: 'Integracja', details: 'Budowanie relacji w grupie' }
-        ]
+
     },
 
     {
@@ -137,10 +140,6 @@ export const offers: Offer[] = [
         title: 'personal training sessions in English',
         details:
             'I provide personal training sessions in English – perfect for international clients living in Poland...',
-        perks: [
-            { icon: '🇬🇧', label: 'English', details: 'Trening w języku angielskim' },
-            { icon: '🌍', label: 'International', details: 'Dla klientów z zagranicy' },
-            { icon: '💬', label: 'Communication', details: 'Jasne instrukcje po angielsku' }
-        ]
+
     }
 ];

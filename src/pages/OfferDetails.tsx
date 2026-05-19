@@ -3,6 +3,7 @@ import { offers } from "../data/offers";
 import "../styleSheets/OfferDetailsPage.css";
 import { useState } from "react";
 import ContactModal from "../components/ContactModal";
+import { icons } from "../assets/icons";
 
 const OfferDetails = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,7 +59,7 @@ const OfferDetails = () => {
                                 const angle =
                                     (index / perks.length) * 2 * Math.PI - Math.PI / 2;
 
-                                const radius = 120 + perks.length * 2;
+                                const radius = window.innerWidth < 600 ? 180 : 270;
 
                                 const x = Math.cos(angle);
                                 const y = Math.sin(angle);
@@ -74,7 +75,10 @@ const OfferDetails = () => {
                                         } as React.CSSProperties}
                                     >
                                         <div className="orbit-icon">
-                                            {item.icon}
+                                            <img
+                                                src={icons[item.icon]}
+                                                alt={item.label}
+                                            />
                                         </div>
 
                                         <span className="orbit-label">

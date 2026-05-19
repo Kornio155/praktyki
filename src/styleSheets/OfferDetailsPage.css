@@ -145,23 +145,58 @@
 }
 
 /* ========================= */
-/* ORBIT PERKS (NOWA WERSJA) */
+/* ORBIT PERKS (PREMIUM FIX) */
 /* ========================= */
 
 .offer-perks-orbit {
     margin-top: 80px;
     display: flex;
     justify-content: center;
+
+    position: relative;
+    padding: 110px 20px;
+    border-radius: 30px;
+
+    /* jaśniejsze, bardziej premium tło */
+    background:
+            radial-gradient(circle at top, rgba(255, 255, 255, 0.10), transparent 60%),
+            radial-gradient(circle at bottom, rgba(199, 166, 106, 0.18), transparent 65%),
+            linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    box-shadow:
+            0 30px 80px rgba(0, 0, 0, 0.45),
+            inset 0 1px 0 rgba(255, 255, 255, 0.10);
 }
 
-/* KOŁO */
+/* glow overlay */
+.offer-perks-orbit::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 30px;
+
+    background: radial-gradient(
+            circle at center,
+            rgba(199, 166, 106, 0.12),
+            transparent 70%
+    );
+
+    pointer-events: none;
+}
+
+/* KOŁO (WIĘKSZE) */
 .orbit {
     position: relative;
-    width: 360px;
-    height: 360px;
+    width: 620px;
+    height: 620px;
 }
 
-/* ELEMENT NA OKRĘGU (CAŁY KAFEL) */
+/* ITEM NA OKRĘGU */
 .orbit-item {
     position: absolute;
     top: 50%;
@@ -175,56 +210,77 @@
     transform:
             translate(-50%, -50%)
             translate(
-                    calc(var(--x) * var(--radius, 140px)),
-                    calc(var(--y) * var(--radius, 140px))
+                    calc(var(--x) * var(--radius, 340px)),
+                    calc(var(--y) * var(--radius, 340px))
             );
 }
 
-/* KWADRATOWA IKONA */
+/* IKONA (WIĘKSZA + LEPSZE TŁO DLA CZARNYCH SVG) */
 .orbit-icon {
-    width: 64px;
-    height: 64px;
+    width: 86px;
+    height: 86px;
 
-    border-radius: 12px;
+    border-radius: 18px;
 
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.06);
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 24px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: all 0.25s ease;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* HOVER CAŁEGO KAFELKA */
+/* SVG */
+.orbit-icon img,
+.orbit-icon svg {
+    width: 46px;
+    height: 46px;
+
+    /* jeśli SVG są czarne → lekko je rozjaśniamy */
+    filter: brightness(1.1) contrast(0.9);
+}
+
+/* hover */
 .orbit-item:hover .orbit-icon {
-    transform: scale(1.08);
-    background: rgba(199,166,106,0.2);
+    transform: scale(1.15);
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(199, 166, 106, 0.4);
+    box-shadow:
+            0 12px 30px rgba(199, 166, 106, 0.20),
+            0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* TEKST POD IKONĄ */
+/* LABEL */
 .orbit-label {
-    margin-top: 8px;
-    font-size: 12px;
-    color: #d0d0d0;
+    margin-top: 12px;
+    font-size: 13px;
+    color: #f0f0f0;
     text-align: center;
-    max-width: 90px;
+    max-width: 120px;
     line-height: 1.2;
+    opacity: 0.9;
 }
 
 /* TOOLTIP */
 .orbit-tooltip {
     position: absolute;
-    bottom: 85px;
+    bottom: 110px;
     left: 50%;
     transform: translateX(-50%);
 
-    background: rgba(0,0,0,0.85);
-    padding: 10px 14px;
-    border-radius: 10px;
+    background: rgba(15, 15, 15, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    padding: 12px 16px;
+    border-radius: 12px;
 
     font-size: 12px;
     white-space: nowrap;
@@ -232,9 +288,11 @@
     opacity: 0;
     pointer-events: none;
     transition: 0.25s ease;
+
+    color: #fff;
 }
 
 .orbit-item:hover .orbit-tooltip {
     opacity: 1;
-    transform: translateX(-50%) translateY(-5px);
+    transform: translateX(-50%) translateY(-6px);
 }
