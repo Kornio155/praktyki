@@ -55,6 +55,7 @@ export default function ContactForm() {
 
     return (
         <section className="cf-section">
+            <h2 className="cf-title">Skontaktuj się już dziś</h2>
             <div className="cf-container">
                 {!isOpen ? (
                     <button

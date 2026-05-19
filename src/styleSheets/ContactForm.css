@@ -5,8 +5,18 @@
     padding: 60px 10px;
 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
     text-align: center;
+}
+
+.cf-title {
+    font-size: 50px;
+    margin-bottom: 40px;
+    color: #1b1813;
+    text-align: left;
+    align-self: flex-start;
 }
 
 /* KONTENER */
