@@ -5,6 +5,7 @@ export type OfferPerk = {
 };
 
 export type Offer = {
+    slug: string;
     title: string;
     desc?: string;
     details: string;
@@ -13,6 +14,7 @@ export type Offer = {
 
 export const offers: Offer[] = [
     {
+        slug: 'treningi-medyczne',
         title: 'Treningi medyczne',
         desc: 'wróć do sprawności bez bólu',
         details:
@@ -27,6 +29,7 @@ export const offers: Offer[] = [
     },
 
     {
+        slug: 'treningi-funkcjonalne',
         title: 'Treningi funkcjonalne',
         desc: 'zdrowe funkcjonowanie na co dzień',
         details:
@@ -36,11 +39,12 @@ export const offers: Offer[] = [
             { icon: '⚡', label: 'Energia', details: 'Więcej siły na co dzień' },
             { icon: '🏃', label: 'Mobilność', details: 'Lepsza sprawność ruchowa' },
             { icon: '🪑', label: 'Anty-siedzenie', details: 'Rekompensata siedzącego trybu życia' },
-            {icon: '🚀', label: 'Szybka poprawa', details: 'Pierwsze efekty w krótkim czasie'}
+            { icon: '🚀', label: 'Szybka poprawa', details: 'Pierwsze efekty w krótkim czasie' }
         ]
     },
 
     {
+        slug: 'odchudzanie',
         title: 'Odchudzanie',
         desc: 'tłuszcz się pali!',
         details:
@@ -56,6 +60,7 @@ export const offers: Offer[] = [
     },
 
     {
+        slug: 'treningi-motoryczne',
         title: 'Treningi motoryczne',
         desc: 'lepsze wyniki w twojej dyscyplinie',
         details:
@@ -68,11 +73,12 @@ export const offers: Offer[] = [
             { icon: '⚡', label: 'Energia', details: 'Więcej siły na co dzień' },
             { icon: '🏃', label: 'Mobilność', details: 'Lepsza sprawność ruchowa' },
             { icon: '🪑', label: 'Anty-siedzenie', details: 'Rekompensata siedzącego trybu życia' },
-            {icon: '🚀', label: 'Szybka poprawa', details: 'Pierwsze efekty w krótkim czasie'}
+            { icon: '🚀', label: 'Szybka poprawa', details: 'Pierwsze efekty w krótkim czasie' }
         ]
     },
 
     {
+        slug: 'treningi-ogolnorozwojowe',
         title: 'Treningi ogólnorozwojowe',
         desc: 'coś więcej niż siła',
         details:
@@ -86,6 +92,7 @@ export const offers: Offer[] = [
     },
 
     {
+        slug: 'plany-treningowe',
         title: 'Plany treningowe',
         desc: 'plan pod kątem twoich potrzeb',
         details:
@@ -99,6 +106,7 @@ export const offers: Offer[] = [
     },
 
     {
+        slug: 'treningi-dla-dwojga',
         title: 'treningi dla dwojga / w małych grupach',
         desc: 'druga osoba to najlepsza motywacja i lepsza cena;)!',
         details:
@@ -112,6 +120,7 @@ export const offers: Offer[] = [
     },
 
     {
+        slug: 'gry-i-zabawy',
         title: 'Gry i zabawy',
         desc: 'aktywność, integracja, dobra zabawa!',
         details:
@@ -124,6 +133,7 @@ export const offers: Offer[] = [
     },
 
     {
+        slug: 'personal-training-in-english',
         title: 'personal training sessions in English',
         details:
             'I provide personal training sessions in English – perfect for international clients living in Poland...',

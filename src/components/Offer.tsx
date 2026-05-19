@@ -20,7 +20,7 @@ const OfferSection: React.FC = () => {
                         <div
                             className="card"
                             key={index}
-                            onClick={() => navigate(`/offer/${item.title}`)}
+                            onClick={() => navigate(`/offer/${item.slug}`)}
                         >
                             <div className="card-inner">
                                 <h3>{item.title}</h3>
@@ -39,7 +39,7 @@ const OfferSection: React.FC = () => {
                                         className="details-btn"
                                         onClick={(e) => {
                                             e.stopPropagation();
-                                            navigate(`/offer/${item.title}`);
+                                            navigate(`/offer/${item.slug}`);
                                         }}
                                     >
                                         Więcej
@@ -60,7 +60,7 @@ const OfferSection: React.FC = () => {
                         <div
                             className="card service-card"
                             key={index}
-                            onClick={() => navigate(`/offer/${item.title}`)}
+                            onClick={() => navigate(`/offer/${item.slug}`)}
                         >
                             <div className="card-inner">
                                 <h3>{item.title}</h3>
@@ -79,7 +79,7 @@ const OfferSection: React.FC = () => {
                                         className="details-btn"
                                         onClick={(e) => {
                                             e.stopPropagation();
-                                            navigate(`/offer/${item.title}`);
+                                            navigate(`/offer/${item.slug}`);
                                         }}
                                     >
                                         Więcej
