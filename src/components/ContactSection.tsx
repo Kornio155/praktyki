@@ -129,7 +129,11 @@ const ContactSection: React.FC = () => {
 
                     <div className="Contact-card" id="sociale1">
 
-                        <a href="https://www.instagram.com/moveability_adam_rybaczyk/">
+                        <a
+                            href="https://www.instagram.com/moveability_adam_rybaczyk/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
 
                             <img
                                 src="https://imglink.cc/cdn/c2ZyTzCsyu.png"
@@ -142,7 +146,11 @@ const ContactSection: React.FC = () => {
 
                     <div className="Contact-card" id="sociale2">
 
-                        <a href="https://www.facebook.com/Moveability.Olsztyn?locale=pl_PL">
+                        <a
+                            href="https://www.facebook.com/Moveability.Olsztyn?locale=pl_PL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
 
                             <img
                                 src="https://imglink.cc/cdn/UcJg87OAwc.png"
