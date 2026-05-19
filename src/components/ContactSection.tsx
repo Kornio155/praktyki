@@ -1,78 +1,182 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ContactModal from "./ContactModal.tsx";
 import "../styleSheets/ContactSection.css";
+
 const ContactSection: React.FC = () => {
+
+    const [emailOpen, setEmailOpen] = useState(false);
+    const [phoneOpen, setPhoneOpen] = useState(false);
+    const [locationOpen, setLocationOpen] = useState(false);
+    const [hoursOpen, setHoursOpen] = useState(false);
+
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <>
+            <section id="contact" className="Contact">
 
-<section id="contact" className="Contact" >
-    {/* LEWA STRONA */}
-    <div className="Contact-left">
-        {[
-            { title: 'Email', desc1: 'kontakt.mvab@gmail.com' },
-            { title: 'Telefon', desc1: '+48 695 275 809' },
-            {
-                title: 'Lokalizacja',
-                desc1: 'Ul. Olimpijska 1',
-                button: true
-            },
-            { title: 'Godziny otwarcia', desc1: 'pn.- pt.: 08:15-21:00', desc2: 'sob., ndz.: nieczynne' }
-        ].map((item, index) => (
-            <div className="Contact-card" key={index}>
-                <h3>{item.title}</h3>
+                {/* LEWA STRONA */}
+                <div className="Contact-left">
 
-                <p>{item.desc1}</p>
-                <p>{item.desc2}</p>
-
-                {item.button && (
-                    <button
-                        className="location-on-map-btn"
-                        onClick={() =>
-                            window.open(
-                                "https://www.google.com/maps/place/MOVEABILITY/@53.7824221,20.4407337,16.75z/data=!4m6!3m5!1s0x46e27ed90860c20d:0x2015610d16d18d5e!8m2!3d53.7822516!4d20.4424293!16s%2Fg%2F11gfhx06jp?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D",
-                                "_blank"
-                            )
-                        }
+                    {/* EMAIL */}
+                    <div
+                        className="Contact-card"
+                        id="email-card"
+                        onClick={() => setEmailOpen(!emailOpen)}
                     >
-                        Sprawdź lokalizację
-                    </button>
-                )}
-            </div>
-        ))}
-    </div>
-    {/* PRAWA STRONA */}
-    <div className="Contact-right">
-        <div className="Contact-card" id="sociale1">
-            <a href="https://www.instagram.com/moveability_adam_rybaczyk/">
-                <img src="https://i.postimg.cc/fTQk4PM1/icons8-instagram-logo-100.png" alt="Instagram" />
-            </a>
-        </div>
-        <div className="Contact-card" id="sociale2">
-            <a href="https://www.facebook.com/Moveability.Olsztyn?locale=pl_PL">
-                <img src="https://i.postimg.cc/9McqjNds/icons8-facebook-logo-100.png" alt="Facebook" />
-            </a>
-        </div>
-        <div className="Big-card">
-            <h3>Poproś o kontakt</h3>
-            <p>
-                Skontaktuj się mailowo lub telefonicznie, aby ustalić szczegóły współpracy.
-            </p>
 
-            <button
-                className="big-card-btn"
-                onClick={() => setIsModalOpen(true)}
-            >
-                Otwórz formularz
-            </button>
-        </div>
-    </div>
-</section>
+                        {emailOpen ? (
+
+                            <div className="card-text-content">
+                                <h3>Email</h3>
+                                <p>kontakt.mvab@gmail.com</p>
+                            </div>
+
+                        ) : (
+
+                            <img
+                                src="https://imglink.cc/cdn/BL1Fl_EFtu.png"
+                                alt="Email"
+                                className="contact-icon-image email-icon"
+                            />
+
+                        )}
+
+                    </div>
+
+                    {/* TELEFON */}
+                    <div
+                        className="Contact-card"
+                        id="phone-card"
+                        onClick={() => setPhoneOpen(!phoneOpen)}
+                    >
+
+                        {phoneOpen ? (
+
+                            <div className="card-text-content">
+                                <h3>Telefon</h3>
+                                <p>+48 695 275 809</p>
+                            </div>
+
+                        ) : (
+
+                            <img
+                                src="https://imglink.cc/cdn/p2R12TQnAg.png"
+                                alt="Telefon"
+                                className="contact-icon-image phone-icon"
+                            />
+
+                        )}
+
+                    </div>
+
+                    {/* LOKALIZACJA */}
+                    <div
+                        className="Contact-card"
+                        id="location-card"
+                        onClick={() => setLocationOpen(!locationOpen)}
+                    >
+
+                        {locationOpen ? (
+
+                            <div className="card-text-content">
+                                <h3>Lokalizacja</h3>
+                                <p>Ul. Olimpijska 1</p>
+                            </div>
+
+                        ) : (
+
+                            <img
+                                src="https://imglink.cc/cdn/FQCNW5Fo7u.png"
+                                alt="Lokalizacja"
+                                className="contact-icon-image location-icon"
+                            />
+
+                        )}
+
+                    </div>
+
+                    {/* GODZINY */}
+                    <div
+                        className="Contact-card"
+                        id="hours-card"
+                        onClick={() => setHoursOpen(!hoursOpen)}
+                    >
+
+                        {hoursOpen ? (
+
+                            <div className="card-text-content">
+                                <h3>Godziny</h3>
+                                <p>pn.-pt. 08:15-21:00</p>
+                            </div>
+
+                        ) : (
+
+                            <img
+                                src="https://imglink.cc/cdn/CnSseZg6Uf.png"
+                                alt="Godziny"
+                                className="contact-icon-image clock-icon"
+                            />
+
+                        )}
+
+                    </div>
+
+                </div>
+
+                {/* PRAWA STRONA */}
+                <div className="Contact-right">
+
+                    <div className="Contact-card" id="sociale1">
+
+                        <a href="https://www.instagram.com/moveability_adam_rybaczyk/">
+
+                            <img
+                                src="https://imglink.cc/cdn/c2ZyTzCsyu.png"
+                                alt="Instagram"
+                            />
+
+                        </a>
+
+                    </div>
+
+                    <div className="Contact-card" id="sociale2">
+
+                        <a href="https://www.facebook.com/Moveability.Olsztyn?locale=pl_PL">
+
+                            <img
+                                src="https://imglink.cc/cdn/UcJg87OAwc.png"
+                                alt="Facebook"
+                            />
+
+                        </a>
+
+                    </div>
+
+                    {/* BIG CARD */}
+                    <div
+                        className="Big-card big-card-icon"
+                        onClick={() => setIsModalOpen(true)}
+                    >
+
+                        <img
+                            src="https://imglink.cc/cdn/uNsk30FZfj.png"
+                            alt="Kontakt"
+                            className="big-card-icon-img"
+                        />
+
+                    </div>
+
+                </div>
+
+            </section>
+
             <ContactModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
             />
-            </>)}
+        </>
+    );
+};
 
 export default ContactSection;
