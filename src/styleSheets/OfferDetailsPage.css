@@ -145,7 +145,7 @@
 }
 
 /* ========================= */
-/* ORBIT PERKS (PREMIUM FIX) */
+/* ORBIT PERKS (FIXED CLEAN VERSION) */
 /* ========================= */
 
 .offer-perks-orbit {
@@ -157,7 +157,6 @@
     padding: 110px 20px;
     border-radius: 30px;
 
-    /* jaśniejsze, bardziej premium tło */
     background:
             radial-gradient(circle at top, rgba(255, 255, 255, 0.10), transparent 60%),
             radial-gradient(circle at bottom, rgba(199, 166, 106, 0.18), transparent 65%),
@@ -173,7 +172,6 @@
             inset 0 1px 0 rgba(255, 255, 255, 0.10);
 }
 
-/* glow overlay */
 .offer-perks-orbit::before {
     content: "";
     position: absolute;
@@ -189,33 +187,43 @@
     pointer-events: none;
 }
 
-/* KOŁO (WIĘKSZE) */
+/* ORBIT WRAPPER */
 .orbit {
     position: relative;
     width: 620px;
     height: 620px;
+
 }
 
-/* ITEM NA OKRĘGU */
+
+
+/* PAUSE ON HOVER */
+.orbit-icon:hover ~ .orbit,
+.orbit-item:hover .orbit,
+.orbit-icon:hover .orbit,
+.orbit-item:hover .orbit {
+    animation-play-state: paused;
+}
+
+/* ANIMATION */
+
+
+/* ITEM ON ORBIT */
 .orbit-item {
     position: absolute;
     top: 50%;
     left: 50%;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
     transform:
-            translate(-50%, -50%)
-            translate(
-                    calc(var(--x) * var(--radius, 340px)),
-                    calc(var(--y) * var(--radius, 340px))
-            );
+            rotate(var(--angle))
+            translate(var(--radius))
+            rotate(calc(-1 * var(--angle)));
 }
 
-/* IKONA (WIĘKSZA + LEPSZE TŁO DLA CZARNYCH SVG) */
+/* INNER — KEY FIX (NO ROTATION) */
+
+
+/* ICON */
 .orbit-icon {
     width: 86px;
     height: 86px;
@@ -236,23 +244,24 @@
     transition: all 0.25s ease;
 
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+    transform: none !important;
 }
 
-/* SVG */
 .orbit-icon img,
 .orbit-icon svg {
     width: 46px;
     height: 46px;
 
-    /* jeśli SVG są czarne → lekko je rozjaśniamy */
     filter: brightness(1.1) contrast(0.9);
 }
 
-/* hover */
+/* HOVER */
 .orbit-item:hover .orbit-icon {
     transform: scale(1.15);
     background: rgba(255, 255, 255, 0.95);
     border-color: rgba(199, 166, 106, 0.4);
+
     box-shadow:
             0 12px 30px rgba(199, 166, 106, 0.20),
             0 8px 20px rgba(0,0,0,0.15);
@@ -297,6 +306,7 @@
     transform: translateX(-50%) translateY(-6px);
 }
 
+/* TITLE */
 .offer-perks-title {
     position: absolute;
     top: 25px;
