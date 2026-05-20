@@ -138,6 +138,8 @@ const ContactSection: React.FC = () => {
                             <img
                                 src="https://imglink.cc/cdn/c2ZyTzCsyu.png"
                                 alt="Instagram"
+                                className="contact-icon-image social-icon"
+
                             />
 
                         </a>
@@ -155,6 +157,7 @@ const ContactSection: React.FC = () => {
                             <img
                                 src="https://imglink.cc/cdn/UcJg87OAwc.png"
                                 alt="Facebook"
+                                className="contact-icon-image social-icon"
                             />
 
                         </a>
@@ -170,7 +173,7 @@ const ContactSection: React.FC = () => {
                         <img
                             src="https://imglink.cc/cdn/uNsk30FZfj.png"
                             alt="Kontakt"
-                            className="big-card-icon-img"
+                            className="contact-icon-image social-icon big-card-icon-img"
                         />
 
                     </div>
