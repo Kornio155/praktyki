@@ -16,7 +16,7 @@ const FooterContact: React.FC = () => {
                         <p>debil z powołania</p>
                         <div className="line"></div>
 
-                        <p className="muted">programista z przymusu</p>
+                        <p className="muted">programista z wyboru</p>
                     </div>
 
                 </div>
