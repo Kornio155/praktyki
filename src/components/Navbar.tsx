@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ContactModal from "./ContactModal";
+import logo from '../assets/logo.svg'
+import '../styleSheets/NavBar.css'
 
 
 const Navbar: React.FC = () => {
@@ -11,7 +13,7 @@ const Navbar: React.FC = () => {
             <nav className="navbar">
 
                 <Link to="/" className="logo">
-                    <img src="https://imglink.cc/cdn/1iRVnCicOP.svg" />
+                    <img src={logo} />
                 </Link>
 
                 <ul className="navbar-links">

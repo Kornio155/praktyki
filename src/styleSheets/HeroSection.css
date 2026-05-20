@@ -1,0 +1,114 @@
+/* HERO */
+.hero {
+    position: relative;
+
+    min-height: 100vh;
+    width: 100%;
+
+    background-image: url("https://picsum.photos/1920/1080");
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+/* PRZYCIEMNIENIE */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+}
+
+/* CONTENT */
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    color: white;
+
+    padding: 20px;
+
+    max-width: 900px;
+}
+
+.hero-content h1 {
+    font-size: 90px;
+    line-height: 0.95;
+
+    font-weight: 800;
+
+    margin-bottom: 30px;
+
+    text-transform: uppercase;
+}
+
+.hero-content p {
+    font-size: 24px;
+    letter-spacing: 2px;
+
+    margin-bottom: 40px;
+
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* BUTTON */
+.hero-btn {
+    background: transparent;
+
+    border: 2px solid white;
+
+    color: white;
+
+    padding: 18px 40px;
+
+    border-radius: 50px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.hero-btn:hover {
+    background: white;
+    color: black;
+}
+
+/* TABLET */
+@media (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: 60px;
+    }
+
+    .hero-content p {
+        font-size: 20px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .hero {
+        min-height: 80vh;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .hero-btn {
+        width: 100%;
+    }
+}
+
