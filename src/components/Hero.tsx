@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import ContactModal from "./ContactModal";
 import '../styleSheets/HeroSection.css'
 
+import fullLogo from '../assets/logo_calosc.svg'
+
 const Hero: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     return (
@@ -9,12 +11,7 @@ const Hero: React.FC = () => {
             <div className="hero-overlay"></div>
 
             <div className="hero-content">
-                <h1>
-                    IT'S TIME TO <br />
-                    BE HEALTHY <br />
-                    AND IN <br />
-                    GREAT SHAPE
-                </h1>
+                <img src={fullLogo}/>
 
                 <p>
                     Treningi personalne, medyczne, funkcjonalne, motoryczne
