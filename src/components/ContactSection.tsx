@@ -82,6 +82,14 @@ const ContactSection: React.FC = () => {
                             <div className="card-text-content">
                                 <h3>Lokalizacja</h3>
                                 <p>Ul. Olimpijska 1</p>
+                                <a
+                                    href="https://www.google.com/maps/place/MOVEABILITY/@53.7822737,20.4427674,19.25z/data=!4m15!1m8!3m7!1s0x46e27ee39b032a27:0x9b757de379d46f62!2sOlimpijska+1,+10-164+Olsztyn!3b1!8m2!3d53.782428!4d20.4437381!16s%2Fg%2F11cpjmnn7r!3m5!1s0x46e27ed90860c20d:0x2015610d16d18d5e!8m2!3d53.7822516!4d20.4424293!16s%2Fg%2F11gfhx06jp?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="location-button"
+                                >
+                                    Zobacz na mapie
+                                </a>
                             </div>
 
                         ) : (
@@ -138,6 +146,8 @@ const ContactSection: React.FC = () => {
                             <img
                                 src="https://imglink.cc/cdn/c2ZyTzCsyu.png"
                                 alt="Instagram"
+                                className="contact-icon-image social-icon"
+
                             />
 
                         </a>
@@ -155,6 +165,7 @@ const ContactSection: React.FC = () => {
                             <img
                                 src="https://imglink.cc/cdn/UcJg87OAwc.png"
                                 alt="Facebook"
+                                className="contact-icon-image social-icon"
                             />
 
                         </a>
@@ -170,7 +181,7 @@ const ContactSection: React.FC = () => {
                         <img
                             src="https://imglink.cc/cdn/uNsk30FZfj.png"
                             alt="Kontakt"
-                            className="big-card-icon-img"
+                            className="contact-icon-image social-icon big-card-icon-img"
                         />
 
                     </div>

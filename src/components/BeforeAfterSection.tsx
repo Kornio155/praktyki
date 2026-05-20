@@ -1,19 +1,71 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import "../styleSheets/BeforeAfter.css";
 
+// import zdjęć
+import aleks from "../assets/przedIPo/aleks.png";
+import alicja from "../assets/przedIPo/alicja.png";
+import andrzej from "../assets/przedIPo/andrzej.jpg";
+import adam from "../assets/przedIPo/adam.jpg";
+import aga from "../assets/przedIPo/aga.png";
+import ania from "../assets/przedIPo/ania.png";
+import darek from "../assets/przedIPo/darek.png";
+import gosia from "../assets/przedIPo/gosia.png";
+import kamila from "../assets/przedIPo/kamila.png";
+import natalia from "../assets/przedIPo/natalia.jpg";
+
+
+
 const items = [
-    { id: 1, text: "Jan, 28 lat – redukcja 8 tygodni" },
-    { id: 2, text: "Anna, 32 lata – masa mięśniowa" },
-    { id: 3, text: "Marek, 25 lat – recomposition" },
-    { id: 4, text: "Kasia, 30 lat – powrót do formy" },
-    { id: 5, text: "Tomek, 40 lat – redukcja brzucha" },
-    { id: 6, text: "Ewa, 27 lat – fitness" },
-    { id: 7, text: "Piotr, 35 lat – transformacja" },
-    { id: 8, text: "Ola, 29 lat – sylwetka" },
-    { id: 9, text: "Kamil, 31 lat – masa" },
-    { id: 10, text: "Zosia, 26 lat – definicja" },
-    { id: 11, text: "Adam, 38 lat – redukcja" },
-    { id: 12, text: "Nina, 24 lata – start" },
+    {
+        id: 1,
+        text: "Aleks",
+        image: aleks,
+    },
+    {
+        id: 2,
+        text: "Alicja • efekty w niecały rok",
+        image: alicja,
+    },
+    {
+        id: 3,
+        text: "Andrzej • 63 -> 67 kg 9% tkanki tłuszczowej",
+        image: andrzej,
+    },
+    {
+        id: 4,
+        text: "Adam • -12 kg w 4 miesiące",
+        image: adam,
+    },
+    {
+        id: 5,
+        text: "Aga • -10% tkanki tłuszczowej -10 kg z tłuszczyku w 3 miesiące",
+        image: aga,
+    },
+    {
+        id: 6,
+        text: "Ania • rekompozycja 12% tkanki tłuszczowej z ud",
+        image: ania,
+    },
+    {
+        id: 7,
+        text: "Darek • odmłodzony o 18 lat.",
+        image: darek,
+    },
+    {
+        id: 8,
+        text: "G. • Rekompozycja ciała",
+        image: gosia,
+    },
+    {
+        id: 9,
+        text: "K. • -6 kg łącznie -30cm w obwodach",
+        image: kamila,
+    },
+    {
+        id: 10,
+        text: "N.",
+        image: natalia,
+    }
 ];
 
 export default function BeforeAfter() {
@@ -26,8 +78,7 @@ export default function BeforeAfter() {
     const [index, setIndex] = useState(0);
 
     const getItem = useCallback(
-        (i: number) =>
-            items[(i + items.length) % items.length],
+        (i: number) => items[(i + items.length) % items.length],
         []
     );
 
@@ -54,10 +105,11 @@ export default function BeforeAfter() {
         };
     }, [hovered]);
 
+    // preload zdjęć
     useEffect(() => {
         items.forEach((item) => {
             const img = new Image();
-            img.src = `https://picsum.photos/seed/${item.id}/400/700`;
+            img.src = item.image;
         });
     }, []);
 
@@ -105,8 +157,6 @@ export default function BeforeAfter() {
                 >
                     <div className="ba-track">
                         {visible.map((item, i) => {
-                            const image = `https://picsum.photos/seed/${item.id}/400/700`;
-
                             return (
                                 <div
                                     key={`${item.id}-${i}`}
@@ -114,11 +164,11 @@ export default function BeforeAfter() {
                                 >
                                     <div
                                         className="ba-image-wrapper"
-                                        onClick={() => setSelectedImage(image)}
+                                        onClick={() => setSelectedImage(item.image)}
                                     >
                                         <img
-                                            src={image}
-                                            alt=""
+                                            src={item.image}
+                                            alt={item.text}
                                             draggable={false}
                                             onLoad={() =>
                                                 setLoaded((prev) => ({

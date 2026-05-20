@@ -36,19 +36,41 @@
     align-items: center;
 
     cursor: pointer;
-    transition: 0.3s ease;
+
+    /* 🔥 NOWE */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+
+    transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
 }
 
+/* 🔥 HOVER KART */
+.Contact-card img,
+.Big-card img {
+    transition: transform 0.3s ease;
+}
+
+.Contact-card:hover img,
+.Big-card:hover img {
+    transform: scale(1.18);
+}
+
+.Contact-card:hover,
+.Big-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+}
+
+
+.Contact-card:hover img,
+.Big-card:hover img {
+    transform: scale(1.18);
+}
 /* 🔥 BIG CARD WRACA DO 2 KOLUMN */
 .Big-card {
     grid-column: span 2;
     height: 180px; /* może być większe jeśli chcesz */
-}
-
-/* HOVER */
-.Contact-card:hover img,
-.Big-card:hover img {
-    transform: scale(1.2);
 }
 
 /* IKONY */
@@ -57,8 +79,10 @@
     width: 70px;
     height: 70px;
     object-fit: contain;
-    transition: transform 0.25s ease;
+
+    transition: transform 0.3s ease;
 }
+
 
 /* TEKST */
 .card-text-content {
@@ -151,10 +175,25 @@
 .card-text-content {
     text-align: center;
     animation: fadeIn 0.3s ease;
-    color: white; /* 🔥 TO FIX */
+    color: white;
 }
 
 .card-text-content h3,
 .card-text-content p {
     color: white; /* dodatkowe zabezpieczenie */
+}
+
+.location-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.location-button:hover {
+    opacity: 0.8;
 }
