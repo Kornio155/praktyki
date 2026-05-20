@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import ContactModal from "./ContactModal";
+import '../styleSheets/HeroSection.css'
 
 const Hero: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
