@@ -12,6 +12,8 @@ import OfferDetails from "./pages/OfferDetails";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import ScrollToTop from "./components/ScrollToTop";
+
 
 
 const Home = () => (
@@ -28,6 +30,7 @@ const App: React.FC = () => {
     return (
         <BrowserRouter>
             <div className="app">
+                <ScrollToTop />
 
                 <Navbar />
 
