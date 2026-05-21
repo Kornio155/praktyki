@@ -106,8 +106,7 @@ export default function BeforeAfter() {
 
             <div
                 className="ba-wrapper"
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
+
             >
                 <button className="ba-arrow left" onClick={prevSlide}>
                     ❮
@@ -127,6 +126,8 @@ export default function BeforeAfter() {
                                 <div
                                     className="ba-image-wrapper"
                                     onClick={() => setSelectedImage(item.image)}
+                                    onMouseEnter={() => setHovered(true)}
+                                    onMouseLeave={() => setHovered(false)}
                                 >
                                     <img
                                         src={item.image}
