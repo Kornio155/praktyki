@@ -27,8 +27,8 @@ const ContactSection: React.FC = () => {
                             />
 
                             <div className="card-text-content">
-                                <h3>Email</h3>
-                                <p>kontakt.mvab@gmail.com</p>
+                                <p>Email</p>
+                                <h3>kontakt.mvab@gmail.com</h3>
                             </div>
 
                         </div>
@@ -43,8 +43,8 @@ const ContactSection: React.FC = () => {
                             />
 
                             <div className="card-text-content">
-                                <h3>Telefon</h3>
-                                <p>+48 695 275 809</p>
+                                <p>Telefon</p>
+                                <h3>+48 695 275 809</h3>
                             </div>
 
                         </div>
@@ -59,9 +59,9 @@ const ContactSection: React.FC = () => {
                             />
 
                             <div className="card-text-content">
-                                <h3>Lokalizacja</h3>
+                                <p>Lokalizacja</p>
 
-                                <p>Ul. Olimpijska 1</p>
+                                <h3>Ul. Olimpijska 1</h3>
 
                                 <a
                                     href="https://www.google.com/maps/place/MOVEABILITY/@53.7822737,20.4427674,19.25z/data=!4m15!1m8!3m7!1s0x46e27ee39b032a27:0x9b757de379d46f62!2sOlimpijska+1,+10-164+Olsztyn!3b1!8m2!3d53.782428!4d20.4437381!16s%2Fg%2F11cpjmnn7r!3m5!1s0x46e27ed90860c20d:0x2015610d16d18d5e!8m2!3d53.7822516!4d20.4424293!16s%2Fg%2F11gfhx06jp?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D"
@@ -86,8 +86,8 @@ const ContactSection: React.FC = () => {
                             />
 
                             <div className="card-text-content">
-                                <h3>Godziny otwarcia</h3>
-                                <p>pn.-pt. 08:15-21:00</p>
+                                <p>Godziny otwarcia</p>
+                                <h3>pn.-pt. 08:15-21:00</h3>
                             </div>
 
                         </div>
@@ -113,9 +113,11 @@ const ContactSection: React.FC = () => {
                             />
 
                             <div className="card-text-content">
-                                <h3>Instagram</h3>
-                                <p>Przejdź do profilu</p>
-                                <p>@moveability_adam_rybaczyk</p>
+                                <p>Instagram</p>
+
+                                <a className="location-button">
+                                    Przejdź do profilu
+                                </a>
                             </div>
 
                         </a>
@@ -136,9 +138,10 @@ const ContactSection: React.FC = () => {
                             />
 
                             <div className="card-text-content">
-                                <h3>Facebook</h3>
-                                <p>Przejdź do profilu</p>
-                                <p>Moveability Olsztyn</p>
+                                <p>Facebook</p>
+                                <a className="location-button">
+                                    Przejdź do profilu
+                                </a>
                             </div>
 
                         </a>
@@ -158,9 +161,9 @@ const ContactSection: React.FC = () => {
                             <div className="card-text-content">
                                 <h3>Poproś o kontakt</h3>
 
-                                <button className="big-card-btn">
+                                <a className="big-card-btn">
                                     Skontaktuj się
-                                </button>
+                                </a>
                             </div>
 
                         </div>

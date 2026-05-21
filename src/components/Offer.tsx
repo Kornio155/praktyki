@@ -13,7 +13,7 @@ const OfferSection: React.FC = () => {
         <>
             {/* OFERTY */}
             <section id="offer" className="offer">
-                <h2>Oferty</h2>
+                <h2>Oferta</h2>
 
                 <div className="offer-grid">
                     {mainOffers.map((item, index) => (
@@ -53,7 +53,6 @@ const OfferSection: React.FC = () => {
 
             {/* USŁUGI */}
             <section id="services" className="services">
-                <h2>Usługi</h2>
 
                 <div className="offer-grid">
                     {services.map((item, index) => (

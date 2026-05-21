@@ -54,12 +54,12 @@
 }
 
 .navbar-links a {
-    color: white;
+    color: #E4F0F6;
     text-decoration: none;
 }
 
 .navbar-links li {
-    color: white;
+    color:  #E4F0F6;
     cursor: pointer;
 
     transition: 0.3s;
@@ -71,7 +71,7 @@
 
 /* BUTTON */
 .navbar-btn {
-    background: white;
+    background:  #E4F0F6;
     color: black;
 
     border: none;

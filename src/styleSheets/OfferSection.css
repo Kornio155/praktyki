@@ -1,6 +1,6 @@
 .offer {
     background: #1B1813;
-    color: white;
+    color: #E4F0F6;
     padding: 80px 40px;
 }
 
@@ -68,7 +68,7 @@
 .card:hover {
     transform: scale(1.04);
 
-    border-color: #c7a66a;
+    border-color: #E4F0F6;
 
     box-shadow:
             0 20px 40px rgba(0,0,0,0.35),
@@ -91,7 +91,7 @@
     margin-bottom: 30px;
 }
 .card-desc {
-    color: white;
+    color: #E4F0F6;
 
     font-size: 20px;
     text-align: center;
@@ -113,7 +113,7 @@
 
 .card h3 {
     background: black;
-    color: white;
+    color: #E4F0F6;
 
     margin: 0;
 
@@ -145,7 +145,7 @@
     border: none;
     border-radius: 10px;
     background:#1B1813;
-    color: white;
+    color: #E4F0F6;
     cursor: pointer;
 
     transform: translateY(20px);
@@ -170,10 +170,10 @@
 }
 
 .services {
+
     background: #1B1813;
-    color: white;
+    color: #E4F0F6;
     padding: 80px 40px;
-    border-top: 2px solid rgba(199,166,106,0.3);
 }
 
 .services h2 {
@@ -184,12 +184,18 @@
 .services .card {
     transform: scale(0.95);
     opacity: 0.95;
-    border-color: rgba(199,166,106,0.2);
+    border-color: black;
+    flex-direction: row;
+    max-width: 700px;
+    width: 100%;
+    min-height: 250px;
+
+    aspect-ratio: auto;
 }
 
 .services .card:hover {
     transform: scale(1);
     opacity: 1;
-    border-color: #c7a66a;
+    border-color: #E4F0F6;
 }
 
