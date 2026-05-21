@@ -108,7 +108,9 @@ export default function BeforeAfter() {
                 className="ba-wrapper"
 
             >
-                <button className="ba-arrow left" onClick={prevSlide}>
+                <button className="ba-arrow left" onClick={prevSlide}
+                        onMouseEnter={() => setHovered(true)}
+                        onMouseLeave={() => setHovered(false)}>
                     ❮
                 </button>
 
@@ -153,7 +155,9 @@ export default function BeforeAfter() {
                     </div>
                 </div>
 
-                <button className="ba-arrow right" onClick={nextSlide}>
+                <button className="ba-arrow right" onClick={nextSlide}
+                        onMouseEnter={() => setHovered(true)}
+                        onMouseLeave={() => setHovered(false)}>
                     ❯
                 </button>
             </div>
