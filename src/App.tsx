@@ -12,6 +12,8 @@ import OfferDetails from "./pages/OfferDetails";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import ScrollToTop from "./components/ScrollToTop";
+
 
 
 const Home = () => (
@@ -28,6 +30,9 @@ const App: React.FC = () => {
     return (
         <BrowserRouter>
             <div className="app">
+                <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap"
+                      rel="stylesheet"/>
+                <ScrollToTop />
 
                 <Navbar />
 

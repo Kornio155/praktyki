@@ -4,6 +4,7 @@ import "../styleSheets/OfferDetailsPage.css";
 import {useEffect, useState} from "react";
 import ContactModal from "../components/ContactModal";
 import { icons } from "../assets/icons";
+import logo from "../assets/logo.svg";
 
 const OfferDetails = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,7 +19,7 @@ const OfferDetails = () => {
 
     const perks = offer.perks ?? [];
 
-    const radius = window.innerWidth < 600 ? 400 : 300;
+    const radius = window.innerWidth < 600 ? 180 : 300;
 
     const [rotation, setRotation] = useState(0);
 
@@ -26,7 +27,7 @@ const OfferDetails = () => {
         if (isOrbitPaused) return;
 
         const interval = setInterval(() => {
-            setRotation(prev => prev + 0.1); // speed
+            setRotation(prev => prev + 0.05); // speed
         }, 16);
 
         return () => clearInterval(interval);
@@ -53,20 +54,12 @@ const OfferDetails = () => {
                         <h1>{offer.title}</h1>
                         <p>{offer.details}</p>
 
-                        <button
-                            className="offer-details-btn"
-                            onClick={() => setIsModalOpen(true)}
-                        >
-                            Poproś o kontakt
-                        </button>
+
                     </div>
 
                     {/* ORBIT */}
                     <div className="offer-perks-orbit">
 
-                        <h2 className="offer-perks-title">
-                            w ramach współpracy otrzymujesz:
-                        </h2>
 
                         <div
                             className="orbit"
@@ -74,6 +67,19 @@ const OfferDetails = () => {
                                 animationPlayState: isOrbitPaused ? "paused" : "running"
                             }}
                         >
+                            <div className="orbit-center">
+                                <img
+                                    src={logo}
+                                    alt="logo"
+                                    className="orbit-center-logo"
+                                />
+
+                                <div className="orbit-center-overlay">
+                                    <span>W ramach współpracy</span>
+                                    <h2>otrzymujesz</h2>
+                                </div>
+                            </div>
+
                             <div className="orbit-spin">
 
                                 {perks.map((item, index) => {
@@ -120,8 +126,23 @@ const OfferDetails = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="offer-actions">
+                        <button
+                            className="offer-back-btn"
+                            onClick={() => window.history.back()}
+                        >
+                            ← Powrót
+                        </button>
 
+                        <button
+                            className="offer-details-btn"
+                            onClick={() => setIsModalOpen(true)}
+                        >
+                            Poproś o kontakt
+                        </button>
+                    </div>
                 </div>
+
             </section>
 
             <ContactModal

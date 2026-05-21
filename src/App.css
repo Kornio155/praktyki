@@ -11,52 +11,21 @@ html {
 
 .app {
   width: 100%;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+
 }
-
-
-
-
-
-
-
-
-
-
 
 /* stopka*/
 .footer-contact {
   padding: 80px 8%;
-  /*background: #28282B;*/
-  /*background: #0F0B0A;*/
-  /*background: #232323;*/
-  /*background: #121213;*/
   background: #1B1813;
-  /*background: #0f0f0f; - orginalny*/
-  color: white;
+  color: #E4F0F6;
 }
 
 .footer-contact-header {
   text-align: center;
   margin-bottom: 40px;
-}
-
-.footer-contact-header span {
-  color: #c7a66a;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-size: 13px;
-}
-
-.footer-contact-header h2 {
-  font-size: 34px;
-  margin: 10px 0;
-}
-
-.footer-contact-header p {
-  color: #bdbdbd;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
 }
 
 /* ROW */
@@ -76,12 +45,7 @@ html {
   display: flex;
   gap: 16px;
 
-  /*background: #28282B;*/
-  /*background: #0F0B0A;*/
-  /*background: #232323;*/
-  /*background: #121213;*/
   background: #1B1813;
-  /*background: #181818; - orginaly */
   border: 1px solid rgba(255,255,255,0.06);
 
   border-radius: 16px;
@@ -92,7 +56,7 @@ html {
 
 .footer-contact-box:hover {
   transform: translateY(-3px);
-  border-color: rgba(199,166,106,0.4);
+  border-color: #E4F0F6;
 }
 
 /* ICON */
@@ -100,7 +64,7 @@ html {
   width: 48px;
   height: 48px;
 
-  background: rgba(199,166,106,0.12);
+  background: #E4F0F6;
   border-radius: 14px;
 
   display: flex;

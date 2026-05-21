@@ -51,6 +51,8 @@
     gap: 40px;
 
     list-style: none;
+
+
 }
 
 .navbar-links a {
@@ -59,7 +61,7 @@
 }
 
 .navbar-links li {
-    color:  #E4F0F6;
+    color: #E4F0F6;
     cursor: pointer;
 
     transition: 0.3s;
@@ -71,7 +73,7 @@
 
 /* BUTTON */
 .navbar-btn {
-    background:  #E4F0F6;
+    background: #E4F0F6;
     color: black;
 
     border: none;

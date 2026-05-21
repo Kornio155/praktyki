@@ -12,6 +12,7 @@ const Navbar: React.FC = () => {
         <>
             <nav className="navbar">
 
+
                 <Link to="/" className="logo">
                     <img src={logo} />
                 </Link>

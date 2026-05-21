@@ -32,7 +32,7 @@
     position: relative;
     z-index: 2;
 
-    color: white;
+    color: #E4F0F6;
 
     padding: 20px;
 
@@ -54,34 +54,16 @@
     font-size: 24px;
     letter-spacing: 2px;
 
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+
     margin-bottom: 40px;
-
-    color: rgba(255, 255, 255, 0.9);
+    color: #E4F0F6;
 }
 
-/* BUTTON */
-.hero-btn {
-    background: transparent;
 
-    border: 2px solid white;
 
-    color: white;
 
-    padding: 18px 40px;
-
-    border-radius: 50px;
-
-    font-size: 16px;
-    font-weight: bold;
-
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-.hero-btn:hover {
-    background: white;
-    color: black;
-}
 
 /* TABLET */
 @media (max-width: 1024px) {
