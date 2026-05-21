@@ -11,6 +11,9 @@ html {
 
 .app {
   width: 100%;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+
 }
 
 

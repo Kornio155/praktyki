@@ -13,59 +13,17 @@ import gosia from "../assets/przedIPo/gosia.png";
 import kamila from "../assets/przedIPo/kamila.png";
 import natalia from "../assets/przedIPo/natalia.jpg";
 
-
-
 const items = [
-    {
-        id: 1,
-        text: "Aleks",
-        image: aleks,
-    },
-    {
-        id: 2,
-        text: "Alicja • efekty w niecały rok",
-        image: alicja,
-    },
-    {
-        id: 3,
-        text: "Andrzej • 63 -> 67 kg 9% tkanki tłuszczowej",
-        image: andrzej,
-    },
-    {
-        id: 4,
-        text: "Adam • -12 kg w 4 miesiące",
-        image: adam,
-    },
-    {
-        id: 5,
-        text: "Aga • -10% tkanki tłuszczowej -10 kg z tłuszczyku w 3 miesiące",
-        image: aga,
-    },
-    {
-        id: 6,
-        text: "Ania • rekompozycja 12% tkanki tłuszczowej z ud",
-        image: ania,
-    },
-    {
-        id: 7,
-        text: "Darek • odmłodzony o 18 lat.",
-        image: darek,
-    },
-    {
-        id: 8,
-        text: "G. • Rekompozycja ciała",
-        image: gosia,
-    },
-    {
-        id: 9,
-        text: "K. • -6 kg łącznie -30cm w obwodach",
-        image: kamila,
-    },
-    {
-        id: 10,
-        text: "N.",
-        image: natalia,
-    }
+    { id: 1, text: "Aleks", image: aleks },
+    { id: 2, text: "Alicja • efekty w niecały rok", image: alicja },
+    { id: 3, text: "Andrzej • 63 -> 67 kg 9% tkanki tłuszczowej", image: andrzej },
+    { id: 4, text: "Adam • -12 kg w 4 miesiące", image: adam },
+    { id: 5, text: "Aga • -10% tkanki tłuszczowej -10 kg z tłuszczyku w 3 miesiące", image: aga },
+    { id: 6, text: "Ania • rekompozycja 12% tkanki tłuszczowej z ud", image: ania },
+    { id: 7, text: "Darek • odmłodzony o 18 lat.", image: darek },
+    { id: 8, text: "G. • Rekompozycja ciała", image: gosia },
+    { id: 9, text: "K. • -6 kg łącznie -30cm w obwodach", image: kamila },
+    { id: 10, text: "N.", image: natalia }
 ];
 
 export default function BeforeAfter() {
@@ -105,7 +63,6 @@ export default function BeforeAfter() {
         };
     }, [hovered]);
 
-    // preload zdjęć
     useEffect(() => {
         items.forEach((item) => {
             const img = new Image();
@@ -120,6 +77,12 @@ export default function BeforeAfter() {
         getItem(index + 1),
         getItem(index + 2),
     ];
+
+    const getPositionClass = (i: number) => {
+        if (i === 2) return "center";
+        if (i === 1 || i === 3) return "adjacent";
+        return "outer";
+    };
 
     const handleTouchStart = (e: React.TouchEvent) => {
         touchStartX.current = e.touches[0].clientX;
@@ -156,38 +119,36 @@ export default function BeforeAfter() {
                     onTouchEnd={handleTouchEnd}
                 >
                     <div className="ba-track">
-                        {visible.map((item, i) => {
-                            return (
+                        {visible.map((item, i) => (
+                            <div
+                                key={`${item.id}-${i}`}
+                                className={`ba-item ${getPositionClass(i)}`}
+                            >
                                 <div
-                                    key={`${item.id}-${i}`}
-                                    className={`ba-item ${i === 2 ? "active" : ""}`}
+                                    className="ba-image-wrapper"
+                                    onClick={() => setSelectedImage(item.image)}
                                 >
-                                    <div
-                                        className="ba-image-wrapper"
-                                        onClick={() => setSelectedImage(item.image)}
-                                    >
-                                        <img
-                                            src={item.image}
-                                            alt={item.text}
-                                            draggable={false}
-                                            onLoad={() =>
-                                                setLoaded((prev) => ({
-                                                    ...prev,
-                                                    [item.id]: true,
-                                                }))
-                                            }
-                                            style={{
-                                                opacity: loaded[item.id] ? 1 : 0,
-                                            }}
-                                        />
+                                    <img
+                                        src={item.image}
+                                        alt={item.text}
+                                        draggable={false}
+                                        onLoad={() =>
+                                            setLoaded((prev) => ({
+                                                ...prev,
+                                                [item.id]: true,
+                                            }))
+                                        }
+                                        style={{
+                                            opacity: loaded[item.id] ? 1 : 0,
+                                        }}
+                                    />
 
-                                        <div className="ba-overlay">
-                                            <p>{item.text}</p>
-                                        </div>
+                                    <div className="ba-overlay">
+                                        <p>{item.text}</p>
                                     </div>
                                 </div>
-                            );
-                        })}
+                            </div>
+                        ))}
                     </div>
                 </div>
 
@@ -197,7 +158,10 @@ export default function BeforeAfter() {
             </div>
 
             {selectedImage && (
-                <div className="ba-modal" onClick={() => setSelectedImage(null)}>
+                <div
+                    className="ba-modal"
+                    onClick={() => setSelectedImage(null)}
+                >
                     <div className="ba-modal-content">
                         <img src={selectedImage} alt="preview" />
                     </div>
