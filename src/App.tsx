@@ -10,11 +10,14 @@ import ContactSection from "./components/ContactSection.tsx";
 import About from "./pages/About.tsx";
 import OfferDetails from "./pages/OfferDetails";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    useLocation
+} from "react-router-dom";
 
 import ScrollToTop from "./components/ScrollToTop";
-
-
 
 const Home = () => (
     <>
@@ -26,27 +29,40 @@ const Home = () => (
     </>
 );
 
+const AppContent = () => {
+    const location = useLocation();
+
+    // footer tylko na homepage
+    const showFooter = location.pathname === "/";
+
+    return (
+        <div className="app">
+            <link
+                href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap"
+                rel="stylesheet"
+            />
+
+            <ScrollToTop />
+
+            <Navbar />
+
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/offer/:slug" element={<OfferDetails />} />
+            </Routes>
+
+            {showFooter && <FooterContact />}
+        </div>
+    );
+};
+
 const App: React.FC = () => {
     return (
         <BrowserRouter>
-            <div className="app">
-                <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap"
-                      rel="stylesheet"/>
-                <ScrollToTop />
-
-                <Navbar />
-
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/offer/:slug" element={<OfferDetails />} />
-                </Routes>
-
-                <FooterContact />
-
-            </div>
+            <AppContent />
         </BrowserRouter>
-    )
-}
+    );
+};
 
-export default App
+export default App;
