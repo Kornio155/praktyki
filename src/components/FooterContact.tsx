@@ -9,7 +9,7 @@ const FooterContact: React.FC = () => {
                 {/* LOKALIZACJA */}
                 <div className="footer-contact-box">
 
-                    <div className="footer-icon">📍</div>
+
 
                     <div className="footer-content">
                         <h3>Maciej Krzywda</h3>
@@ -24,7 +24,7 @@ const FooterContact: React.FC = () => {
                 {/* GODZINY */}
                 <div className="footer-contact-box">
 
-                    <div className="footer-icon">🕒</div>
+
 
                     <div className="footer-content">
                         <h3>Patryk Witkowski</h3>
@@ -40,7 +40,7 @@ const FooterContact: React.FC = () => {
                 {/* KONTAKT */}
                 <div className="footer-contact-box">
 
-                    <div className="footer-icon">✉️</div>
+
 
                     <div className="footer-content">
                         <h3>Kornel Janiuk</h3>
