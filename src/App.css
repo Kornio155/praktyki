@@ -120,16 +120,6 @@ html {
   color: white;
 }
 
-/* Instagram */
-.social-btn.instagram {
-  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366);
-}
-
-/* Facebook */
-.social-btn.facebook {
-  background: #1877f2;
-}
-
 .social-btn:hover {
   transform: translateY(-2px);
   opacity: 0.9;

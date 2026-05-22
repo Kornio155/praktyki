@@ -11,10 +11,9 @@
 
 .offer-grid {
     display: grid;
-    grid-template-columns: repeat(3, 450px);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 450px));
     justify-content: center;
     gap: 20px;
-    margin-bottom: 40px;
 
     justify-items: center;
 }
