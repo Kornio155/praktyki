@@ -53,7 +53,7 @@
 
 .cf-button:hover {
     transform: translateY(-2px);
-    background: #000;
+    opacity: 0.9;
 }
 
 /* FORMULARZ */

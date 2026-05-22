@@ -192,6 +192,20 @@
 
     aspect-ratio: auto;
 }
+/*.services .card {*/
+/*    transform: scale(0.95);*/
+/*    opacity: 0.95;*/
+/*    border-color: black;*/
+
+/*    width: 100%;*/
+/*    max-width: 320px;*/
+
+/*    aspect-ratio: 1 / 1;*/
+
+/*    min-height: unset;*/
+
+/*    flex-direction: column;*/
+/*}*/
 
 .services .card:hover {
     transform: scale(1);

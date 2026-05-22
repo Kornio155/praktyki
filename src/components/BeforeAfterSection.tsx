@@ -15,17 +15,16 @@ import natalia from "../assets/przedIPo/natalia.jpg";
 
 const items = [
     { id: 1, text: "Aleks", image: aleks },
-    { id: 2, text: "Alicja • efekty w niecały rok", image: alicja },
-    { id: 3, text: "Andrzej • 63 -> 67 kg 9% tkanki tłuszczowej", image: andrzej },
-    { id: 4, text: "Adam • -12 kg w 4 miesiące", image: adam },
-    { id: 5, text: "Aga • -10% tkanki tłuszczowej -10 kg z tłuszczyku w 3 miesiące", image: aga },
-    { id: 6, text: "Ania • rekompozycja 12% tkanki tłuszczowej z ud", image: ania },
-    { id: 7, text: "Darek • odmłodzony o 18 lat.", image: darek },
-    { id: 8, text: "G. • Rekompozycja ciała", image: gosia },
-    { id: 9, text: "K. • -6 kg łącznie -30cm w obwodach", image: kamila },
+    { id: 2, text: "Alicja -efekty w niecały rok", image: alicja },
+    { id: 3, text: "Andrzej -63 => 67 kg 9% tkanki tłuszczowej", image: andrzej },
+    { id: 4, text: "Adam -12 kg w 4 miesiące", image: adam },
+    { id: 5, text: "Aga -10% tkanki tłuszczowej -10 kg z tłuszczyku w 3 miesiące", image: aga },
+    { id: 6, text: "Ania -rekompozycja 12% tkanki tłuszczowej z ud", image: ania },
+    { id: 7, text: "Darek -odmłodzony o 18 lat.", image: darek },
+    { id: 8, text: "G. -Rekompozycja ciała", image: gosia },
+    { id: 9, text: "K. -6 kg łącznie -30cm w obwodach", image: kamila },
     { id: 10, text: "N.", image: natalia }
 ];
-
 export default function BeforeAfter() {
     const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
     const touchStartX = useRef<number | null>(null);
@@ -147,7 +146,14 @@ export default function BeforeAfter() {
                                     />
 
                                     <div className="ba-overlay">
-                                        <p>{item.text}</p>
+                                        <p>
+                                            {item.text.split(" -").map((part, index) => (
+                                                <span key={index}>
+                                                    {part}
+                                                    <br />
+                                                </span>
+                                            ))}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
