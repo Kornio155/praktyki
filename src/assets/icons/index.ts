@@ -8,6 +8,7 @@ import waistline from './waistline.svg';
 import calculator from './calculator.svg';
 import heart from './heart.svg';
 import map from './map.svg';
+import bullseye from './bullseye.svg';
 
 export const icons = {
     lifting,
@@ -19,7 +20,8 @@ export const icons = {
     waistline,
     calculator,
     heart,
-    map
+    map,
+    bullseye,
 } as const;
 
 export type IconName = keyof typeof icons;

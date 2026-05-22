@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "../styleSheets/ContactModal.css";
 
+// import emailjs from "@emailjs/browser";
+
 type Props = {
     isOpen: boolean;
     onClose: () => void;
@@ -15,36 +17,79 @@ export default function ContactModal({ isOpen, onClose }: Props) {
         "Cześć! proszę o kontakt w sprawie współpracy!"
     );
 
+    // 🕵️ honeypot
+    const [company, setCompany] = useState("");
+
     if (!isOpen) return null;
 
     const handlePhoneChange = (value: string) => {
         setPhone(value.replace(/\D/g, "").slice(0, 9));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const checkCooldown = () => {
+        const lastSend = localStorage.getItem("last_send_time");
+        if (lastSend && Date.now() - Number(lastSend) < 60_000) {
+            alert("Poczekaj chwilę przed kolejną wiadomością");
+            return false;
+        }
+        return true;
+    };
+
+    const checkEmailLimit = (email: string) => {
+        const lastEmail = localStorage.getItem(`last_email_${email}`);
+        if (lastEmail && Date.now() - Number(lastEmail) < 24 * 60 * 60_000) {
+            alert("Już wysłałeś wiadomość w ciągu ostatnich 24h");
+            return false;
+        }
+        return true;
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (name.trim().length < 2) return alert("Imię za krótkie");
+        // 🧨 honeypot
+        if (company) return;
+
+        if (!checkCooldown()) return;
 
         if (contactType === "email") {
             const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!regex.test(email)) return alert("Zły email");
+
+            if (!checkEmailLimit(email)) return;
         }
 
         if (contactType === "phone" && !/^\d{9}$/.test(phone)) {
             return alert("Zły telefon");
         }
 
-        console.log({
+        const templateParams = {
             name,
-            contactType,
+            contact_type: contactType,
             email,
-            phone: `+48${phone}`,
+            phone: contactType === "phone" ? `+48${phone}` : "",
             message,
-        });
+        };
 
-        alert("OK");
-        onClose();
+        try {
+            // await emailjs.send(...)
+
+            localStorage.setItem("last_send_time", String(Date.now()));
+            if (email) {
+                localStorage.setItem(
+                    `last_email_${email}`,
+                    String(Date.now())
+                );
+            }
+
+            alert("Wysłano!");
+            onClose();
+        } catch (err) {
+            console.error(err);
+            alert("Błąd wysyłki");
+        }
+
+        console.log("EMAILJS PAYLOAD:", templateParams);
     };
 
     return (
@@ -57,6 +102,15 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                 <h2>Poproś o kontakt</h2>
 
                 <form onSubmit={handleSubmit} className="cm-form">
+                    {/* 🧨 HONEYPOT */}
+                    <input
+                        name="company"
+                        value={company}
+                        onChange={(e) => setCompany(e.target.value)}
+                        style={{ display: "none" }}
+                        autoComplete="off"
+                    />
+
                     <div className="cm-group">
                         <label>Imię</label>
                         <input value={name} onChange={(e) => setName(e.target.value)} />
@@ -87,18 +141,13 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                     {contactType === "email" ? (
                         <div className="cm-group">
                             <label>Email</label>
-                            <input
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} />
                         </div>
                     ) : (
                         <div className="cm-group">
                             <label>Telefon</label>
-
                             <div className="cm-phone">
                                 <span className="cm-prefix">+48</span>
-
                                 <input
                                     value={phone}
                                     onChange={(e) => handlePhoneChange(e.target.value)}
