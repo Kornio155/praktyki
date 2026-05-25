@@ -31,6 +31,7 @@
     overflow: hidden;
     width: 100%;
     position: relative;
+
 }
 
 /* =========================
@@ -42,9 +43,12 @@
     align-items: center;
     gap: 14px;
 
+
     transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform;
 }
+
+
 
 /* =========================
    ITEM BASE (FLAT - NO EFFECTS)
@@ -266,3 +270,4 @@
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
