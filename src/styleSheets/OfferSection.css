@@ -57,7 +57,7 @@
 .card {
     background:  #0F0F0F;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: #1C1C1C solid 1px;
+    border: #252525 solid 1px;
     cursor: pointer;
 
 
@@ -124,7 +124,7 @@
 }
 
 .card h3 {
-    background: #1C1C1C;
+    background: #252525;
     color: #E4F0F6;
 
     margin: 0;
