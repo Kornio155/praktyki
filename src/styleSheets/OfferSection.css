@@ -11,11 +11,25 @@
 
 .offer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 450px));
-    justify-content: center;
+    grid-template-columns: repeat(3, minmax(320px, 450px));
     gap: 20px;
 
+    justify-content: center;
     justify-items: center;
+}
+
+/* 2 kolumny */
+@media (max-width: 1100px) {
+    .offer-grid {
+        grid-template-columns: repeat(2, minmax(320px, 450px));
+    }
+}
+
+/* 1 kolumna */
+@media (max-width: 700px) {
+    .offer-grid {
+        grid-template-columns: minmax(320px, 450px);
+    }
 }
 
 .offer-grid-img {
