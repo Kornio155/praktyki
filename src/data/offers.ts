@@ -3,8 +3,8 @@ import trmedyczne from '../assets/trmedyczne.png'
 import trfunkcjonalne from '../assets/trfunkcjonalne.png'
 import trmotoryczne from '../assets/trmotoryczne.png'
 import forGroup from '../assets/group.svg';
-
-console.log(forGroup);
+import games from '../assets/games.svg';
+import english from '../assets/english.svg';
 
 
 export type OfferPerk = {
@@ -315,6 +315,7 @@ export const offers: Offer[] = [
     {
         slug: 'gry-i-zabawy',
         title: 'Gry i zabawy',
+        image: games,
         desc: 'aktywność i integracja',
         details: 'Zajęcia ruchowe w formie gier i zabaw – idealne dla grup i integracji.',
         perks: []
@@ -322,6 +323,7 @@ export const offers: Offer[] = [
     {
         slug: 'personal-training-in-english',
         title: 'Personal training (English)',
+        image: english,
         desc: 'training sessions in English',
         details: 'I provide personal training sessions in English for international clients living in Poland.',
         perks: [ { icon: 'lifting', label: 'Personal training', details: '1-on-1 coaching sessions'
