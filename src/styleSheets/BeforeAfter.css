@@ -28,7 +28,7 @@
 ========================= */
 
 .ba-viewport {
-    overflow: visible;
+    overflow: hidden;
     width: 100%;
     position: relative;
 }
@@ -40,15 +40,14 @@
 .ba-track {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 14px;
 
-    transition: transform 0.6s ease-in-out;
+    transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform;
 }
 
 /* =========================
-   ITEM BASE
+   ITEM BASE (FLAT - NO EFFECTS)
 ========================= */
 
 .ba-item {
@@ -57,54 +56,19 @@
     justify-content: center;
     align-items: center;
 
-    transform: scale(0.78);
-    opacity: 0.35;
-
-    transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
-    position: relative;
-
-    filter: brightness(0.85);
-}
-
-/* =========================
-   CENTER
-========================= */
-
-.ba-item.center {
-    transform: scale(1);
+    transform: none;
     opacity: 1;
-    z-index: 3;
-    filter: brightness(1);
+    filter: none;
+
+    position: relative;
 }
 
 /* =========================
-   ADJACENT
-========================= */
-
-.ba-item.adjacent {
-    transform: scale(0.92);
-    opacity: 0.78;
-    z-index: 2;
-    filter: brightness(0.95);
-}
-
-/* =========================
-   OUTER
-========================= */
-
-.ba-item.outer {
-    transform: scale(0.8);
-    opacity: 0.4;
-    z-index: 1;
-}
-
-/* =========================
-   IMAGE WRAPPER (FIX CROPPING)
+   IMAGE WRAPPER
 ========================= */
 
 .ba-image-wrapper {
     width: 100%;
-    max-width: 100%;
     height: 620px;
 
     display: flex;
@@ -120,7 +84,7 @@
     background: #0f0f0f;
 }
 
-/* IMAGE — NO CROP VERSION */
+/* IMAGE */
 .ba-image-wrapper img {
     max-width: 100%;
     max-height: 100%;
@@ -134,8 +98,9 @@
     transition: transform 0.3s ease;
 }
 
+/* opcjonalny hover (subtelny) */
 .ba-image-wrapper:hover img {
-    transform: scale(1.04);
+    transform: scale(1.02);
 }
 
 /* =========================
@@ -144,6 +109,7 @@
 
 .ba-overlay {
     font-family: sans-serif;
+
     position: absolute;
     bottom: 12px;
     left: 50%;
@@ -152,7 +118,7 @@
     width: 90%;
     box-sizing: border-box;
 
-    background: rgba(0,0,0,0.55);
+    background: rgba(0, 0, 0, 0.55);
     color: #E4F0F6;
 
     padding: 10px 14px;
@@ -180,7 +146,7 @@
     border-radius: 50%;
     border: none;
 
-    background: rgba(0,0,0,0.45);
+    background: rgba(0, 0, 0, 0.45);
     color: #E4F0F6;
 
     font-size: 26px;
@@ -198,7 +164,7 @@
 }
 
 .ba-arrow:hover {
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.15);
     transform: translateY(-50%) scale(1.15);
 }
 
@@ -248,6 +214,10 @@
     }
 }
 
+/* =========================
+   MODAL
+========================= */
+
 .ba-modal {
     position: fixed;
     inset: 0;
@@ -259,10 +229,10 @@
 
     z-index: 9999;
 
-    padding: 40px; /* KLUCZ — daje “oddech” */
+    padding: 40px;
     box-sizing: border-box;
 
-    overflow: auto; /* zabezpieczenie na małe ekrany */
+    overflow: auto;
     animation: fadeIn 0.25s ease;
 }
 
@@ -275,10 +245,9 @@
     max-height: 100%;
 }
 
-/* KLUCZOWA POPRAWKA */
 .ba-modal-content img {
     max-width: 100%;
-    max-height: calc(100vh - 80px); /* zostawia margines góra/dół */
+    max-height: calc(100vh - 80px);
 
     width: auto;
     height: auto;
@@ -286,16 +255,14 @@
     object-fit: contain;
 
     border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
 }
 
-/* animacje */
+/* =========================
+   ANIMATIONS
+========================= */
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-}
-
-@keyframes zoomIn {
-    from { transform: scale(0.85); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
 }
