@@ -19,7 +19,10 @@ const About: React.FC = () => {
                     />
                     <button
                         className="about-back-btn"
-                        onClick={() => navigate(-1)}
+                        onClick={() => {
+                            navigate("/");
+                            window.scrollTo(0, 0);
+                        }}
                     >
                         ← Powrót
                     </button>
