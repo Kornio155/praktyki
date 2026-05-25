@@ -263,5 +263,6 @@ export const offers: Offer[] = [
                 details: 'Służę pomocą w każdej sytuacji!'
             }
         ]
-    }
+    },
+    { slug: 'treningi-dla-dwojga', title: 'Treningi dla dwojga / grupowe', desc: 'motywacja + lepsza cena', details: 'Treningi w parach lub małych grupach – idealne dla motywacji i wspólnego rozwoju.', perks: [ { icon: 'lifting', label: 'Trening partnerski', details: 'Wspólna jednostka treningowa' }, { icon: 'support', label: 'Motywacja grupowa', details: 'Większe zaangażowanie i regularność' } ] }, { slug: 'gry-i-zabawy', title: 'Gry i zabawy', desc: 'aktywność i integracja', details: 'Zajęcia ruchowe w formie gier i zabaw – idealne dla grup i integracji.', perks: [] }, { slug: 'personal-training-in-english', title: 'Personal training (English)', desc: 'training sessions in English', details: 'I provide personal training sessions in English for international clients living in Poland.', perks: [ { icon: 'lifting', label: 'Personal training', details: '1-on-1 coaching sessions' }, { icon: 'support', label: 'Ongoing support', details: 'Continuous guidance and feedback' } ] }
 ];
