@@ -121,25 +121,7 @@
     overflow: hidden;
 }
 
-.offer-perks-orbit::after {
-    content: "";
 
-    position: absolute;
-    top: 0;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 82%;
-    height: 1px;
-
-    background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,0.08),
-            transparent
-    );
-}
 
 /* ORBIT WRAPPER */
 

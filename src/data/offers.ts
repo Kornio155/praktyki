@@ -25,7 +25,7 @@ export const offers: Offer[] = [
             {
                 icon: 'bullseye',
                 label: 'Diagnostykę słabych punktów',
-                details: 'Określenie co przeszkadza Ci w osiągnięciu lepszych wyników.'
+                details: 'Określenie, co przeszkadza Ci w osiągnięciu lepszych wyników.'
             },
             {
                 icon: 'lifting',
@@ -45,7 +45,7 @@ export const offers: Offer[] = [
             {
                 icon: 'support',
                 label: 'Kontakt i wsparcie 24/7',
-                details: 'Pytaj o co chcesz i kiedy chcesz :).'
+                details: 'Pytaj, o co chcesz i kiedy chcesz :)'
             },
             {
                 icon: 'heart',
@@ -85,12 +85,17 @@ export const offers: Offer[] = [
             {
                 icon: 'support',
                 label: 'Kontakt i wsparcie 24/7',
-                details: 'Pytaj o co chcesz i kiedy chcesz :).'
+                details: 'Pytaj, o co chcesz i kiedy chcesz :)'
             },
             {
                 icon: 'heart',
                 label: 'Zaangażowanie',
                 details: 'W 100% !'
+            },
+            {
+                icon:'light_bulb',
+                label: 'Dostęp do wiedzy i doświadczenia',
+                details: 'Służę pomocą w każdej sytuacji!'
             }
         ]
     },
@@ -130,12 +135,17 @@ export const offers: Offer[] = [
             {
                 icon: 'support',
                 label: 'Kontakt i wsparcie 24/7',
-                details: 'Pytaj o co chcesz i kiedy chcesz :).'
+                details: 'Pytaj, o co chcesz i kiedy chcesz :)'
             },
             {
                 icon: 'heart',
                 label: 'Zaangażowanie',
                 details: 'W 100% !'
+            },
+            {
+                icon:'light_bulb',
+                label: 'Dostęp do wiedzy i doświadczenia',
+                details: 'Służę pomocą w każdej sytuacji!'
             }
         ]
     },
@@ -150,7 +160,7 @@ export const offers: Offer[] = [
             {
                 icon: 'bullseye',
                 label: 'Diagnostykę słabych punktów',
-                details: 'Określenie co przeszkadza Ci w osiągnięciu lepszych wyników.'
+                details: 'Określenie, co przeszkadza Ci w osiągnięciu lepszych wyników.'
             },
             {
                 icon: 'lifting',
@@ -175,7 +185,7 @@ export const offers: Offer[] = [
             {
                 icon: 'support',
                 label: 'Kontakt i wsparcie 24/7',
-                details: 'Pytaj o co chcesz i kiedy chcesz :).'
+                details: 'Pytaj, o co chcesz i kiedy chcesz :)'
             },
             {
                 icon: 'heart',
@@ -215,7 +225,7 @@ export const offers: Offer[] = [
             {
                 icon: 'support',
                 label: 'Kontakt i wsparcie 24/7',
-                details: 'Pytaj o co chcesz i kiedy chcesz :).'
+                details: 'Pytaj, o co chcesz i kiedy chcesz :)'
             },
             {
                 icon: 'heart',
@@ -255,12 +265,27 @@ export const offers: Offer[] = [
             {
                 icon: 'support',
                 label: 'Kontakt i wsparcie 24/7',
-                details: 'Pytaj o co chcesz i kiedy chcesz :).'
+                details: 'Pytaj, o co chcesz i kiedy chcesz :)'
             },
             {
                 icon: 'light_bulb',
                 label: 'Dostęp do wiedzy i doświadczenia',
                 details: 'Służę pomocą w każdej sytuacji!'
+            },
+            {
+                icon: 'heart',
+                label: 'Zaangażowanie',
+                details: 'W 100% !'
+            },
+            {
+                icon: 'nutrition',
+                label: 'Wytyczne żywieniowe',
+                details: 'Wytyczne pod kątem Twojego zapotrzebowania.'
+            },
+            {
+                icon: 'waistline',
+                label: 'Pomiary składu ciała',
+                details: 'Analiza % udziału tkanki tłuszczowej w ciele.'
             }
         ]
     },
