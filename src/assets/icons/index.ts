@@ -9,6 +9,7 @@ import calculator from './calculator.svg';
 import heart from './heart.svg';
 import map from './map.svg';
 import bullseye from './bullseye.svg';
+import forGroup from '../group.svg';
 
 export const icons = {
     lifting,
@@ -22,6 +23,9 @@ export const icons = {
     heart,
     map,
     bullseye,
+    forGroup
 } as const;
+
+
 
 export type IconName = keyof typeof icons;

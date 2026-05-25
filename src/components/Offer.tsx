@@ -26,6 +26,7 @@ const OfferSection: React.FC = () => {
                                 <h3>{item.title}</h3>
 
                                 <div className="img-wrapper">
+
                                     <img
                                         className="offer-grid-img"
                                         src={item.image}
@@ -67,7 +68,7 @@ const OfferSection: React.FC = () => {
                                 <div className="img-wrapper">
                                     <img
                                         className="offer-grid-img"
-                                        src={``}
+                                        src={item.image}
                                     />
                                 </div>
 

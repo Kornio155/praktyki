@@ -33,6 +33,8 @@ const OfferDetails = () => {
         return () => clearInterval(interval);
     }, [isOrbitPaused]);
 
+
+
     return (
         <>
             <section className="offer-details">
@@ -45,6 +47,7 @@ const OfferDetails = () => {
                             src={offer.image}
                             alt={offer.title}
                         />
+
                     </div>
 
                     {/* CONTENT */}

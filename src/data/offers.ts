@@ -1,8 +1,11 @@
-import type { IconName } from '../assets/icons'
+import {type IconName} from '../assets/icons'
 import trmedyczne from '../assets/trmedyczne.png'
 import trfunkcjonalne from '../assets/trfunkcjonalne.png'
 import trmotoryczne from '../assets/trmotoryczne.png'
-import group from '../assets/group.svg'
+import forGroup from '../assets/group.svg';
+
+console.log(forGroup);
+
 
 export type OfferPerk = {
     icon: IconName;
@@ -17,6 +20,7 @@ export type Offer = {
     details: string;
     perks?: OfferPerk[];
     image?: string;
+
 };
 
 export const offers: Offer[] = [
@@ -301,7 +305,7 @@ export const offers: Offer[] = [
         slug: 'treningi-dla-dwojga',
         title: 'Treningi dla dwojga / grupowe',
         desc: 'motywacja + lepsza cena',
-        image: group,
+        image: forGroup,
         details: 'Treningi w parach lub małych grupach – idealne dla motywacji i wspólnego rozwoju.',
         perks: [ { icon: 'lifting', label: 'Trening partnerski', details: 'Wspólna jednostka treningowa' }, {
             icon: 'support',
