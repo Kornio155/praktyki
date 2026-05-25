@@ -1,5 +1,5 @@
 .offer {
-    background: #1B1813;
+    background:  #0F0F0F;
     color: #E4F0F6;
     padding: 80px 40px;
 }
@@ -41,9 +41,9 @@
 }
 
 .card {
-    background: #1B1813;
+    background:  #0F0F0F;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: black solid 1px;
+    border: #1C1C1C solid 1px;
     cursor: pointer;
 
 
@@ -67,11 +67,10 @@
 .card:hover {
     transform: scale(1.04);
 
-    border-color: #E4F0F6;
+    border-color: white;
 
     box-shadow:
-            0 20px 40px rgba(0,0,0,0.35),
-            0 0 0 1px rgba(199,166,106,0.3);
+            0 20px 40px rgba(0,0,0,0.35)
 }
 .card-content {
     display: flex;
@@ -111,7 +110,7 @@
 }
 
 .card h3 {
-    background: black;
+    background: #1C1C1C;
     color: #E4F0F6;
 
     margin: 0;
@@ -143,7 +142,7 @@
 
     border: none;
     border-radius: 10px;
-    background:#1B1813;
+    background: #0F0F0F;
     color: #E4F0F6;
     cursor: pointer;
 
@@ -170,7 +169,7 @@
 
 .services {
 
-    background: #1B1813;
+    background:  #0F0F0F;
     color: #E4F0F6;
     padding: 80px 40px;
 }
@@ -184,7 +183,7 @@
 .services .card {
     transform: scale(0.95);
     opacity: 0.95;
-    border-color: black;
+    border-color: #1C1C1C;
 
     width: 100%;
     max-width: 320px;

@@ -20,7 +20,7 @@
 .cf-title {
     font-size: 50px;
     margin-bottom: 40px;
-    color: #1b1813;
+    color: #0F0F0F;
     text-align: left;
     align-self: center;
 }
@@ -37,7 +37,7 @@
 
 /* PRZYCISK */
 .cf-button {
-    background: #1b1813;;
+    background: #0F0F0F;;
     color: #E4F0F6;
 
     border: none;
@@ -67,7 +67,7 @@
     width: 100%;
     max-width: 1400px;
 
-    background: #1b1813;
+    background: #0F0F0F;
     color: #E4F0F6;
 
     border-radius: 30px;
