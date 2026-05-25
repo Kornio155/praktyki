@@ -1,4 +1,8 @@
-import type { IconName } from '../assets/icons';
+import type { IconName } from '../assets/icons'
+import trmedyczne from '../assets/trmedyczne.png'
+import trfunkcjonalne from '../assets/trfunkcjonalne.png'
+import trmotoryczne from '../assets/trmotoryczne.png'
+import group from '../assets/group.svg'
 
 export type OfferPerk = {
     icon: IconName;
@@ -12,6 +16,7 @@ export type Offer = {
     desc?: string;
     details: string;
     perks?: OfferPerk[];
+    image?: string;
 };
 
 export const offers: Offer[] = [
@@ -19,6 +24,7 @@ export const offers: Offer[] = [
         slug: 'treningi-medyczne',
         title: 'Treningi medyczne',
         desc: 'wróć do sprawności bez bólu',
+        image: trmedyczne,
         details:
             'Jeśli jesteś po urazie, masz przeciążenia lub dolegliwości bólowe, ten trening pomoże Ci poprawić sprawność, zmniejszyć ból i bezpiecznie wrócić do aktywności.',
         perks: [
@@ -64,6 +70,7 @@ export const offers: Offer[] = [
         slug: 'treningi-funkcjonalne',
         title: 'Treningi funkcjonalne',
         desc: 'zdrowe funkcjonowanie na co dzień',
+        image: trfunkcjonalne,
         details:
             'Trening dla osób prowadzących siedzący tryb życia. Poprawia sprawność, mobilność i jakość codziennego ruchu.',
         perks: [
@@ -154,6 +161,7 @@ export const offers: Offer[] = [
         slug: 'treningi-motoryczne',
         title: 'Treningi motoryczne',
         desc: 'lepsze wyniki w twojej dyscyplinie',
+        image: trmotoryczne,
         details:
             'Trening dla sportowców rozwijający siłę, szybkość, moc i koordynację.',
         perks: [
@@ -289,5 +297,30 @@ export const offers: Offer[] = [
             }
         ]
     },
-    { slug: 'treningi-dla-dwojga', title: 'Treningi dla dwojga / grupowe', desc: 'motywacja + lepsza cena', details: 'Treningi w parach lub małych grupach – idealne dla motywacji i wspólnego rozwoju.', perks: [ { icon: 'lifting', label: 'Trening partnerski', details: 'Wspólna jednostka treningowa' }, { icon: 'support', label: 'Motywacja grupowa', details: 'Większe zaangażowanie i regularność' } ] }, { slug: 'gry-i-zabawy', title: 'Gry i zabawy', desc: 'aktywność i integracja', details: 'Zajęcia ruchowe w formie gier i zabaw – idealne dla grup i integracji.', perks: [] }, { slug: 'personal-training-in-english', title: 'Personal training (English)', desc: 'training sessions in English', details: 'I provide personal training sessions in English for international clients living in Poland.', perks: [ { icon: 'lifting', label: 'Personal training', details: '1-on-1 coaching sessions' }, { icon: 'support', label: 'Ongoing support', details: 'Continuous guidance and feedback' } ] }
+    {
+        slug: 'treningi-dla-dwojga',
+        title: 'Treningi dla dwojga / grupowe',
+        desc: 'motywacja + lepsza cena',
+        image: group,
+        details: 'Treningi w parach lub małych grupach – idealne dla motywacji i wspólnego rozwoju.',
+        perks: [ { icon: 'lifting', label: 'Trening partnerski', details: 'Wspólna jednostka treningowa' }, {
+            icon: 'support',
+                label: 'Motywacja grupowa',
+                details: 'Większe zaangażowanie i regularność' } ]
+    },
+    {
+        slug: 'gry-i-zabawy',
+        title: 'Gry i zabawy',
+        desc: 'aktywność i integracja',
+        details: 'Zajęcia ruchowe w formie gier i zabaw – idealne dla grup i integracji.',
+        perks: []
+    },
+    {
+        slug: 'personal-training-in-english',
+        title: 'Personal training (English)',
+        desc: 'training sessions in English',
+        details: 'I provide personal training sessions in English for international clients living in Poland.',
+        perks: [ { icon: 'lifting', label: 'Personal training', details: '1-on-1 coaching sessions'
+        },
+            { icon: 'support', label: 'Ongoing support', details: 'Continuous guidance and feedback' } ] }
 ];

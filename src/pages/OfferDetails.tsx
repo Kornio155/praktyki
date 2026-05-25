@@ -42,7 +42,7 @@ const OfferDetails = () => {
                     <div className="offer-details-image-wrapper">
                         <img
                             className="offer-details-image"
-                            src={`https://picsum.photos/1200/500?random=${offer.title}`}
+                            src={offer.image}
                             alt={offer.title}
                         />
                     </div>

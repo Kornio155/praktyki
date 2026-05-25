@@ -11,8 +11,7 @@
     max-width: 1200px;
     margin: 0 auto;
 
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
+    background: #0F0F0F;
     border-radius: 30px;
 
     overflow: hidden;

@@ -28,7 +28,7 @@ const OfferSection: React.FC = () => {
                                 <div className="img-wrapper">
                                     <img
                                         className="offer-grid-img"
-                                        src={`https://picsum.photos/300/200?random=${index}`}
+                                        src={item.image}
                                     />
                                 </div>
 
@@ -67,7 +67,7 @@ const OfferSection: React.FC = () => {
                                 <div className="img-wrapper">
                                     <img
                                         className="offer-grid-img"
-                                        src={`https://picsum.photos/300/200?random=${index + 100}`}
+                                        src={``}
                                     />
                                 </div>
 

@@ -58,6 +58,8 @@
 .navbar-links a {
     color: #E4F0F6;
     text-decoration: none;
+    display: inline-block;
+    transition: 0.3s ease;
 }
 
 .navbar-links li {
@@ -69,6 +71,7 @@
 
 .navbar-links li:hover {
     opacity: 0.7;
+    transform: translateY(-3px);
 }
 
 /* BUTTON */
