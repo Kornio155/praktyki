@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import ContactModal from "../components/ContactModal";
 import { icons } from "../assets/icons";
 import logo from "../assets/logo.svg";
+import { useNavigate } from "react-router-dom";
 
 const OfferDetails = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,6 +13,8 @@ const OfferDetails = () => {
 
     const { slug } = useParams();
     const offer = offers.find(item => item.slug === slug);
+
+    const navigate = useNavigate();
 
     if (!offer) {
         return <h2>Nie znaleziono oferty</h2>;
@@ -132,7 +135,10 @@ const OfferDetails = () => {
                     <div className="offer-actions">
                         <button
                             className="offer-back-btn"
-                            onClick={() => window.history.back()}
+                            onClick={() => {
+                                navigate("/");
+                                window.scrollTo(0, 0);
+                            }}
                         >
                             ← Powrót
                         </button>
