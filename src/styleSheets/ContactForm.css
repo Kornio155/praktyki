@@ -167,7 +167,7 @@
     display: flex;
     gap: 12px;
 
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(15, 15, 15, 0.06);
     padding: 6px;
 
     border-radius: 999px;
@@ -198,7 +198,7 @@
 
 .cf-option.active {
     background: #FBFBFB;
-    color: #0F0F0F;
+    color: #010013;
 
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
@@ -218,7 +218,7 @@
 .cf-prefix {
     padding: 0 14px;
 
-    color: #231f20;
+    color: #010013;
     font-weight: 700;
 
     background: rgba(0, 0, 0, 0.04);
@@ -241,7 +241,7 @@
 /* SUBMIT */
 .cf-submit {
     background: #FBFBFB;
-    color: #0F0F0F;
+    color: #010013;
 
     border: none;
     border-radius: 999px;
