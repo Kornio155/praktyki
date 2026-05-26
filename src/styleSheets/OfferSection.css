@@ -11,37 +11,16 @@
     margin: 0 auto 40px auto;
     text-align: left;
     font-size: 50px;
-
+    padding: 0 20px; /* 👈 kluczowe */
 }
-
-/* FIX dla mniejszych ekranów */
-@media (max-width: 1023px) {
-    .offer h2 {
-        padding: 0 24px;
-    }
-}
-
-@media (max-width: 600px) {
-    .offer h2 {
-        font-size: 36px;
-        padding: 0 16px;
-    }
-}
-
 
 .offer-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(330px, 450px));
-    gap: 30px;
+    grid-template-columns: repeat(3, 400px);
+    gap: 12px;
 
-    justify-content: start;   /* zamiast center */
-    justify-items: start;     /* zamiast center */
-}
-
-.offer-container {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 24px; /* ważne */
+    justify-content: center;
+    justify-items: center;
 }
 
 
