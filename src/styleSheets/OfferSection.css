@@ -96,7 +96,10 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 10px 0; /* 🔥 dodaje balans góra/dół */
+
 }
 
 .card-inner {
@@ -104,15 +107,20 @@
     flex-direction: column;
     height: 100%;
     font-family: Roboto, serif;
+    gap: 6px;
 }
+
+
 .card-desc {
     color: #E4F0F6;
 
-    font-size: 20px;
+    font-size: 18px;   /* trochę mniejszy */
     text-align: center;
-    line-height: 1.5;
+    line-height: 1.25; /* 🔥 kluczowe zmniejszenie wysokości */
 
-    padding: 15px;
+    padding: 8px 12px; /* 🔥 mniej paddingu */
+
+    margin: 0;
 
     overflow-wrap: break-word;
     word-break: break-word;
@@ -147,8 +155,8 @@
     line-height: 1.2;
 }
 .details-btn {
-    margin-top: auto;
-    margin-bottom: 30px;
+    margin-top: 5px;   /* 🔥 KLUCZ */
+    margin-bottom: 5px;
 
     display: block;
     width: fit-content;
@@ -156,7 +164,7 @@
     margin-left: auto;
     margin-right: auto;
 
-    padding: 12px 24px;
+    padding: 10px 22px;
 
     border: none;
     border-radius: 10px;
@@ -170,6 +178,7 @@
     transition: 0.3s ease;
     pointer-events: none;
 }
+
 
 .card:hover .details-btn {
     transform: translateY(0);
