@@ -1,7 +1,10 @@
 import {type IconName} from '../assets/icons'
-import trmedyczne from '../assets/trmedyczne.png'
-import trfunkcjonalne from '../assets/trfunkcjonalne.png'
-import trmotoryczne from '../assets/trmotoryczne.png'
+import medyczne from '../assets/oferty/medyczne.png'
+import funkcjonalne from '../assets/oferty/funkcjonalne.png'
+import motoryczne from '../assets/oferty/motoryczne.png'
+import odchudzanie from '../assets/oferty/odchudzanie.png'
+import plany from '../assets/oferty/plany.png'
+import ogolne from '../assets/oferty/ogolne.png'
 import forGroup from '../assets/group.svg';
 import games from '../assets/games.svg';
 import english from '../assets/english.svg';
@@ -28,7 +31,7 @@ export const offers: Offer[] = [
         slug: 'treningi-medyczne',
         title: 'Treningi medyczne',
         desc: 'wróć do sprawności bez bólu',
-        image: trmedyczne,
+        image: medyczne,
         details:
             'Jeśli jesteś po urazie, masz przeciążenia lub dolegliwości bólowe, ten trening pomoże Ci poprawić sprawność, zmniejszyć ból i bezpiecznie wrócić do aktywności.',
         perks: [
@@ -74,7 +77,7 @@ export const offers: Offer[] = [
         slug: 'treningi-funkcjonalne',
         title: 'Treningi funkcjonalne',
         desc: 'zdrowe funkcjonowanie na co dzień',
-        image: trfunkcjonalne,
+        image: funkcjonalne,
         details:
             'Trening dla osób prowadzących siedzący tryb życia. Poprawia sprawność, mobilność i jakość codziennego ruchu.',
         perks: [
@@ -115,6 +118,7 @@ export const offers: Offer[] = [
         slug: 'odchudzanie',
         title: 'Odchudzanie',
         desc: 'redukcja tkanki tłuszczowej',
+        image: odchudzanie,
         details:
             'Kompleksowy proces redukcji masy ciała oparty na treningu, analizie i dopasowaniu strategii.',
         perks: [
@@ -165,7 +169,7 @@ export const offers: Offer[] = [
         slug: 'treningi-motoryczne',
         title: 'Treningi motoryczne',
         desc: 'lepsze wyniki w twojej dyscyplinie',
-        image: trmotoryczne,
+        image: motoryczne,
         details:
             'Trening dla sportowców rozwijający siłę, szybkość, moc i koordynację.',
         perks: [
@@ -216,6 +220,7 @@ export const offers: Offer[] = [
         slug: 'treningi-ogolnorozwojowe',
         title: 'Treningi ogólnorozwojowe',
         desc: 'siła, sprawność i energia',
+        image: ogolne,
         details:
             'Wszechstronny trening poprawiający kondycję, siłę i ogólną sprawność fizyczną.',
         perks: [
@@ -256,6 +261,7 @@ export const offers: Offer[] = [
         slug: 'plany-treningowe',
         title: 'Plany treningowe',
         desc: 'plan dopasowany do Ciebie',
+        image: plany,
         details:
             'Indywidualne plany treningowe dopasowane do Twojego czasu, możliwości i celu.',
         perks: [
