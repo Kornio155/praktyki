@@ -198,7 +198,7 @@
 
 .cf-option.active {
     background: #FBFBFB;
-    color: black;
+    color: #0F0F0F;
 
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
@@ -208,7 +208,7 @@
     display: flex;
     align-items: center;
 
-    background: white;
+    background: #FBFBFB;
 
     border-radius: 12px;
 
@@ -240,8 +240,8 @@
 
 /* SUBMIT */
 .cf-submit {
-    background: white;
-    color: black;
+    background: #FBFBFB;
+    color: #0F0F0F;
 
     border: none;
     border-radius: 999px;
@@ -256,7 +256,7 @@
 }
 
 .cf-submit:hover {
-    background: #eee;
+    background: #FBFBFB;
 }
 
 /* ANIMATION */
