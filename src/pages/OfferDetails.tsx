@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import { offers } from "../data/offers";
 import "../styleSheets/OfferDetailsPage.css";
 import {useEffect, useState} from "react";
@@ -21,6 +21,20 @@ const OfferDetails = () => {
     const isService = offer.type === "service";
 
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const handleBack = () => {
+        const target = location.state?.scrollTo;
+
+        navigate("/");
+
+        setTimeout(() => {
+            if (target) {
+                document.getElementById(target)
+                    ?.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        }, 100);
+    };
     const perks = offer.perks ?? [];
 
     const radius = window.innerWidth < 600 ? 180 : 300;
@@ -136,13 +150,7 @@ const OfferDetails = () => {
                     <div className="offer-actions">
                         <button
                             className="offer-back-btn"
-                            onClick={() => {
-                                navigate("/");
-                                setTimeout(() => {
-                                    document.getElementById("offer")?.scrollIntoView({ behavior: "smooth" });
-                                }, 100);
-                            }}
-                        >
+                            onClick={handleBack} >
                             ← Powrót
                         </button>
 

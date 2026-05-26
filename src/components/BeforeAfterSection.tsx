@@ -17,7 +17,7 @@ import bogus from "../assets/przedIPo/bogus_1200x1200.png";
 const items = [
     { id: 1, text: "Aleks - -", image: aleks },
     { id: 2, text: "Alicja - efekty w niecały rok -", image: alicja },
-    { id: 3, text: "Andrzej -63 => 67 kg 9% tkanki tłuszczowej -", image: andrzej },
+    { id: 3, text: "Andrzej -63 => 67 kg -9% tkanki tłuszczowej -", image: andrzej },
     { id: 4, text: "Adam -12 kg w 4 miesiące -", image: adam },
     { id: 5, text: "Aga -10% tkanki tłuszczowej -10 kg w 3 miesiące", image: aga },
     { id: 6, text: "Ania - rekompozycja 12% tkanki tłuszczowej -", image: ania },
