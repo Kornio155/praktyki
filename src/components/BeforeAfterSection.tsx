@@ -1,185 +1,321 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../styleSheets/BeforeAfter.css";
 
-import aleks from "../assets/przedIPo/aleks.png";
-import alicja from "../assets/przedIPo/alicja.png";
-import andrzej from "../assets/przedIPo/andrzej.jpg";
-import adam from "../assets/przedIPo/adam.jpg";
-import aga from "../assets/przedIPo/aga.png";
-import ania from "../assets/przedIPo/ania.png";
-import darek from "../assets/przedIPo/darek.png";
-import gosia from "../assets/przedIPo/gosia.png";
-import kamila from "../assets/przedIPo/kamila.png";
-import natalia from "../assets/przedIPo/natalia.jpg";
+import aleks from "../assets/przedIPo/aleks_1200x1200.png";
+import alicja from "../assets/przedIPo/alicja_1200x1200.png";
+import andrzej from "../assets/przedIPo/andrzej_1200x1200.png";
+import adam from "../assets/przedIPo/adam_1200x1200.png";
+import aga from "../assets/przedIPo/aga_1200x1200.png";
+import ania from "../assets/przedIPo/ania_1200x1200.png";
+import darek from "../assets/przedIPo/darek_1200x1200.png";
+import gosia from "../assets/przedIPo/gosia_1200x1200.png";
+import kamila from "../assets/przedIPo/kamila_1200x1200.png";
+import natalia from "../assets/przedIPo/natalia_1200x1200.png";
+import bogdan from "../assets/przedIPo/bogdan_1200x1200.png";
+import bogus from "../assets/przedIPo/bogus_1200x1200.png";
 
 const items = [
-    { id: 1, text: "Aleks", image: aleks },
-    { id: 2, text: "Alicja - efekty w niecały rok", image: alicja },
-    { id: 3, text: "Andrzej -63 => 67 kg 9% tkanki tłuszczowej", image: andrzej },
-    { id: 4, text: "Adam -12 kg w 4 miesiące", image: adam },
+    { id: 1, text: "Aleks - -", image: aleks },
+    { id: 2, text: "Alicja - efekty w niecały rok -", image: alicja },
+    { id: 3, text: "Andrzej -63 => 67 kg 9% tkanki tłuszczowej -", image: andrzej },
+    { id: 4, text: "Adam -12 kg w 4 miesiące -", image: adam },
     { id: 5, text: "Aga -10% tkanki tłuszczowej -10 kg w 3 miesiące", image: aga },
-    { id: 6, text: "Ania - rekompozycja 12% tkanki tłuszczowej", image: ania },
-    { id: 7, text: "Darek - odmłodzony o 18 lat", image: darek },
-    { id: 8, text: "Gosia - rekompozycja ciała", image: gosia },
+    { id: 6, text: "Ania - rekompozycja 12% tkanki tłuszczowej -", image: ania },
+    { id: 7, text: "Darek - odmłodzony o 18 lat -", image: darek },
+    { id: 12, text: "Bogus - -", image: bogus },
+    { id: 8, text: "Gosia - rekompozycja ciała -", image: gosia },
     { id: 9, text: "Kamila -6 kg / -30 cm", image: kamila },
-    { id: 10, text: "Natalia", image: natalia }
+    { id: 10, text: "Natalia - -", image: natalia },
+    { id: 11, text: "Bogdan - -", image: bogdan }
+
 ];
 
-const TRANSITION = 650;
-const SHIFT = 36;
-const COMMIT_AT = 300; // 🔥 klucz: przed końcem animacji
-
 export default function BeforeAfter() {
-    const trackRef = useRef<HTMLDivElement | null>(null);
-    const touchStartX = useRef<number | null>(null);
-    const directionRef = useRef<1 | -1>(1);
-    const lockRef = useRef(false);
-    const commitTimer = useRef<number | null>(null);
+    const carouselRef = useRef<HTMLDivElement>(null);
 
-    const [index, setIndex] = useState(0);
-    const [hovered, setHovered] = useState(false);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
-    const [loaded, setLoaded] = useState<Record<number, boolean>>({});
+    const [hovered, setHovered] = useState(false);
+    const [isNavHovered, setIsNavHovered] = useState(false);
 
-    const getIndex = (i: number) => (i + items.length) % items.length;
+    const duplicated = [...items, ...items, ...items];
 
-    const commit = () => {
-        const track = trackRef.current;
-        if (!track) return;
+    const isDragging = useRef(false);
+    const startX = useRef(0);
+    const startScrollLeft = useRef(0);
 
-        const dir = directionRef.current;
+    const velocity = useRef(0);
+    const lastX = useRef(0);
+    const lastTime = useRef(0);
 
-        setIndex((prev) => getIndex(prev + dir));
+    const animationFrame = useRef<number | null>(null);
 
-        // reset bez flasha
-        track.style.transition = "none";
-        track.style.transform = "translateX(0%)";
+    // 🔁 SAFE LOOP (bez skoku)
+    const loopCheck = () => {
+        const container = carouselRef.current;
+        if (!container) return;
 
-        track.getBoundingClientRect(); // flush
+        const singleSetWidth = container.scrollWidth / 3;
 
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                lockRef.current = false;
-            });
-        });
-    };
-
-    const animate = (dir: 1 | -1) => {
-        if (lockRef.current) return;
-
-        const track = trackRef.current;
-        if (!track) return;
-
-        lockRef.current = true;
-        directionRef.current = dir;
-
-        track.style.transition = `transform ${TRANSITION}ms cubic-bezier(0.22, 1, 0.36, 1)`;
-        track.style.transform = `translateX(${dir * -SHIFT}%)`;
-
-        if (commitTimer.current) clearTimeout(commitTimer.current);
-
-        commitTimer.current = window.setTimeout(() => {
-            commit();
-        }, COMMIT_AT);
-    };
-
-    const next = useCallback(() => animate(1), []);
-    const prev = useCallback(() => animate(-1), []);
-
-    useEffect(() => {
-        if (hovered) return;
-
-        const id = setInterval(() => next(), 3000);
-        return () => clearInterval(id);
-    }, [hovered, next]);
-
-    const visible = [
-        items[getIndex(index - 2)],
-        items[getIndex(index - 1)],
-        items[getIndex(index)],
-        items[getIndex(index + 1)],
-        items[getIndex(index + 2)]
-    ];
-
-    const handleTouchStart = (e: React.TouchEvent) => {
-        touchStartX.current = e.touches[0].clientX;
-    };
-
-    const handleTouchEnd = (e: React.TouchEvent) => {
-        if (touchStartX.current === null) return;
-
-        const diff = e.changedTouches[0].clientX - touchStartX.current;
-
-        if (Math.abs(diff) > 50) {
-            diff > 0 ? prev() : next();
+        if (container.scrollLeft >= singleSetWidth * 2) {
+            container.scrollLeft -= singleSetWidth;
         }
 
-        touchStartX.current = null;
+        if (container.scrollLeft <= 0) {
+            container.scrollLeft += singleSetWidth;
+        }
     };
 
-    const getPositionClass = (i: number) => {
-        if (i === 2) return "center";
-        if (i === 1 || i === 3) return "adjacent";
-        return "outer";
+    const stopMomentum = () => {
+        if (animationFrame.current) {
+            cancelAnimationFrame(animationFrame.current);
+        }
     };
+
+    const startMomentum = () => {
+        const container = carouselRef.current;
+        if (!container) return;
+
+        const decay = 0.92;
+
+        const animate = () => {
+            velocity.current *= decay;
+
+            container.scrollLeft -= velocity.current * 16;
+
+            loopCheck();
+
+            if (Math.abs(velocity.current) > 0.05) {
+                animationFrame.current = requestAnimationFrame(animate);
+            }
+        };
+
+        animationFrame.current = requestAnimationFrame(animate);
+    };
+
+    const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+        const container = carouselRef.current;
+        if (!container) return;
+
+        stopMomentum();
+
+        isDragging.current = true;
+
+        startX.current = e.clientX;
+        startScrollLeft.current = container.scrollLeft;
+
+        lastX.current = e.clientX;
+        lastTime.current = performance.now();
+
+        container.setPointerCapture(e.pointerId);
+    };
+
+    const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+        if (!isDragging.current) return;
+
+        const container = carouselRef.current;
+        if (!container) return;
+
+        const dx = e.clientX - startX.current;
+
+        container.scrollLeft = startScrollLeft.current - dx;
+
+        loopCheck();
+
+        const now = performance.now();
+
+        const deltaX = e.clientX - lastX.current;
+        const deltaTime = now - lastTime.current;
+
+        if (deltaTime > 0) {
+            velocity.current = deltaX / deltaTime;
+        }
+
+        lastX.current = e.clientX;
+        lastTime.current = now;
+    };
+
+    const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+        const container = carouselRef.current;
+        if (!container) return;
+
+        isDragging.current = false;
+
+        container.releasePointerCapture(e.pointerId);
+
+        startMomentum();
+    };
+
+    // start na środkowej liście
+    useEffect(() => {
+        const container = carouselRef.current;
+        if (!container) return;
+
+        requestAnimationFrame(() => {
+            const singleSetWidth = container.scrollWidth / 3;
+            container.scrollLeft = singleSetWidth;
+        });
+    }, []);
+
+    // auto scroll
+    useEffect(() => {
+        if (hovered || isNavHovered || isDragging.current) return;
+
+        const container = carouselRef.current;
+        if (!container) return;
+
+        const interval = setInterval(() => {
+            const firstCard = container.querySelector<HTMLElement>(".ba-item");
+            if (!firstCard) return;
+
+            const gap = parseInt(getComputedStyle(container).gap || "24") || 24;
+            const step = firstCard.offsetWidth + gap;
+
+            container.scrollBy({
+                left: step,
+                behavior: "smooth",
+            });
+
+            setTimeout(loopCheck, 400);
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [hovered]);
+
+    useEffect(() => {
+        return () => stopMomentum();
+    }, []);
+
+    const scrollStep = () => {
+        const container = carouselRef.current;
+        if (!container) return;
+
+        const firstCard = container.querySelector<HTMLElement>(".ba-item");
+        if (!firstCard) return;
+
+        const gap =
+            parseInt(getComputedStyle(container).gap || "24") || 24;
+
+        const step = firstCard.offsetWidth + gap;
+
+        container.scrollBy({
+            left: step,
+            behavior: "smooth",
+        });
+
+        setTimeout(() => {
+            const singleSetWidth = container.scrollWidth / 3;
+
+            if (container.scrollLeft >= singleSetWidth * 2) {
+                container.scrollLeft -= singleSetWidth;
+            }
+        }, 400);
+    };
+
+    const scrollStepBack = () => {
+        const container = carouselRef.current;
+        if (!container) return;
+
+        const firstCard = container.querySelector<HTMLElement>(".ba-item");
+        if (!firstCard) return;
+
+        const gap =
+            parseInt(getComputedStyle(container).gap || "24") || 24;
+
+        const step = firstCard.offsetWidth + gap;
+
+        container.scrollBy({
+            left: -step,
+            behavior: "smooth",
+        });
+
+        setTimeout(() => {
+            const singleSetWidth = container.scrollWidth / 3;
+
+            if (container.scrollLeft <= 0) {
+                container.scrollLeft += singleSetWidth;
+            }
+        }, 400);
+    };
+
+    useEffect(() => {
+        if (hovered || isNavHovered || isDragging.current) return;
+
+        const timeout = setTimeout(() => {
+            // resume logic trigger (optional flag)
+        }, 1500);
+
+        return () => clearTimeout(timeout);
+    }, [hovered, isNavHovered]);
 
     return (
         <section className="before-after">
             <h2>Efekty</h2>
 
             <div className="ba-wrapper">
-                <button className="ba-arrow left" onClick={prev}>❮</button>
+
+                <button
+                    className="ba-nav ba-left"
+                    onClick={scrollStepBack}
+                    aria-label="Previous"
+                    onMouseEnter={() => setIsNavHovered(true)}
+                    onMouseLeave={() => setIsNavHovered(false)}
+                >
+                    ‹
+                </button>
+
+                <button
+                    className="ba-nav ba-right"
+                    onClick={scrollStep}
+                    aria-label="Next"
+                    onMouseEnter={() => setIsNavHovered(true)}
+                    onMouseLeave={() => setIsNavHovered(false)}
+                >
+                    ›
+                </button>
 
                 <div
-                    className="ba-viewport"
-                    onTouchStart={handleTouchStart}
-                    onTouchEnd={handleTouchEnd}
+                    ref={carouselRef}
+                    className="ba-carousel"
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
+                    onPointerDown={handlePointerDown}
+                    onPointerMove={handlePointerMove}
+                    onPointerUp={handlePointerUp}
+                    onPointerCancel={handlePointerUp}
                 >
-                    <div className="ba-track" ref={trackRef}>
-                        {visible.map((item, i) => (
+                    {duplicated.map((item, index) => (
+                        <div key={`${item.id}-${index}`} className="ba-item">
                             <div
-                                key={`${item.id}-${i}`}
-                                className={`ba-item ${getPositionClass(i)}`}
+                                className="ba-image-wrapper"
+                                onClick={() => setSelectedImage(item.image)}
                             >
-                                <div
-                                    className="ba-image-wrapper"
-                                    onMouseEnter={() => setHovered(true)}
-                                    onMouseLeave={() => setHovered(false)}
-                                    onClick={() => setSelectedImage(item.image)}
-                                >
-                                    <img
-                                        src={item.image}
-                                        alt={item.text}
-                                        draggable={false}
-                                        onLoad={() =>
-                                            setLoaded((p) => ({ ...p, [item.id]: true }))
-                                        }
-                                        style={{
-                                            opacity: loaded[item.id] ? 1 : 0
-                                        }}
-                                    />
+                                <img
+                                    src={item.image}
+                                    alt={item.text}
+                                    draggable={false}
+                                />
 
-                                    <div className="ba-overlay">
-                                        <p>
-                                            {item.text.split(" -").map((t, i) => (
-                                                <span key={i}>
-                                                    {t}
-                                                    <br />
-                                                </span>
-                                            ))}
-                                        </p>
-                                    </div>
+                                <div className="ba-overlay">
+                                    <p>
+                                        {item.text.split(" -").map((t, i) => (
+                                            <span key={i}>
+                                            {t}
+                                                <br />
+                                        </span>
+                                        ))}
+                                    </p>
                                 </div>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
                 </div>
-
-                <button className="ba-arrow right" onClick={next}>❯</button>
             </div>
 
             {selectedImage && (
-                <div className="ba-modal" onClick={() => setSelectedImage(null)}>
+                <div
+                    className="ba-modal"
+                    onClick={() => setSelectedImage(null)}
+                >
                     <div className="ba-modal-content">
                         <img src={selectedImage} alt="preview" />
                     </div>
