@@ -9,6 +9,7 @@ import ContactForm from "./components/ContactForm.tsx";
 import ContactSection from "./components/ContactSection.tsx";
 import About from "./pages/About.tsx";
 import OfferDetails from "./pages/OfferDetails";
+import { useEffect } from "react";
 
 import {
     BrowserRouter,
@@ -32,8 +33,21 @@ const Home = () => (
 const AppContent = () => {
     const location = useLocation();
 
-    // footer tylko na homepage
     const showFooter = location.pathname === "/";
+
+    useEffect(() => {
+        if (location.hash) {
+            const id = location.hash.replace("#", "");
+            const element = document.getElementById(id);
+
+            if (element) {
+                // małe opóźnienie pomaga po renderze strony
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: "smooth" });
+                }, 100);
+            }
+        }
+    }, [location])
 
     return (
         <div className="app">
