@@ -56,14 +56,14 @@
 }
 
 .navbar-links a {
-    color: #E4F0F6;
+    color: #FBFBFB;
     text-decoration: none;
     display: inline-block;
     transition: 0.3s ease;
 }
 
 .navbar-links li {
-    color: #E4F0F6;
+    color: #FBFBFB;
     cursor: pointer;
 
     transition: 0.3s;
@@ -76,7 +76,7 @@
 
 /* BUTTON */
 .navbar-btn {
-    background: #E4F0F6;
+    background: #FBFBFB;
     color: black;
 
     border: none;

@@ -106,7 +106,7 @@
 
     transition: all 0.35s ease;
 
-    color: #E4F0F6;
+    color: #FBFBFB;
 
     padding: 20px;
 
@@ -123,11 +123,11 @@
 .card-text-content h3 {
     margin-top: 10px;
     font-size: 19px;
-    color: #E4F0F6;;
+    color: #FBFBFB;
 }
 
 .card-text-content p {
-    color: #E4F0F6;;
+    color: #FBFBFB;
 }
 
 /* BUTTON */

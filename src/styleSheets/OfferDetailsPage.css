@@ -1,8 +1,62 @@
 .offer-details {
+    position: relative;
+
     min-height: 100vh;
+
     background: #0F0F0F;
-    color: #E4F0F6;;
-    padding: 140px 20px 80px;
+    color: #E4F0F6;
+
+    padding: 0;
+    overflow: hidden;
+}
+
+/* BANER */
+
+.offer-details-image-wrapper {
+    position: relative;
+
+    width: 100%;
+    height: 65vh;
+
+    overflow: hidden;
+}
+
+.offer-details-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    display: block;
+}
+
+/* CIEMNA NAKŁADKA */
+
+.offer-details-image-wrapper::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+            linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,0.15),
+                    rgba(15,15,15,0.85)
+            );
+}
+
+/* CONTENT */
+
+.offer-details-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1200px;
+
+    margin: -80px auto 0;
+    padding: 0 40px 40px;
 }
 
 /* CONTAINER */
@@ -22,24 +76,34 @@
     overflow: hidden;
 }
 
+/* DESKTOP */
 .offer-details-image {
     width: 100%;
+    height: 100%;
     object-fit: cover;
-    object-position: center;
     display: block;
     transition: transform 0.6s ease;
+    object-position: center 25%;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+    .offer-details-image {
+        height: 220px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .offer-details-image {
+        height: 160px;
+    }
 }
 
 .offer-details-image:hover {
     transform: scale(1.04);
 }
 
-/* CONTENT */
-
-.offer-details-content {
-    padding: 50px;
-    padding-bottom: 10px;
-}
 
 .offer-details-tag {
     display: inline-block;
@@ -47,7 +111,7 @@
     border-radius: 999px;
 
     background: rgba(255,255,255,0.12);
-    color: #E4F0F6;
+    color: #FBFBFB;
 
     font-size: 13px;
     letter-spacing: 2px;
@@ -65,7 +129,7 @@
 .offer-details-content p {
     font-size: 18px;
     line-height: 1.9;
-    color: #E4F0F6;
+    color: #FBFBFB;
     max-width: 850px;
     margin-bottom: 40px;
 }
@@ -73,7 +137,7 @@
 /* BUTTON */
 
 .offer-details-btn {
-    background: #E4F0F6;
+    background: #FBFBFB;
     color: black;
     border: none;
 
@@ -90,7 +154,7 @@
 
 .offer-details-btn:hover {
     transform: translateY(-2px) scale(1.03);
-    background: #E4F0F6;
+    background: #FBFBFB;
 }
 
 /* ========================= */
@@ -204,7 +268,7 @@
     font-size: 13px;
     line-height: 1.2;
 
-    color: #E4F0F6;
+    color: #FBFBFB;
     opacity: 0.9;
 
     word-wrap: break-word;
@@ -238,7 +302,7 @@
 
     transition: 0.25s ease;
 
-    color: #E4F0F6;
+    color: #FBFBFB;
 }
 
 .orbit-item:hover .orbit-tooltip {
@@ -322,7 +386,7 @@
 }
 
 .orbit-center-overlay span {
-    color: #E4F0F6;
+    color: #FBFBFB;
 
     font-size: 18px;
 
@@ -461,7 +525,7 @@
 
 /* CONTACT BUTTON - idealny środek */
 .offer-details-btn {
-    background: #E4F0F6;
+    background: #FBFBFB;
     color: black;
     border: none;
 
@@ -479,5 +543,5 @@
 
 .offer-details-btn:hover {
     transform: translateY(-2px) scale(1.03);
-    background: #E4F0F6;
+    background: #FBFBFB;
 }

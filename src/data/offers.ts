@@ -23,6 +23,7 @@ export type Offer = {
     details: string;
     perks?: OfferPerk[];
     image?: string;
+    type: string;
 
 };
 
@@ -34,6 +35,7 @@ export const offers: Offer[] = [
         image: medyczne,
         details:
             'Jeśli jesteś po urazie, masz przeciążenia lub dolegliwości bólowe, ten trening pomoże Ci poprawić sprawność, zmniejszyć ból i bezpiecznie wrócić do aktywności.',
+        type:'offer',
         perks: [
             {
                 icon: 'bullseye',
@@ -80,6 +82,7 @@ export const offers: Offer[] = [
         image: funkcjonalne,
         details:
             'Trening dla osób prowadzących siedzący tryb życia. Poprawia sprawność, mobilność i jakość codziennego ruchu.',
+        type:'offer',
         perks: [
             {
                 icon: 'lifting',
@@ -121,6 +124,7 @@ export const offers: Offer[] = [
         image: odchudzanie,
         details:
             'Kompleksowy proces redukcji masy ciała oparty na treningu, analizie i dopasowaniu strategii.',
+        type:'offer',
         perks: [
             {
                 icon: 'map',
@@ -172,6 +176,7 @@ export const offers: Offer[] = [
         image: motoryczne,
         details:
             'Trening dla sportowców rozwijający siłę, szybkość, moc i koordynację.',
+        type:'offer',
         perks: [
             {
                 icon: 'bullseye',
@@ -223,6 +228,7 @@ export const offers: Offer[] = [
         image: ogolne,
         details:
             'Wszechstronny trening poprawiający kondycję, siłę i ogólną sprawność fizyczną.',
+        type:'offer',
         perks: [
             {
                 icon: 'lifting',
@@ -264,6 +270,7 @@ export const offers: Offer[] = [
         image: plany,
         details:
             'Indywidualne plany treningowe dopasowane do Twojego czasu, możliwości i celu.',
+        type:'offer',
         perks: [
             {
                 icon: 'lifting',
@@ -312,27 +319,23 @@ export const offers: Offer[] = [
         title: 'Treningi dla dwojga / grupowe',
         desc: 'motywacja + lepsza cena',
         image: dladwojga,
-        details: 'Treningi w parach lub małych grupach – idealne dla motywacji i wspólnego rozwoju.',
-        perks: [ { icon: 'lifting', label: 'Trening partnerski', details: 'Wspólna jednostka treningowa' }, {
-            icon: 'support',
-                label: 'Motywacja grupowa',
-                details: 'Większe zaangażowanie i regularność' } ]
+        type: 'service',
+        details: 'Wszystkie rodzaje treningów mogą być również realizowane w parach lub małych grupach. To świetne rozwiązanie, jeśli chcesz ćwiczyć z partnerem, znajomymi lub rodziną! To nie tylko dodatkowa motywacja, ale też przyjemniejsza forma wspólnego spędzania czasu. Taki typu trening wciąż zachowuje indywidualne podejście i wysoką jakość, ale jednocześnie pozwala obniżyć koszt na osobę. Skontaktuj się ze mną, a dobierzemy najlepszą formę treningu dla Ciebie i Twojej grupy'
     },
     {
         slug: 'gry-i-zabawy',
         title: 'Gry i zabawy',
         image: games,
         desc: 'aktywność i integracja',
-        details: 'Zajęcia ruchowe w formie gier i zabaw – idealne dla grup i integracji.',
-        perks: []
+        type: 'service',
+        details: 'Jeśli szukasz aktywnej formy zajęć dla grup zapraszam do kontaktu! Prowadzę szereg gier i zabawruchowych, które zapewnią ruch, integrację i pozytywne doświadczenia w dobrej atmosferze w każdej ekipie!'
     },
     {
         slug: 'personal-training-in-english',
         title: 'Personal training (English)',
         image: english,
         desc: 'training sessions in English',
-        details: 'I provide personal training sessions in English for international clients living in Poland.',
-        perks: [ { icon: 'lifting', label: 'Personal training', details: '1-on-1 coaching sessions'
-        },
-            { icon: 'support', label: 'Ongoing support', details: 'Continuous guidance and feedback' } ] }
+        type: 'service',
+        details: 'I provide personal training sessions in English – perfect for international clients living in Poland or anyone who feels more comfortable communicating in English. Feel free to reach out and book your session – I’ll be happy to help you achieve your fitness goals. For more information, feel free to contact me using any of the available options on my website or by clicking the button below. See you on trainings!'
+    }
 ];

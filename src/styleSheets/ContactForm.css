@@ -38,7 +38,7 @@
 /* PRZYCISK */
 .cf-button {
     background: #0F0F0F;;
-    color: #E4F0F6;
+    color: #FBFBFB;
 
     border: none;
     border-radius: 999px;
@@ -68,7 +68,7 @@
     max-width: 1400px;
 
     background: #0F0F0F;
-    color: #E4F0F6;
+    color: #FBFBFB;
 
     border-radius: 30px;
 
@@ -101,7 +101,7 @@
     border-radius: 50%;
 
     background: rgba(255, 255, 255, 0.1);
-    color: #E4F0F6;
+    color: #FBFBFB;
 
     font-size: 22px;
 
