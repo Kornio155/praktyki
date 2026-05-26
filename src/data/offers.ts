@@ -5,9 +5,9 @@ import motoryczne from '../assets/oferty/motoryczne.png'
 import odchudzanie from '../assets/oferty/odchudzanie.png'
 import plany from '../assets/oferty/plany.png'
 import ogolne from '../assets/oferty/ogolne.png'
-import forGroup from '../assets/group.svg';
-import games from '../assets/games.svg';
-import english from '../assets/english.svg';
+import dladwojga from '../assets/oferty/dladwojga.png';
+import games from '../assets/oferty/grupy.png';
+import english from '../assets/oferty/anglia.svg';
 
 
 export type OfferPerk = {
@@ -311,7 +311,7 @@ export const offers: Offer[] = [
         slug: 'treningi-dla-dwojga',
         title: 'Treningi dla dwojga / grupowe',
         desc: 'motywacja + lepsza cena',
-        image: forGroup,
+        image: dladwojga,
         details: 'Treningi w parach lub małych grupach – idealne dla motywacji i wspólnego rozwoju.',
         perks: [ { icon: 'lifting', label: 'Trening partnerski', details: 'Wspólna jednostka treningowa' }, {
             icon: 'support',
