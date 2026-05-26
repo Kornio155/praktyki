@@ -19,7 +19,12 @@ const OfferSection: React.FC = () => {
                             <div
                                 className="card"
                                 key={index}
-                                onClick={() => navigate(`/offer/${item.slug}`)}
+                                onClick={() =>
+                                    navigate(`/offer/${item.slug}`, {
+                                        state: { scrollTo: item.slug }
+                                    })
+                                }
+                                id={item.slug}
                             >
                                 <div className="card-inner">
                                     <h3>{item.title}</h3>
