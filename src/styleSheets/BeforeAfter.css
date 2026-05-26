@@ -6,11 +6,27 @@
 }
 
 .before-after h2 {
-    font-size: 60px;
-    margin: 0 20px 50px;
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto 50px auto;
     text-align: left;
+    font-size: 60px;
+    box-sizing: border-box;
 }
 
+/* FIX dla mniejszych ekranów */
+@media (max-width: 1023px) {
+    .before-after h2 {
+        padding: 0 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .before-after h2 {
+        font-size: 36px;
+        padding: 0 16px;
+    }
+}
 /* =========================
    WRAPPER
 ========================= */

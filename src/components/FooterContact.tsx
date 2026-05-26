@@ -12,9 +12,8 @@ const FooterContact: React.FC = () => {
             </button>
 
             <div className="footer-contact-row">
-                <h2 className="footer-title">Twórcy strony</h2>
-
                 <div className="footer-list">
+                    <p className="footer-title">Twórcy strony</p>
                     <p>Maciej Krzywda</p>
                     <p>Patryk Witkowski</p>
                     <p>Kornel Janiuk</p>

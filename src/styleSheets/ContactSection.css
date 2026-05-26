@@ -12,10 +12,9 @@
 .Contact h2 {
     width: 100%;
     max-width: 1140px;
-
+    margin: 0 auto 50px auto; /* ważne */
     text-align: left;
     font-size: 50px;
-    margin-bottom: 50px;
 
     color: black;
 }
