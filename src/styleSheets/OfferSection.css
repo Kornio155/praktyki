@@ -1,5 +1,5 @@
 .offer {
-    background:  #0F0F0F;
+    background: #0F0F0F;
     color: #E4F0F6;
     padding: 80px 0;
 }
@@ -11,61 +11,97 @@
     margin: 0 auto 40px auto;
     text-align: left;
     font-size: 50px;
-    padding: 0 20px; /* 👈 kluczowe */
+    padding: 0 20px;
 }
+
+/* ================= GRID ================= */
 
 .offer-grid {
     display: grid;
-    grid-template-columns: repeat(3, 400px);
+    grid-template-columns: repeat(3, minmax(280px, 320px));
     gap: 12px;
-
     justify-content: center;
-    justify-items: center;
-}
-
-
-/* 2 kolumny */
-@media (max-width: 1100px) {
-    .offer-grid {
-        grid-template-columns: repeat(2, minmax(320px, 450px));
-    }
-}
-
-/* 1 kolumna */
-@media (max-width: 700px) {
-    .offer-grid {
-        grid-template-columns: minmax(320px, 450px);
-    }
-}
-
-.offer-grid-img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-
-    transition: transform 0.4s ease;
+    justify-items: stretch;
 }
 
 /* tablet */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
     .offer-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(260px, 320px));
     }
 }
 
-/* telefon */
-@media (max-width: 600px) {
+/* telefon - 2 kolumny */
+@media (max-width: 768px) {
+    .offer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 0 8px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: none;
+        min-height: 300px; /* było 380px */
+        aspect-ratio: auto;
+    }
+
+    .offer-grid-img {
+        height: 130px; /* było 180px */
+    }
+
+    .card h3 {
+        font-size: 14px;
+        min-height: 45px;
+        padding: 6px;
+        line-height: 1.15;
+    }
+
+    .card-desc {
+        font-size: 12px;
+        padding: 4px 8px;
+        line-height: 1.2;
+    }
+
+    .card-content {
+        gap: 3px;
+        padding: 6px 0;
+    }
+
+    .details-btn {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+
+        padding: 6px 12px;
+        font-size: 12px;
+        margin: 4px auto;
+    }
+}
+
+/* bardzo małe telefony */
+@media (max-width: 340px) {
     .offer-grid {
         grid-template-columns: 1fr;
     }
 }
 
-.card {
-    background:  #252525;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: #252525 solid 1px;
-    cursor: pointer;
+/* ================= IMAGE ================= */
 
+.offer-grid-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* ================= CARD ================= */
+
+.card {
+    background: #252525;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #252525;
+    cursor: pointer;
 
     width: 100%;
     max-width: 320px;
@@ -77,30 +113,21 @@
     border-radius: 15px;
     overflow: hidden;
 
-    padding: 0;
     aspect-ratio: 3 / 5;
+
     transition:
             transform 0.35s ease,
             border-color 0.35s ease,
             box-shadow 0.35s ease;
 }
+
 .card:hover {
     transform: scale(1.04);
-
     border-color: white;
-
-    box-shadow:
-            0 20px 40px rgba(0,0,0,0.35)
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
 }
-.card-content {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    justify-content: flex-start;
-    gap: 6px;
-    padding: 10px 0; /* 🔥 dodaje balans góra/dół */
 
-}
+/* ================= CONTENT ================= */
 
 .card-inner {
     display: flex;
@@ -110,75 +137,74 @@
     gap: 6px;
 }
 
-
-.card-desc {
-    color: #E4F0F6;
-
-    font-size: 18px;   /* trochę mniejszy */
-    text-align: center;
-    line-height: 1.25; /* 🔥 kluczowe zmniejszenie wysokości */
-
-    padding: 8px 12px; /* 🔥 mniej paddingu */
-
-    margin: 0;
-
-    overflow-wrap: break-word;
-    word-break: break-word;
-    white-space: normal;
+.card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 10px 0;
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
+/* ================= TEXT ================= */
 
 .card h3 {
     background: #252525;
     color: #E4F0F6;
 
     margin: 0;
-
     font-size: 19px;
     text-align: center;
 
     height: 70px;
+    min-height: 70px;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
     overflow: hidden;
     text-overflow: ellipsis;
-    min-height: 70px;
+
     padding: 10px 15px;
     line-height: 1.2;
 }
-.details-btn {
-    margin-top: 5px;   /* 🔥 KLUCZ */
-    margin-bottom: 5px;
 
+.card-desc {
+    color: #E4F0F6;
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.25;
+
+    padding: 8px 12px;
+    margin: 0;
+
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+/* ================= BUTTON ================= */
+
+.details-btn {
+    margin: 5px auto;
     display: block;
     width: fit-content;
-
-    margin-left: auto;
-    margin-right: auto;
 
     padding: 10px 22px;
 
     border: none;
     border-radius: 10px;
+
     background: #0F0F0F;
     color: #E4F0F6;
     cursor: pointer;
 
     transform: translateY(20px);
     opacity: 0;
+    pointer-events: none;
 
     transition: 0.3s ease;
-    pointer-events: none;
 }
-
 
 .card:hover .details-btn {
     transform: translateY(0);
@@ -190,7 +216,8 @@
     background: #333;
 }
 
+/* ================= IMAGE WRAPPER ================= */
+
 .img-wrapper {
     flex-shrink: 0;
 }
-

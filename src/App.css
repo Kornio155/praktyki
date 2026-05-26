@@ -51,16 +51,16 @@ html {
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .footer-contact {
-    padding: 60px 6%;
-  }
 
-  .footer-contact-header h2 {
-    font-size: 26px;
-  }
+  .scroll-top-btn {
+    top: 10px;
+    right: 10px;
 
-  .footer-contact-box {
-    max-width: 100%;
+    padding: 8px 12px;
+    border-radius: 10px;
+
+    font-size: 11px;
+    gap: 3px;
   }
 }
 

@@ -187,21 +187,60 @@
 @media (max-width: 650px) {
 
     .Contact {
-        padding: 50px 20px;
+        padding: 50px 12px;
+    }
+
+    .Contact-content {
+        gap: 12px;
     }
 
     .Contact-left,
     .Contact-right {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        width: 100%;
+    }
+
+    .Contact-card,
+    .Big-card {
+        height: 120px;
+        border-radius: 12px;
     }
 
     .Big-card {
-        grid-column: span 1;
+        grid-column: span 2;
+    }
+
+    .contact-icon-image,
+    .social-icon {
+        width: 45px;
+        height: 45px;
     }
 
     .Contact h2 {
+        font-size: 36px;
         text-align: center;
-        font-size: 40px;
+        margin-bottom: 30px;
     }
 
+    .card-text-content {
+        padding: 8px;
+    }
+
+    .card-text-content h3 {
+        font-size: 14px;
+        margin-top: 4px;
+    }
+
+    .card-text-content p {
+        font-size: 12px;
+        margin: 2px 0;
+    }
+
+    .big-card-btn,
+    .location-button {
+        margin-top: 8px;
+        padding: 6px 10px;
+        font-size: 12px;
+    }
 }
