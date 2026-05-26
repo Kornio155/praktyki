@@ -53,12 +53,12 @@ const OfferSection: React.FC = () => {
             </section>
 
             {/* USŁUGI */}
-            <section id="services" className="services">
+            <section id="offer" className="offer">
 
                 <div className="offer-grid">
                     {services.map((item, index) => (
                         <div
-                            className="card service-card"
+                            className="card"
                             key={index}
                             onClick={() => navigate(`/offer/${item.slug}`)}
                         >

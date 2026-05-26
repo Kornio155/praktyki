@@ -181,37 +181,3 @@
     flex-shrink: 0;
 }
 
-.services {
-
-    background:  #0F0F0F;
-    color: #E4F0F6;
-    padding: 80px 40px;
-}
-
-.services h2 {
-    font-size: 50px;
-    margin-bottom: 40px;
-}
-
-
-.services .card {
-    transform: scale(0.95);
-    opacity: 0.95;
-    border-color: #1C1C1C;
-
-    width: 100%;
-    max-width: 320px;
-
-    aspect-ratio: 1 / 1.6;
-
-    min-height: unset;
-
-    flex-direction: column;
-}
-
-.services .card:hover {
-    transform: scale(1);
-    opacity: 1;
-    border-color: #E4F0F6;
-}
-

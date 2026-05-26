@@ -34,7 +34,7 @@ export const offers: Offer[] = [
         desc: 'wróć do sprawności bez bólu',
         image: medyczne,
         details:
-            'Jeśli jesteś po urazie, masz przeciążenia lub dolegliwości bólowe, ten trening pomoże Ci poprawić sprawność, zmniejszyć ból i bezpiecznie wrócić do aktywności.',
+            'Jeśli jesteś po urazie, masz przeciążenia lub dolegliwości bólowe, ten trening pomoże Ci poprawić sprawność, zmniejszyć ból i bezpiecznie wrócić do aktywności, żebyś znów mógł czuć się pewnie we własnym ciele i funkcjonować bez ograniczeń.',
         type:'offer',
         perks: [
             {
@@ -81,7 +81,7 @@ export const offers: Offer[] = [
         desc: 'zdrowe funkcjonowanie na co dzień',
         image: funkcjonalne,
         details:
-            'Trening dla osób prowadzących siedzący tryb życia. Poprawia sprawność, mobilność i jakość codziennego ruchu.',
+            'dużo siedzisz? ten trening jest dla ciebie. świetnie sprawdzi się jako rekompensata siedzącego trybu życia. Trening funkcjonalny omoże Ci lepiej "funkcjonować" w codziennych czynnościach\n',
         type:'offer',
         perks: [
             {
@@ -123,7 +123,7 @@ export const offers: Offer[] = [
         desc: 'redukcja tkanki tłuszczowej',
         image: odchudzanie,
         details:
-            'Kompleksowy proces redukcji masy ciała oparty na treningu, analizie i dopasowaniu strategii.',
+            'Jeśli Twoim celem jest pozbycie się nadmiernych kilogramów, , ten trening połączy intensywną pracę z dopasowaniem do Twoich możliwości, dzięki czemu efekty będą widoczne, a proces bezpieczny.',
         type:'offer',
         perks: [
             {
@@ -175,12 +175,12 @@ export const offers: Offer[] = [
         desc: 'lepsze wyniki w twojej dyscyplinie',
         image: motoryczne,
         details:
-            'Trening dla sportowców rozwijający siłę, szybkość, moc i koordynację.',
+            'Jeśli jesteś sportowcem lub osobą regularnie trenującą, ten trening pomoże Ci rozwinąć siłę, szybkość, moc i koordynację czyli polepszy efekty w Twojej dyscyplinie sportowej',
         type:'offer',
         perks: [
             {
                 icon: 'bullseye',
-                label: 'Diagnostykę słabych punktów',
+                label: 'Diagnostyka słabych punktów',
                 details: 'Określenie, co przeszkadza Ci w osiągnięciu lepszych wyników.'
             },
             {
@@ -227,7 +227,7 @@ export const offers: Offer[] = [
         desc: 'siła, sprawność i energia',
         image: ogolne,
         details:
-            'Wszechstronny trening poprawiający kondycję, siłę i ogólną sprawność fizyczną.',
+            'popraw kondycję, siłę, sprawność i samopoczucie!  ten wszechstronny trening da Ci solidną bazę do lepszej sprawności, większej energii na co dzień i zdrowszego stylu życia. Niekonwencjonalne ćwiczenia z dziedzin streetmovement, animal movement lub gimnastyki pomogą ci się rozwinąć, i dodadzą nutkę świetnej zabawy!',
         type:'offer',
         perks: [
             {
@@ -269,7 +269,7 @@ export const offers: Offer[] = [
         desc: 'plan dopasowany do Ciebie',
         image: plany,
         details:
-            'Indywidualne plany treningowe dopasowane do Twojego czasu, możliwości i celu.',
+            'Najlepszy plan treningowy to taki, który jest dopasowany do Twoich możliwości treningowych!  Nie każdy ma możliwośc trenowania 4-5 razy w tygodniu po dwie godziny. Dlatego przygotowuję plany ćwiczeń uwględniające to, że nie mieszkasz na siłowni i masz wiele innych obowiązków w życiu prócz cwiczeń.',
         type:'offer',
         perks: [
             {

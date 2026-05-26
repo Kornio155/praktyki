@@ -138,7 +138,9 @@ const OfferDetails = () => {
                             className="offer-back-btn"
                             onClick={() => {
                                 navigate("/");
-                                window.scrollTo(0, 0);
+                                setTimeout(() => {
+                                    document.getElementById("offer")?.scrollIntoView({ behavior: "smooth" });
+                                }, 100);
                             }}
                         >
                             ← Powrót
