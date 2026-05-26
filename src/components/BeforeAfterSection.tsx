@@ -15,18 +15,18 @@ import bogdan from "../assets/przedIPo/bogdan_1200x1200.png";
 import bogus from "../assets/przedIPo/bogus_1200x1200.png";
 
 const items = [
-    { id: 1, text: "Aleks - -", image: aleks },
-    { id: 2, text: "Alicja - efekty w niecały rok -", image: alicja },
-    { id: 3, text: "Andrzej -63 => 67 kg -9% tkanki tłuszczowej -", image: andrzej },
-    { id: 4, text: "Adam -12 kg w 4 miesiące -", image: adam },
-    { id: 5, text: "Aga -10% tkanki tłuszczowej -10 kg w 3 miesiące", image: aga },
-    { id: 6, text: "Ania - rekompozycja 12% tkanki tłuszczowej -", image: ania },
-    { id: 7, text: "Darek - odmłodzony o 18 lat -", image: darek },
-    { id: 8, text: "Bogus - -", image: bogus },
-    { id: 9, text: "Gosia - rekompozycja ciała -", image: gosia },
-    { id: 10, text: "Kamila -6 kg / -30 cm", image: kamila },
-    { id: 11, text: "Natalia - -", image: natalia },
-    { id: 12, text: "Bogdan - -", image: bogdan }
+    { id: 1, text: "Aleks = =", image: aleks },
+    { id: 2, text: "Alicja = efekty w niecały rok =", image: alicja },
+    { id: 3, text: "Andrzej =63 -> 67 kg =-9% tkanki tłuszczowej ", image: andrzej },
+    { id: 4, text: "Adam =-12 kg w 4 miesiące =", image: adam },
+    { id: 5, text: "Aga =-10% tkanki tłuszczowej =-10 kg w 3 miesiące", image: aga },
+    { id: 6, text: "Ania = rekompozycja 12% tkanki tłuszczowej =", image: ania },
+    { id: 7, text: "Darek = odmłodzony o 18 lat =", image: darek },
+    { id: 8, text: "Bogus = =", image: bogus },
+    { id: 9, text: "Gosia = rekompozycja ciała =", image: gosia },
+    { id: 10, text: "Kamila =-6 kg / =-30 cm", image: kamila },
+    { id: 11, text: "Natalia = =", image: natalia },
+    { id: 12, text: "Bogdan = =", image: bogdan }
 ];
 
 export default function BeforeAfter() {
@@ -296,7 +296,7 @@ export default function BeforeAfter() {
                                 />
                                 <div className="ba-overlay">
                                     <p>
-                                        {item.text.split(" -").map((t, i) => (
+                                        {item.text.split(" =").map((t, i) => (
                                             <span key={i}>
                                                 {t}
                                                 <br />
