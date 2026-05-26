@@ -22,12 +22,11 @@ const items = [
     { id: 5, text: "Aga -10% tkanki tłuszczowej -10 kg w 3 miesiące", image: aga },
     { id: 6, text: "Ania - rekompozycja 12% tkanki tłuszczowej -", image: ania },
     { id: 7, text: "Darek - odmłodzony o 18 lat -", image: darek },
-    { id: 12, text: "Bogus - -", image: bogus },
-    { id: 8, text: "Gosia - rekompozycja ciała -", image: gosia },
-    { id: 9, text: "Kamila -6 kg / -30 cm", image: kamila },
-    { id: 10, text: "Natalia - -", image: natalia },
-    { id: 11, text: "Bogdan - -", image: bogdan }
-
+    { id: 8, text: "Bogus - -", image: bogus },
+    { id: 9, text: "Gosia - rekompozycja ciała -", image: gosia },
+    { id: 10, text: "Kamila -6 kg / -30 cm", image: kamila },
+    { id: 11, text: "Natalia - -", image: natalia },
+    { id: 12, text: "Bogdan - -", image: bogdan }
 ];
 
 export default function BeforeAfter() {
@@ -49,7 +48,16 @@ export default function BeforeAfter() {
 
     const animationFrame = useRef<number | null>(null);
 
-    // 🔁 SAFE LOOP (bez skoku)
+    // CLICK vs DRAG detection
+    const pointerDownTime = useRef(0);
+    const clickCandidate = useRef(true);
+
+    const stopMomentum = () => {
+        if (animationFrame.current) {
+            cancelAnimationFrame(animationFrame.current);
+        }
+    };
+
     const loopCheck = () => {
         const container = carouselRef.current;
         if (!container) return;
@@ -62,12 +70,6 @@ export default function BeforeAfter() {
 
         if (container.scrollLeft <= 0) {
             container.scrollLeft += singleSetWidth;
-        }
-    };
-
-    const stopMomentum = () => {
-        if (animationFrame.current) {
-            cancelAnimationFrame(animationFrame.current);
         }
     };
 
@@ -99,12 +101,15 @@ export default function BeforeAfter() {
         stopMomentum();
 
         isDragging.current = true;
+        clickCandidate.current = true;
 
         startX.current = e.clientX;
         startScrollLeft.current = container.scrollLeft;
 
         lastX.current = e.clientX;
         lastTime.current = performance.now();
+
+        pointerDownTime.current = performance.now();
 
         container.setPointerCapture(e.pointerId);
     };
@@ -116,6 +121,11 @@ export default function BeforeAfter() {
         if (!container) return;
 
         const dx = e.clientX - startX.current;
+        const dt = performance.now() - pointerDownTime.current;
+
+        if (Math.abs(dx) > 8 || dt > 150) {
+            clickCandidate.current = false;
+        }
 
         container.scrollLeft = startScrollLeft.current - dx;
 
@@ -142,21 +152,24 @@ export default function BeforeAfter() {
 
         container.releasePointerCapture(e.pointerId);
 
-        startMomentum();
+        if (!clickCandidate.current) {
+            startMomentum();
+        }
+
+        setTimeout(() => {
+            clickCandidate.current = true;
+        }, 50);
     };
 
-    // start na środkowej liście
     useEffect(() => {
         const container = carouselRef.current;
         if (!container) return;
 
         requestAnimationFrame(() => {
-            const singleSetWidth = container.scrollWidth / 3;
-            container.scrollLeft = singleSetWidth;
+            container.scrollLeft = container.scrollWidth / 3;
         });
     }, []);
 
-    // auto scroll
     useEffect(() => {
         if (hovered || isNavHovered || isDragging.current) return;
 
@@ -170,10 +183,7 @@ export default function BeforeAfter() {
             const gap = parseInt(getComputedStyle(container).gap || "24") || 24;
             const step = firstCard.offsetWidth + gap;
 
-            container.scrollBy({
-                left: step,
-                behavior: "smooth",
-            });
+            container.scrollBy({ left: step, behavior: "smooth" });
 
             setTimeout(loopCheck, 400);
         }, 3000);
@@ -192,23 +202,12 @@ export default function BeforeAfter() {
         const firstCard = container.querySelector<HTMLElement>(".ba-item");
         if (!firstCard) return;
 
-        const gap =
-            parseInt(getComputedStyle(container).gap || "24") || 24;
-
+        const gap = parseInt(getComputedStyle(container).gap || "24") || 24;
         const step = firstCard.offsetWidth + gap;
 
-        container.scrollBy({
-            left: step,
-            behavior: "smooth",
-        });
+        container.scrollBy({ left: step, behavior: "smooth" });
 
-        setTimeout(() => {
-            const singleSetWidth = container.scrollWidth / 3;
-
-            if (container.scrollLeft >= singleSetWidth * 2) {
-                container.scrollLeft -= singleSetWidth;
-            }
-        }, 400);
+        setTimeout(loopCheck, 400);
     };
 
     const scrollStepBack = () => {
@@ -218,45 +217,31 @@ export default function BeforeAfter() {
         const firstCard = container.querySelector<HTMLElement>(".ba-item");
         if (!firstCard) return;
 
-        const gap =
-            parseInt(getComputedStyle(container).gap || "24") || 24;
-
+        const gap = parseInt(getComputedStyle(container).gap || "24") || 24;
         const step = firstCard.offsetWidth + gap;
 
-        container.scrollBy({
-            left: -step,
-            behavior: "smooth",
-        });
+        container.scrollBy({ left: -step, behavior: "smooth" });
 
-        setTimeout(() => {
-            const singleSetWidth = container.scrollWidth / 3;
-
-            if (container.scrollLeft <= 0) {
-                container.scrollLeft += singleSetWidth;
-            }
-        }, 400);
+        setTimeout(loopCheck, 400);
     };
 
     useEffect(() => {
-        if (hovered || isNavHovered || isDragging.current) return;
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") setSelectedImage(null);
+        };
 
-        const timeout = setTimeout(() => {
-            // resume logic trigger (optional flag)
-        }, 1500);
-
-        return () => clearTimeout(timeout);
-    }, [hovered, isNavHovered]);
+        window.addEventListener("keydown", onKeyDown);
+        return () => window.removeEventListener("keydown", onKeyDown);
+    }, []);
 
     return (
         <section className="before-after">
             <h2>Efekty</h2>
 
             <div className="ba-wrapper">
-
                 <button
                     className="ba-nav ba-left"
                     onClick={scrollStepBack}
-                    aria-label="Previous"
                     onMouseEnter={() => setIsNavHovered(true)}
                     onMouseLeave={() => setIsNavHovered(false)}
                 >
@@ -266,7 +251,6 @@ export default function BeforeAfter() {
                 <button
                     className="ba-nav ba-right"
                     onClick={scrollStep}
-                    aria-label="Next"
                     onMouseEnter={() => setIsNavHovered(true)}
                     onMouseLeave={() => setIsNavHovered(false)}
                 >
@@ -287,21 +271,36 @@ export default function BeforeAfter() {
                         <div key={`${item.id}-${index}`} className="ba-item">
                             <div
                                 className="ba-image-wrapper"
-                                onClick={() => setSelectedImage(item.image)}
+                                onPointerUp={(e) => {
+                                    console.log("CLICK IMAGE:", item.image);
+                                    console.log("clickCandidate:", clickCandidate.current);
+                                    e.stopPropagation();
+                                    console.log("CLICK IMAGE:", item.image);
+                                    console.log("clickCandidate:", clickCandidate.current);
+
+                                    const dt = performance.now() - pointerDownTime.current;
+
+                                    const isQuickTap = dt < 250 && clickCandidate.current;
+                                    console.log("CLICK IMAGE:", item.image);
+                                    console.log("clickCandidate:", clickCandidate.current);
+
+                                    if (isQuickTap) {
+                                        setSelectedImage(item.image);
+                                    }
+                                }}
                             >
                                 <img
                                     src={item.image}
                                     alt={item.text}
                                     draggable={false}
                                 />
-
                                 <div className="ba-overlay">
                                     <p>
                                         {item.text.split(" -").map((t, i) => (
                                             <span key={i}>
-                                            {t}
+                                                {t}
                                                 <br />
-                                        </span>
+                                            </span>
                                         ))}
                                     </p>
                                 </div>
