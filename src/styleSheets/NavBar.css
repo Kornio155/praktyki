@@ -31,10 +31,17 @@
 
 /* LOGO */
 .logo {
-    height:40px;
+    height: 40px;
     display: flex;
     align-items: center;
 
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 0.7;
+    transform: translateY(-3px);
 }
 
 
@@ -56,14 +63,14 @@
 }
 
 .navbar-links a {
-    color: #E4F0F6;
+    color: #FBFBFB;
     text-decoration: none;
     display: inline-block;
     transition: 0.3s ease;
 }
 
 .navbar-links li {
-    color: #E4F0F6;
+    color: #FBFBFB;
     cursor: pointer;
 
     transition: 0.3s;
@@ -76,7 +83,7 @@
 
 /* BUTTON */
 .navbar-btn {
-    background: #E4F0F6;
+    background: #FBFBFB;
     color: black;
 
     border: none;

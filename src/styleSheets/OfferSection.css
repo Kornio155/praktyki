@@ -1,22 +1,49 @@
 .offer {
     background:  #0F0F0F;
     color: #E4F0F6;
-    padding: 80px 40px;
+    padding: 80px 0;
 }
 
 .offer h2 {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto 40px auto;
+    text-align: left;
     font-size: 50px;
-    margin-bottom: 40px;
+
 }
+
+/* FIX dla mniejszych ekranów */
+@media (max-width: 1023px) {
+    .offer h2 {
+        padding: 0 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .offer h2 {
+        font-size: 36px;
+        padding: 0 16px;
+    }
+}
+
 
 .offer-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(320px, 450px));
-    gap: 20px;
+    grid-template-columns: repeat(3, minmax(330px, 450px));
+    gap: 30px;
 
-    justify-content: center;
-    justify-items: center;
+    justify-content: start;   /* zamiast center */
+    justify-items: start;     /* zamiast center */
 }
+
+.offer-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px; /* ważne */
+}
+
 
 /* 2 kolumny */
 @media (max-width: 1100px) {
@@ -55,7 +82,7 @@
 }
 
 .card {
-    background:  #0F0F0F;
+    background:  #252525;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     border: #252525 solid 1px;
     cursor: pointer;
@@ -98,10 +125,6 @@
     flex-direction: column;
     height: 100%;
     font-family: Roboto, serif;
-}
-.details-btn {
-    margin-top: auto;
-    margin-bottom: 30px;
 }
 .card-desc {
     color: #E4F0F6;
@@ -146,6 +169,7 @@
 }
 .details-btn {
     margin-top: auto;
+    margin-bottom: 30px;
 
     display: block;
     width: fit-content;
@@ -180,39 +204,5 @@
 
 .img-wrapper {
     flex-shrink: 0;
-}
-
-.services {
-
-    background:  #0F0F0F;
-    color: #E4F0F6;
-    padding: 80px 40px;
-}
-
-.services h2 {
-    font-size: 50px;
-    margin-bottom: 40px;
-}
-
-
-.services .card {
-    transform: scale(0.95);
-    opacity: 0.95;
-    border-color: #1C1C1C;
-
-    width: 100%;
-    max-width: 320px;
-
-    aspect-ratio: 1 / 1.6;
-
-    min-height: unset;
-
-    flex-direction: column;
-}
-
-.services .card:hover {
-    transform: scale(1);
-    opacity: 1;
-    border-color: #E4F0F6;
 }
 

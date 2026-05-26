@@ -171,7 +171,6 @@ const ContactSection: React.FC = () => {
                     </div>
 
                 </div>
-
             </section>
 
             <ContactModal

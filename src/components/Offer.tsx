@@ -6,92 +6,53 @@ import "../styleSheets/OfferSection.css"
 const OfferSection: React.FC = () => {
     const navigate = useNavigate();
 
-    const services = offers.slice(-3);
-    const mainOffers = offers.slice(0, -3);
 
     return (
         <>
-            {/* OFERTY */}
             <section id="offer" className="offer">
-                <h2>Oferta</h2>
 
-                <div className="offer-grid">
-                    {mainOffers.map((item, index) => (
-                        <div
-                            className="card"
-                            key={index}
-                            onClick={() => navigate(`/offer/${item.slug}`)}
-                        >
-                            <div className="card-inner">
-                                <h3>{item.title}</h3>
+                <div className="offer-container">
+                    <h2>Oferta</h2>
 
-                                <div className="img-wrapper">
+                    <div className="offer-grid">
+                        {offers.map((item, index) => (
+                            <div
+                                className="card"
+                                key={index}
+                                onClick={() => navigate(`/offer/${item.slug}`)}
+                            >
+                                <div className="card-inner">
+                                    <h3>{item.title}</h3>
 
-                                    <img
-                                        className="offer-grid-img"
-                                        src={item.image}
-                                    />
-                                </div>
+                                    <div className="img-wrapper">
+                                        <img
+                                            className="offer-grid-img"
+                                            src={item.image}
+                                        />
+                                    </div>
 
-                                <div className="card-content">
-                                    <p className="card-desc">{item.desc}</p>
+                                    <div className="card-content">
+                                        <p className="card-desc">{item.desc}</p>
 
-                                    <button
-                                        className="details-btn"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            navigate(`/offer/${item.slug}`);
-                                        }}
-                                    >
-                                        Więcej
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* USŁUGI */}
-            <section id="services" className="services">
-
-                <div className="offer-grid">
-                    {services.map((item, index) => (
-                        <div
-                            className="card service-card"
-                            key={index}
-                            onClick={() => navigate(`/offer/${item.slug}`)}
-                        >
-                            <div className="card-inner">
-                                <h3>{item.title}</h3>
-
-                                <div className="img-wrapper">
-                                    <img
-                                        className="offer-grid-img"
-                                        src={item.image}
-                                    />
-                                </div>
-
-                                <div className="card-content">
-                                    <p className="card-desc">{item.desc}</p>
-
-                                    <button
-                                        className="details-btn"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            navigate(`/offer/${item.slug}`);
-                                        }}
-                                    >
-                                        Więcej
-                                    </button>
+                                        <button
+                                            className="details-btn"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                navigate(`/offer/${item.slug}`);
+                                            }}
+                                        >
+                                            Więcej
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
+
             </section>
         </>
     );
-};
+}
 
 export default OfferSection;

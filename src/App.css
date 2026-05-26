@@ -18,9 +18,9 @@ html {
 
 .footer-contact {
   position: relative;
-  padding: 50px 20px;
-  background: #111;
-  color: #fff;
+  padding: 30px 20px;
+  background: #0F0F0F;
+  color: #E4F0F6;
 }
 
 .footer-contact-row {
@@ -30,7 +30,7 @@ html {
 }
 
 .footer-title {
-  font-size: 24px;
+  font-size: 18px;
   margin-bottom: 20px;
   letter-spacing: 1px;
 }
@@ -39,16 +39,12 @@ html {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  font-size: 15px;
-  color: #ccc;
+  font-size: 12px;
+  color: #E4F0F6;
 }
 
 .footer-list p {
   margin: 0;
-}
-
-.footer-list p:hover {
-  color: #fff;
 }
 
 
@@ -84,7 +80,7 @@ html {
   cursor: pointer;
 
   background: #000;
-  color: #fff;
+  color: #E4F0F6;
   font-size: 14px;
   font-weight: 500;
 

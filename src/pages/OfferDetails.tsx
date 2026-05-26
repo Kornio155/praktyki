@@ -14,12 +14,13 @@ const OfferDetails = () => {
     const { slug } = useParams();
     const offer = offers.find(item => item.slug === slug);
 
-    const navigate = useNavigate();
-
     if (!offer) {
         return <h2>Nie znaleziono oferty</h2>;
     }
 
+    const isService = offer.type === "service";
+
+    const navigate = useNavigate();
     const perks = offer.perks ?? [];
 
     const radius = window.innerWidth < 600 ? 180 : 300;
@@ -64,80 +65,82 @@ const OfferDetails = () => {
                     </div>
 
                     {/* ORBIT */}
-                    <div className="offer-perks-orbit">
+                    {!isService && (
+                        <div className="offer-perks-orbit">
 
+                            <div
+                                className="orbit"
+                                style={{
+                                    animationPlayState: isOrbitPaused ? "paused" : "running"
+                                }}
+                            >
+                                <div className="orbit-center">
+                                    <img
+                                        src={logo}
+                                        alt="logo"
+                                        className="orbit-center-logo"
+                                    />
 
-                        <div
-                            className="orbit"
-                            style={{
-                                animationPlayState: isOrbitPaused ? "paused" : "running"
-                            }}
-                        >
-                            <div className="orbit-center">
-                                <img
-                                    src={logo}
-                                    alt="logo"
-                                    className="orbit-center-logo"
-                                />
+                                    <div className="orbit-center-overlay">
+                                        <span>W ramach współpracy</span>
+                                        <h2>otrzymujesz</h2>
+                                    </div>
+                                </div>
 
-                                <div className="orbit-center-overlay">
-                                    <span>W ramach współpracy</span>
-                                    <h2>otrzymujesz</h2>
+                                <div className="orbit-spin">
+                                    {perks.map((item, index) => {
+                                        const baseAngle =
+                                            (index / perks.length) * 2 * Math.PI - Math.PI / 2;
+
+                                        const finalAngle =
+                                            baseAngle + rotation * (Math.PI / 180);
+
+                                        return (
+                                            <div
+                                                key={index}
+                                                className="orbit-item"
+                                                style={{
+                                                    "--angle": `${finalAngle}rad`,
+                                                    "--radius": `${radius}px`,
+                                                } as React.CSSProperties}
+                                            >
+                                                <div className="orbit-item-inner">
+
+                                                    <div
+                                                        className="orbit-icon"
+                                                        onMouseEnter={() => setIsOrbitPaused(true)}
+                                                        onMouseLeave={() => setIsOrbitPaused(false)}
+                                                    >
+                                                        <img
+                                                            src={icons[item.icon]}
+                                                            alt={item.label}
+                                                        />
+                                                    </div>
+
+                                                    <span className="orbit-label">
+                                    {item.label}
+                                </span>
+
+                                                    <div className="orbit-tooltip">
+                                                        {item.details}
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
                                 </div>
                             </div>
-
-                            <div className="orbit-spin">
-
-                                {perks.map((item, index) => {
-                                    const baseAngle =
-                                        (index / perks.length) * 2 * Math.PI - Math.PI / 2;
-
-                                    const finalAngle = baseAngle + rotation * (Math.PI / 180);
-
-                                    return (
-                                        <div
-                                            key={index}
-                                            className="orbit-item"
-                                            style={{
-                                                "--angle": `${finalAngle}rad`,
-                                                "--radius": `${radius}px`,
-                                            } as React.CSSProperties}
-                                        >
-                                            <div className="orbit-item-inner">
-
-                                                <div
-                                                    className="orbit-icon"
-                                                    onMouseEnter={() => setIsOrbitPaused(true)}
-                                                    onMouseLeave={() => setIsOrbitPaused(false)}
-                                                >
-                                                    <img
-                                                        src={icons[item.icon]}
-                                                        alt={item.label}
-                                                    />
-                                                </div>
-
-                                                <span className="orbit-label">
-                                                    {item.label}
-                                                </span>
-
-                                                <div className="orbit-tooltip">
-                                                    {item.details}
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-
-                            </div>
                         </div>
-                    </div>
+                    )}
                     <div className="offer-actions">
                         <button
                             className="offer-back-btn"
                             onClick={() => {
                                 navigate("/");
-                                window.scrollTo(0, 0);
+                                setTimeout(() => {
+                                    document.getElementById("offer")?.scrollIntoView({ behavior: "smooth" });
+                                }, 100);
                             }}
                         >
                             ← Powrót

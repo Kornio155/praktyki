@@ -1,7 +1,7 @@
 .about-page {
     min-height: 100vh;
     background: #0F0F0F;
-    color: #E4F0F6;
+    color: #FBFBFB;
 
     padding: 140px 20px 80px;
 }
@@ -94,7 +94,7 @@
     font-size: 18px;
     line-height: 1.9;
 
-    color: #E4F0F6;
+    color: #FBFBFB;
 }
 
 .about-text p {
@@ -138,14 +138,14 @@
     }
 }
 .about-page h1 {
-    background: linear-gradient(90deg, #fff, #E4F0F6);
+    background: linear-gradient(90deg, #fff, #FBFBFB);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .about-text p {
     margin-bottom: 18px;
-    color: #E4F0F6;
+    color: #FBFBFB;
     line-height: 1.9;
     font-size: 17px;
 }
@@ -153,7 +153,7 @@
 /* pierwszy akapit = mocny start */
 .about-text .lead {
     font-size: 20px;
-    color: #E4F0F6;
+    color: #FBFBFB;
     font-weight: 500;
 }
 
@@ -162,7 +162,7 @@
     margin: 25px 0;
     padding: 18px 20px;
 
-    border-left: 3px solid #E4F0F6;
+    border-left: 3px solid #FBFBFB;
 
     background: rgb(228 240 246 / 0.08);
 
