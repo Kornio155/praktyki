@@ -31,7 +31,7 @@ export const offers: Offer[] = [
     {
         slug: 'treningi-medyczne',
         title: 'Treningi medyczne',
-        desc: 'wróć do sprawności bez bólu',
+        desc: 'Wróć do sprawności bez bólu',
         image: medyczne,
         details:
             'Jeśli jesteś po urazie, masz przeciążenia lub dolegliwości bólowe, ten trening pomoże Ci poprawić sprawność, zmniejszyć ból i bezpiecznie wrócić do aktywności, żebyś znów mógł czuć się pewnie we własnym ciele i funkcjonować bez ograniczeń.',
@@ -78,10 +78,10 @@ export const offers: Offer[] = [
     {
         slug: 'treningi-funkcjonalne',
         title: 'Treningi funkcjonalne',
-        desc: 'zdrowe funkcjonowanie na co dzień',
+        desc: 'Zdrowe funkcjonowanie na co dzień',
         image: funkcjonalne,
         details:
-            'dużo siedzisz? ten trening jest dla ciebie. świetnie sprawdzi się jako rekompensata siedzącego trybu życia. Trening funkcjonalny omoże Ci lepiej "funkcjonować" w codziennych czynnościach\n',
+            'Dużo siedzisz? ten trening jest dla ciebie. świetnie sprawdzi się jako rekompensata siedzącego trybu życia. Trening funkcjonalny omoże Ci lepiej "funkcjonować" w codziennych czynnościach\n',
         type:'offer',
         perks: [
             {
@@ -120,7 +120,7 @@ export const offers: Offer[] = [
     {
         slug: 'odchudzanie',
         title: 'Odchudzanie',
-        desc: 'redukcja tkanki tłuszczowej',
+        desc: 'Redukcja tkanki tłuszczowej',
         image: odchudzanie,
         details:
             'Jeśli Twoim celem jest pozbycie się nadmiernych kilogramów, , ten trening połączy intensywną pracę z dopasowaniem do Twoich możliwości, dzięki czemu efekty będą widoczne, a proces bezpieczny.',
@@ -172,7 +172,7 @@ export const offers: Offer[] = [
     {
         slug: 'treningi-motoryczne',
         title: 'Treningi motoryczne',
-        desc: 'lepsze wyniki w twojej dyscyplinie',
+        desc: 'Lepsze wyniki w twojej dyscyplinie',
         image: motoryczne,
         details:
             'Jeśli jesteś sportowcem lub osobą regularnie trenującą, ten trening pomoże Ci rozwinąć siłę, szybkość, moc i koordynację czyli polepszy efekty w Twojej dyscyplinie sportowej',
@@ -224,7 +224,7 @@ export const offers: Offer[] = [
     {
         slug: 'treningi-ogolnorozwojowe',
         title: 'Treningi ogólnorozwojowe',
-        desc: 'siła, sprawność i energia',
+        desc: 'Coś więcej niż siła',
         image: ogolne,
         details:
             'popraw kondycję, siłę, sprawność i samopoczucie!  ten wszechstronny trening da Ci solidną bazę do lepszej sprawności, większej energii na co dzień i zdrowszego stylu życia. Niekonwencjonalne ćwiczenia z dziedzin streetmovement, animal movement lub gimnastyki pomogą ci się rozwinąć, i dodadzą nutkę świetnej zabawy!',
@@ -266,7 +266,7 @@ export const offers: Offer[] = [
     {
         slug: 'plany-treningowe',
         title: 'Plany treningowe',
-        desc: 'plan dopasowany do Ciebie',
+        desc: 'Plan pod kątem Twoich potrzeb',
         image: plany,
         details:
             'Najlepszy plan treningowy to taki, który jest dopasowany do Twoich możliwości treningowych!  Nie każdy ma możliwośc trenowania 4-5 razy w tygodniu po dwie godziny. Dlatego przygotowuję plany ćwiczeń uwględniające to, że nie mieszkasz na siłowni i masz wiele innych obowiązków w życiu prócz cwiczeń.',
@@ -317,7 +317,7 @@ export const offers: Offer[] = [
     {
         slug: 'treningi-dla-dwojga',
         title: 'Treningi dla dwojga / grupowe',
-        desc: 'motywacja + lepsza cena',
+        desc: 'Druga osoba to najlepsza motywacja i lepsza cena ;)!',
         image: dladwojga,
         type: 'service',
         details: 'Wszystkie rodzaje treningów mogą być również realizowane w parach lub małych grupach. To świetne rozwiązanie, jeśli chcesz ćwiczyć z partnerem, znajomymi lub rodziną! To nie tylko dodatkowa motywacja, ale też przyjemniejsza forma wspólnego spędzania czasu. Taki typu trening wciąż zachowuje indywidualne podejście i wysoką jakość, ale jednocześnie pozwala obniżyć koszt na osobę. Skontaktuj się ze mną, a dobierzemy najlepszą formę treningu dla Ciebie i Twojej grupy'
@@ -326,7 +326,7 @@ export const offers: Offer[] = [
         slug: 'gry-i-zabawy',
         title: 'Gry i zabawy',
         image: games,
-        desc: 'aktywność i integracja',
+        desc: 'Aktywność, integracja, dobra zabawa!',
         type: 'service',
         details: 'Jeśli szukasz aktywnej formy zajęć dla grup zapraszam do kontaktu! Prowadzę szereg gier i zabawruchowych, które zapewnią ruch, integrację i pozytywne doświadczenia w dobrej atmosferze w każdej ekipie!'
     },
@@ -334,7 +334,7 @@ export const offers: Offer[] = [
         slug: 'personal-training-in-english',
         title: 'Personal training (English)',
         image: english,
-        desc: 'training sessions in English',
+        desc: 'Personal training session in English',
         type: 'service',
         details: 'I provide personal training sessions in English – perfect for international clients living in Poland or anyone who feels more comfortable communicating in English. Feel free to reach out and book your session – I’ll be happy to help you achieve your fitness goals. For more information, feel free to contact me using any of the available options on my website or by clicking the button below. See you on trainings!'
     }
