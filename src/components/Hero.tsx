@@ -10,11 +10,9 @@ const Hero: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     return (
 
-        <section
-            id="Hero"
-            className="hero"
-            style={{ backgroundImage: `url(${bannerImage})` }}
-        >
+        <section id="Hero" className="hero">
+            <img className="hero-img" src={bannerImage} alt="" />
+
             <div className="hero-overlay"></div>
 
             <div className="hero-content">

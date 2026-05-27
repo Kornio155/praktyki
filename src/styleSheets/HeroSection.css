@@ -2,41 +2,44 @@
 /* HERO */
 .hero {
     position: relative;
-
-    min-height: 100vh;
     width: 100%;
-
-
-    background-size: cover;
-    background-position: center 10%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
     overflow: hidden;
+    background: black;
 }
 
-/* PRZYCIEMNIENIE */
+/* OBRAZ = CAŁA SEKCJA */
+.hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* overlay na obraz */
 .hero-overlay {
     position: absolute;
     inset: 0;
-
     background: rgba(0, 0, 0, 0.55);
 }
 
-/* CONTENT */
+/* content nad obrazem */
 .hero-content {
-    position: relative;
-    z-index: 2;
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     color: #FBFBFB;
-
+    text-align: center;
     padding: 20px;
-
-    max-width: 900px;
+}
+.hero-content img {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
 }
 
 .hero-content h1 {
@@ -79,19 +82,13 @@
 /* MOBILE */
 @media (max-width: 600px) {
     .hero {
-        min-height: 80vh;
+        height: 70vh;
     }
 
-    .hero-content h1 {
-        font-size: 42px;
-    }
-
-    .hero-content p {
-        font-size: 16px;
-    }
-
-    .hero-btn {
-        width: 100%;
+    .hero-img {
+        height: 70vh;
+        object-fit: cover;
+        object-position: -550px top;
     }
 }
 
