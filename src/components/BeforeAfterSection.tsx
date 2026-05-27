@@ -170,26 +170,46 @@ export default function BeforeAfter() {
         });
     }, []);
 
-    useEffect(() => {
-        if (hovered || isNavHovered || isDragging.current) return;
+    const autoScrollFrame = useRef<number | null>(null);
 
+    useEffect(() => {
         const container = carouselRef.current;
         if (!container) return;
 
-        const interval = setInterval(() => {
-            const firstCard = container.querySelector<HTMLElement>(".ba-item");
-            if (!firstCard) return;
+        let lastTime = performance.now();
 
-            const gap = parseInt(getComputedStyle(container).gap || "24") || 24;
-            const step = firstCard.offsetWidth + gap;
+        const speed = 0.035;
+// możesz zmieniać:
+// 0.02 = bardzo wolno
+// 0.035 = elegancko
+// 0.06 = szybciej
 
-            container.scrollBy({ left: step, behavior: "smooth" });
+        const animate = (time: number) => {
+            const delta = time - lastTime;
+            lastTime = time;
 
-            setTimeout(loopCheck, 400);
-        }, 3000);
+            const shouldPause =
+                hovered ||
+                isNavHovered ||
+                isDragging.current;
 
-        return () => clearInterval(interval);
-    }, [hovered]);
+            if (!shouldPause) {
+                container.scrollLeft += speed * delta;
+
+                loopCheck();
+            }
+
+            autoScrollFrame.current = requestAnimationFrame(animate);
+        };
+
+        autoScrollFrame.current = requestAnimationFrame(animate);
+
+        return () => {
+            if (autoScrollFrame.current) {
+                cancelAnimationFrame(autoScrollFrame.current);
+            }
+        };
+    }, [hovered, isNavHovered]);
 
     useEffect(() => {
         return () => stopMomentum();
