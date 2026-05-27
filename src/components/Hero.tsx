@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import ContactModal from "./ContactModal";
 import '../styleSheets/HeroSection.css'
 
-import fullLogo from '../assets/logo_calosc_temp.svg'
-import bannerImage from "../assets/rybatlo.png";
+import fullLogo from '../assets/logo_calosc.svg'
+import bannerImage from "../assets/rybaner.png";
 
 
 const Hero: React.FC = () => {
