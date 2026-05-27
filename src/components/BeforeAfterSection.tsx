@@ -13,6 +13,7 @@ import kamila from "../assets/przedIPo/kamila_1200x1200.png";
 import natalia from "../assets/przedIPo/natalia_1200x1200.png";
 import bogdan from "../assets/przedIPo/bogdan_1200x1200.png";
 import bogus from "../assets/przedIPo/bogus_1200x1200.png";
+import aleks2 from "../assets/przedIPo/a_1200x1200.png"
 
 const items = [
     { id: 1, text: "Aleks = =", image: aleks },
@@ -22,11 +23,12 @@ const items = [
     { id: 5, text: "Aga =-10% tkanki tłuszczowej =-10 kg w 3 miesiące", image: aga },
     { id: 6, text: "Ania = rekompozycja 12% tkanki tłuszczowej =", image: ania },
     { id: 7, text: "Darek = odmłodzony o 18 lat =", image: darek },
-    { id: 8, text: "Bogus = =", image: bogus },
-    { id: 9, text: "Gosia = rekompozycja ciała =", image: gosia },
-    { id: 10, text: "Kamila =-6 kg / =-30 cm", image: kamila },
-    { id: 11, text: "Natalia = =", image: natalia },
-    { id: 12, text: "Bogdan = =", image: bogdan }
+    { id: 8, text: "A. = =", image: aleks2 },
+    { id: 9, text: "Bogus = =", image: bogus },
+    { id: 10, text: "G. = rekompozycja ciała =", image: gosia },
+    { id: 11, text: "K. =-6 kg / =-30 cm", image: kamila },
+    { id: 12, text: "Natalia = =", image: natalia },
+    { id: 13, text: "Bogdan = =", image: bogdan }
 ];
 
 export default function BeforeAfter() {
