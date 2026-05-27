@@ -1,8 +1,6 @@
 import { useState } from "react";
 import "../styleSheets/ContactModal.css";
 
-// import emailjs from "@emailjs/browser";
-
 type Props = {
     isOpen: boolean;
     onClose: () => void;
@@ -17,8 +15,8 @@ export default function ContactModal({ isOpen, onClose }: Props) {
         "Cześć! proszę o kontakt w sprawie współpracy!"
     );
 
-    // 🕵️ honeypot
     const [company, setCompany] = useState("");
+    const [loading, setLoading] = useState(false);
 
     if (!isOpen) return null;
 
@@ -36,7 +34,9 @@ export default function ContactModal({ isOpen, onClose }: Props) {
     };
 
     const checkEmailLimit = (email: string) => {
-        const lastEmail = localStorage.getItem(`last_email_${email}`);
+        const key = email.toLowerCase();
+        const lastEmail = localStorage.getItem(`last_email_${key}`);
+
         if (lastEmail && Date.now() - Number(lastEmail) < 24 * 60 * 60_000) {
             alert("Już wysłałeś wiadomość w ciągu ostatnich 24h");
             return false;
@@ -44,18 +44,26 @@ export default function ContactModal({ isOpen, onClose }: Props) {
         return true;
     };
 
+    const resetForm = () => {
+        setName("");
+        setEmail("");
+        setPhone("");
+        setMessage("Cześć! proszę o kontakt w sprawie współpracy!");
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        // 🧨 honeypot
         if (company) return;
-
         if (!checkCooldown()) return;
+
+        if (name.trim().length < 2) {
+            return alert("Podaj poprawne imię");
+        }
 
         if (contactType === "email") {
             const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!regex.test(email)) return alert("Zły email");
-
             if (!checkEmailLimit(email)) return;
         }
 
@@ -63,46 +71,59 @@ export default function ContactModal({ isOpen, onClose }: Props) {
             return alert("Zły telefon");
         }
 
-        const templateParams = {
-            name,
-            contact_type: contactType,
-            email,
-            phone: contactType === "phone" ? `+48${phone}` : "",
-            message,
-        };
+        setLoading(true);
 
         try {
-            // await emailjs.send(...)
+            const res = await fetch("/api/send-mail.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name,
+                    contact_type: contactType,
+                    email,
+                    phone: contactType === "phone" ? `+48${phone}` : "",
+                    message,
+                    company,
+                }),
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw new Error(data.message || "Błąd wysyłki");
+            }
 
             localStorage.setItem("last_send_time", String(Date.now()));
             if (email) {
                 localStorage.setItem(
-                    `last_email_${email}`,
+                    `last_email_${email.toLowerCase()}`,
                     String(Date.now())
                 );
             }
 
             alert("Wysłano!");
+            resetForm();
             onClose();
+
         } catch (err) {
             console.error(err);
             alert("Błąd wysyłki");
+        } finally {
+            setLoading(false);
         }
-
-        console.log("EMAILJS PAYLOAD:", templateParams);
     };
 
     return (
         <div className="cm-overlay" onClick={onClose}>
             <div className="cm-box" onClick={(e) => e.stopPropagation()}>
-                <button className="cm-close" onClick={onClose}>
-                    ×
-                </button>
+                <button className="cm-close" onClick={onClose}>×</button>
 
                 <h2>Poproś o kontakt</h2>
 
                 <form onSubmit={handleSubmit} className="cm-form">
-                    {/* 🧨 HONEYPOT */}
+
                     <input
                         name="company"
                         value={company}
@@ -141,7 +162,11 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                     {contactType === "email" ? (
                         <div className="cm-group">
                             <label>Email</label>
-                            <input value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                         </div>
                     ) : (
                         <div className="cm-group">
@@ -149,9 +174,9 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                             <div className="cm-phone">
                                 <span className="cm-prefix">+48</span>
                                 <input
+                                    type="tel"
                                     value={phone}
                                     onChange={(e) => handlePhoneChange(e.target.value)}
-                                    maxLength={9}
                                 />
                             </div>
                         </div>
@@ -159,13 +184,13 @@ export default function ContactModal({ isOpen, onClose }: Props) {
 
                     <div className="cm-group">
                         <label>Wiadomość</label>
-                        <textarea
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                        />
+                        <textarea value={message} onChange={(e) => setMessage(e.target.value)} />
                     </div>
 
-                    <button className="cm-submit">Wyślij</button>
+                    <button className="cm-submit" disabled={loading}>
+                        {loading ? "Wysyłanie..." : "Wyślij"}
+                    </button>
+
                 </form>
             </div>
         </div>

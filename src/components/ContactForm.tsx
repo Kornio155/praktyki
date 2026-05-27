@@ -1,8 +1,6 @@
 import { useState } from "react";
 import "../styleSheets/ContactForm.css";
 
-// import emailjs from "@emailjs/browser";
-
 export default function ContactForm() {
     const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState("");
@@ -13,8 +11,8 @@ export default function ContactForm() {
         "Cześć! proszę o kontakt w sprawie współpracy!"
     );
 
-    // 🧨 honeypot
     const [company, setCompany] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handlePhoneChange = (value: string) => {
         setPhone(value.replace(/\D/g, "").slice(0, 9));
@@ -30,7 +28,9 @@ export default function ContactForm() {
     };
 
     const checkEmailLimit = (email: string) => {
-        const lastEmail = localStorage.getItem(`last_email_${email}`);
+        const key = email.toLowerCase();
+        const lastEmail = localStorage.getItem(`last_email_${key}`);
+
         if (lastEmail && Date.now() - Number(lastEmail) < 24 * 60 * 60_000) {
             alert("Już wysłałeś wiadomość w ciągu ostatnich 24h");
             return false;
@@ -38,13 +38,17 @@ export default function ContactForm() {
         return true;
     };
 
-    const handleClose = () => setIsOpen(false);
+    const resetForm = () => {
+        setName("");
+        setEmail("");
+        setPhone("");
+        setMessage("Cześć! proszę o kontakt w sprawie współpracy!");
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (company) return;
-
         if (!checkCooldown()) return;
 
         if (name.trim().length < 2) {
@@ -52,45 +56,55 @@ export default function ContactForm() {
         }
 
         if (contactType === "email") {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                return alert("Podaj poprawny email");
-            }
-
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regex.test(email)) return alert("Zły email");
             if (!checkEmailLimit(email)) return;
         }
 
         if (contactType === "phone" && !/^\d{9}$/.test(phone)) {
-            return alert("Numer telefonu musi mieć 9 cyfr");
+            return alert("Zły telefon");
         }
 
-        const templateParams = {
-            name,
-            contact_type: contactType,
-            email,
-            phone: contactType === "phone" ? `+48${phone}` : "",
-            message,
-        };
+        setLoading(true);
 
         try {
-            // await emailjs.send(...)
+            const res = await fetch("/api/send-mail.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name,
+                    contact_type: contactType,
+                    email,
+                    phone: contactType === "phone" ? `+48${phone}` : "",
+                    message,
+                    company,
+                }),
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw new Error(data.message || "Błąd wysyłki");
+            }
 
             localStorage.setItem("last_send_time", String(Date.now()));
             if (email) {
                 localStorage.setItem(
-                    `last_email_${email}`,
+                    `last_email_${email.toLowerCase()}`,
                     String(Date.now())
                 );
             }
 
             alert("Formularz wysłany!");
-            handleClose();
+            resetForm();
+            setIsOpen(false);
+
         } catch (err) {
             console.error(err);
             alert("Błąd wysyłki");
+        } finally {
+            setLoading(false);
         }
-
-        console.log("EMAILJS PAYLOAD:", templateParams);
     };
 
     return (
@@ -104,12 +118,12 @@ export default function ContactForm() {
                     </button>
                 ) : (
                     <div className="cf-box">
-                        <button className="cf-close" onClick={handleClose}>
+                        <button className="cf-close" onClick={() => setIsOpen(false)}>
                             ×
                         </button>
 
                         <form onSubmit={handleSubmit} className="cf-form">
-                            {/* 🧨 HONEYPOT */}
+
                             <input
                                 name="company"
                                 value={company}
@@ -120,15 +134,11 @@ export default function ContactForm() {
 
                             <div className="cf-group">
                                 <label>Imię*</label>
-                                <input
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    required
-                                />
+                                <input value={name} onChange={(e) => setName(e.target.value)} />
                             </div>
 
                             <div className="cf-group">
-                                <label>Forma kontaktu*</label>
+                                <label>Kontakt</label>
 
                                 <div className="cf-choice">
                                     <button
@@ -152,24 +162,18 @@ export default function ContactForm() {
                             {contactType === "email" ? (
                                 <div className="cf-group">
                                     <label>Email*</label>
-                                    <input
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        type="email"
-                                        required
-                                    />
+                                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                 </div>
                             ) : (
                                 <div className="cf-group">
                                     <label>Telefon*</label>
                                     <div className="cf-phone">
                                         <span className="cf-prefix">+48</span>
+
                                         <input
+                                            type="tel"
                                             value={phone}
-                                            onChange={(e) =>
-                                                handlePhoneChange(e.target.value)
-                                            }
-                                            maxLength={9}
+                                            onChange={(e) => handlePhoneChange(e.target.value)}
                                         />
                                     </div>
                                 </div>
@@ -177,15 +181,13 @@ export default function ContactForm() {
 
                             <div className="cf-group">
                                 <label>Wiadomość</label>
-                                <textarea
-                                    value={message}
-                                    onChange={(e) => setMessage(e.target.value)}
-                                />
+                                <textarea value={message} onChange={(e) => setMessage(e.target.value)} />
                             </div>
 
-                            <button className="cf-submit" type="submit">
-                                Wyślij
+                            <button className="cf-submit" disabled={loading}>
+                                {loading ? "Wysyłanie..." : "Wyślij"}
                             </button>
+
                         </form>
                     </div>
                 )}
