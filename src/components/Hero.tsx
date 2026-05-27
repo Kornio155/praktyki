@@ -3,7 +3,7 @@ import ContactModal from "./ContactModal";
 import '../styleSheets/HeroSection.css'
 
 import fullLogo from '../assets/logo_calosc.svg'
-import bannerImage from "../assets/rybatlo.png";
+import bannerImage from "../assets/rybaner.png";
 
 
 const Hero: React.FC = () => {
