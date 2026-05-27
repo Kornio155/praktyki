@@ -13,6 +13,7 @@ import kamila from "../assets/przedIPo/kamila_1200x1200.png";
 import natalia from "../assets/przedIPo/natalia_1200x1200.png";
 import bogdan from "../assets/przedIPo/bogdan_1200x1200.png";
 import bogus from "../assets/przedIPo/bogus_1200x1200.png";
+import aleks2 from "../assets/przedIPo/a_1200x1200.png"
 
 const items = [
     { id: 1, text: "Aleks = =", image: aleks },
@@ -22,11 +23,12 @@ const items = [
     { id: 5, text: "Aga =-10% tkanki tłuszczowej =-10 kg w 3 miesiące", image: aga },
     { id: 6, text: "Ania = rekompozycja 12% tkanki tłuszczowej =", image: ania },
     { id: 7, text: "Darek = odmłodzony o 18 lat =", image: darek },
-    { id: 8, text: "Bogus = =", image: bogus },
-    { id: 9, text: "Gosia = rekompozycja ciała =", image: gosia },
-    { id: 10, text: "Kamila =-6 kg / =-30 cm", image: kamila },
-    { id: 11, text: "Natalia = =", image: natalia },
-    { id: 12, text: "Bogdan = =", image: bogdan }
+    { id: 8, text: "A. = =", image: aleks2 },
+    { id: 9, text: "Bogus = =", image: bogus },
+    { id: 10, text: "G. = rekompozycja ciała =", image: gosia },
+    { id: 11, text: "K. =-6 kg / =-30 cm", image: kamila },
+    { id: 12, text: "Natalia = =", image: natalia },
+    { id: 13, text: "Bogdan = =", image: bogdan }
 ];
 
 export default function BeforeAfter() {
@@ -170,26 +172,46 @@ export default function BeforeAfter() {
         });
     }, []);
 
-    useEffect(() => {
-        if (hovered || isNavHovered || isDragging.current) return;
+    const autoScrollFrame = useRef<number | null>(null);
 
+    useEffect(() => {
         const container = carouselRef.current;
         if (!container) return;
 
-        const interval = setInterval(() => {
-            const firstCard = container.querySelector<HTMLElement>(".ba-item");
-            if (!firstCard) return;
+        let lastTime = performance.now();
 
-            const gap = parseInt(getComputedStyle(container).gap || "24") || 24;
-            const step = firstCard.offsetWidth + gap;
+        const speed = 0.035;
+// możesz zmieniać:
+// 0.02 = bardzo wolno
+// 0.035 = elegancko
+// 0.06 = szybciej
 
-            container.scrollBy({ left: step, behavior: "smooth" });
+        const animate = (time: number) => {
+            const delta = time - lastTime;
+            lastTime = time;
 
-            setTimeout(loopCheck, 400);
-        }, 3000);
+            const shouldPause =
+                hovered ||
+                isNavHovered ||
+                isDragging.current;
 
-        return () => clearInterval(interval);
-    }, [hovered]);
+            if (!shouldPause) {
+                container.scrollLeft += speed * delta;
+
+                loopCheck();
+            }
+
+            autoScrollFrame.current = requestAnimationFrame(animate);
+        };
+
+        autoScrollFrame.current = requestAnimationFrame(animate);
+
+        return () => {
+            if (autoScrollFrame.current) {
+                cancelAnimationFrame(autoScrollFrame.current);
+            }
+        };
+    }, [hovered, isNavHovered]);
 
     useEffect(() => {
         return () => stopMomentum();

@@ -221,3 +221,6 @@
 .img-wrapper {
     flex-shrink: 0;
 }
+.dark-image {
+    filter: brightness(0.8);
+}
