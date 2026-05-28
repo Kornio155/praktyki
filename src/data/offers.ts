@@ -7,7 +7,7 @@ import plany from '../assets/oferty/plany.png'
 import ogolne from '../assets/oferty/ogolne.png'
 import dladwojga from '../assets/oferty/dladwojga.png';
 import games from '../assets/oferty/grupy.png';
-import english from '../assets/oferty/anglia.svg';
+import english from '../assets/oferty/english.png';
 
 
 export type OfferPerk = {
@@ -335,6 +335,7 @@ export const offers: Offer[] = [
         title: 'Personal training sessions in English',
         image: english,
         type: 'service',
+        desc: 'Personal training sessions in English',
         details: 'I provide personal training sessions in English – perfect for international clients living in Poland or anyone who feels more comfortable communicating in English. Feel free to reach out and book your session – I’ll be happy to help you achieve your fitness goals. For more information, feel free to contact me using any of the available options on my website or by clicking the button below. See you on trainings!'
     }
 ];
