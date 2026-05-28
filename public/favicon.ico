@@ -8,8 +8,12 @@
    y="0px"
    viewBox="0 0 32 32"
    xml:space="preserve"
+   sodipodi:docname="favicon.ico"
    width="32"
    height="32"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><defs
    id="defs1" />
@@ -18,12 +22,34 @@
    id="style1">
 	.st0{fill-rule:evenodd;clip-rule:evenodd;}
 </style>
-
+<sodipodi:namedview
+   bordercolor="#cccccc"
+   borderopacity="1"
+   id="namedview1"
+   inkscape:current-layer="g1"
+   inkscape:cx="16.375"
+   inkscape:cy="15.1875"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:pagecheckerboard="0"
+   inkscape:pageopacity="1"
+   inkscape:showpageshadow="0"
+   inkscape:window-height="900"
+   inkscape:window-maximized="0"
+   inkscape:window-width="1440"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:zoom="16"
+   pagecolor="#ffffff"
+   showgrid="false">
+	</sodipodi:namedview>
 <g
    id="g1"
+   inkscape:groupmode="layer"
+   inkscape:label="Image"
    transform="translate(-77,-72.9)">
 	<path
    id="path1"
+   inkscape:label="LOGO"
    class="st0"
    d="m 85.570928,75.078637 v 0.566873 h -7.458909 l 7.787101,13.520521 7.076019,-14.132149 5.72347,11.352461 h -3.341591 l -2.352044,-4.898017 -5.340579,10.686131 5.310744,9.194363 5.340581,-9.159554 -1.461947,-2.988537 h 3.147657 l 7.85672,-13.545381 h -7.40918 V 75.06869 h 8.48823 l -15.932226,27.69743 -15.942176,-27.503498 0.02486,-0.203877 z"
    style="stroke-width:0.049726" />
