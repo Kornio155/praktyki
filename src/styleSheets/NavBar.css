@@ -3,7 +3,6 @@
     position: fixed;
     top: 20px;
     left: 50%;
-
     transform: translateX(-50%);
 
     width: calc(100% - 40px);
@@ -34,7 +33,6 @@
     height: 40px;
     display: flex;
     align-items: center;
-
     cursor: pointer;
     transition: 0.3s ease;
 }
@@ -43,8 +41,6 @@
     opacity: 0.7;
     transform: translateY(-3px);
 }
-
-
 
 .logo img {
     height: 100%;
@@ -55,11 +51,9 @@
 /* LINKI */
 .navbar-links {
     display: flex;
+    align-items: center;
     gap: 40px;
-
     list-style: none;
-
-
 }
 
 .navbar-links a {
@@ -67,12 +61,12 @@
     text-decoration: none;
     display: inline-block;
     transition: 0.3s ease;
+    font-size: 16px;
 }
 
 .navbar-links li {
     color: #FBFBFB;
     cursor: pointer;
-
     transition: 0.3s;
 }
 
@@ -102,14 +96,50 @@
     transform: scale(1.05);
 }
 
-/* MOBILE */
-@media (max-width: 900px) {
+/* hamburger */
+.hamburger {
+    display: none;
+    width: 42px;
+    height: 42px;
+
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background: white;
+    border-radius: 999px;
+    transition: 0.3s;
+}
+
+/* ukryj mobile button na desktop */
+.mobile-btn {
+    display: none;
+}
+
+/* =========================
+   DUŻE TABLETY
+========================= */
+@media (max-width: 1200px) {
+
     .navbar {
-        padding: 16px 20px;
+        padding: 16px 24px;
     }
 
     .navbar-links {
-        display: none;
+        gap: 24px;
+    }
+
+    .navbar-links a {
+        font-size: 15px;
     }
 
     .navbar-btn {
@@ -118,4 +148,150 @@
     }
 }
 
-/* Koniec Navbar */
+/* =========================
+   TABLETY
+========================= */
+@media (max-width: 950px) {
+
+    .navbar {
+        padding: 14px 20px;
+    }
+
+    .navbar-links {
+        gap: 18px;
+    }
+
+    .navbar-links li {
+        width: 80%;
+    }
+
+    .navbar-links a {
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 14px 20px;
+
+        background: rgba(255,255,255,0.05);
+
+        border-radius: 14px;
+
+        /* RESPONSYWNY TEKST */
+        font-size: clamp(16px, 2.5vw, 22px);
+
+        line-height: 1.2;
+
+        text-align: center;
+    }
+
+    .desktop-btn {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar-links {
+        position: absolute;
+
+        top: calc(100% + 15px);
+        left: 0;
+
+        width: 100%;
+
+        background: rgba(0, 0, 0, 0.95);
+
+        backdrop-filter: blur(20px);
+
+        border-radius: 20px;
+
+        padding: 30px 20px;
+
+        flex-direction: column;
+        align-items: center;
+
+        gap: 24px;
+
+        opacity: 0;
+        pointer-events: none;
+
+        transform: translateY(-10px);
+
+        transition: 0.3s ease;
+    }
+
+    .navbar-links.active {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0);
+    }
+
+    .desktop-btn {
+        display: none;
+    }
+
+    .mobile-btn {
+        width: 80%;
+
+        margin-top: 10px;
+
+        /* RESPONSYWNY TEKST */
+        font-size: clamp(16px, 2.5vw, 22px);
+
+        padding: 14px 20px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 600px) {
+
+    .navbar {
+        width: calc(100% - 20px);
+        top: 10px;
+
+        padding: 14px 16px;
+
+        border-radius: 16px;
+    }
+
+    .logo {
+        height: 32px;
+    }
+
+    .navbar-links {
+        padding: 24px 16px;
+    }
+
+    .navbar-links a {
+        font-size: 16px;
+    }
+
+    .navbar-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+@media (max-width: 400px) {
+
+    .logo {
+        height: 28px;
+    }
+
+    .hamburger {
+        width: 36px;
+        height: 36px;
+    }
+
+    .navbar-links a {
+        font-size: 15px;
+    }
+}
