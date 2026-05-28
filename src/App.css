@@ -17,10 +17,15 @@ html {
 }
 
 .footer-contact {
-  position: relative;
-  padding: 30px 20px;
+  padding: 40px 20px;
+
   background: #0F0F0F;
   color: #FBFBFB;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
 }
 
 .footer-contact-row {
@@ -69,9 +74,8 @@ html {
 }
 
 .scroll-top-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  width: 50%;
+  max-width: 420px;
 
   padding: 20px 25px;
   border-radius: 25px;
@@ -81,18 +85,26 @@ html {
 
   background: #FBFBFB;
   color: #010013;
+
   font-size: 14px;
   font-weight: 500;
 
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
 
-  white-space: nowrap;
-  transition: 0.3s;
+  transition:
+          opacity 0.3s ease,
+          box-shadow 0.3s ease,
+          transform 0.3s ease;
+
+  will-change: transform;
 }
 
 .scroll-top-btn:hover {
-  opacity: 0.7;
-  transform: translateY(-3px);
+  opacity: 0.85;
+  transform: translate3d(0, -3px, 0);
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
 }
