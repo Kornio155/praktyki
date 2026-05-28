@@ -1,4 +1,6 @@
-/* HERO */
+/* ========================================
+   HERO — DESKTOP
+======================================== */
 .hero {
     position: relative;
     width: 100%;
@@ -6,7 +8,7 @@
     background: black;
 }
 
-/* OBRAZ = CAŁA SEKCJA */
+/* IMAGE */
 .hero-img {
     width: 100%;
     height: auto;
@@ -14,14 +16,14 @@
     object-fit: contain;
 }
 
-/* overlay na obraz */
+/* OVERLAY */
 .hero-overlay {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.55);
 }
 
-/* content nad obrazem */
+/* CONTENT */
 .hero-content {
     position: absolute;
     inset: 0;
@@ -31,170 +33,70 @@
     justify-content: center;
     align-items: center;
 
-    color: #FBFBFB;
     text-align: center;
-    padding: 20px;
+    color: #FBFBFB;
+
+    padding: clamp(16px, 3vw, 40px);
 }
 
 .hero-content img {
-    max-width: 600px;
-    width: 100%;
+    width: min(80vw, 600px);
     height: auto;
 }
 
 .hero-content h1 {
-    font-size: 90px;
+    font-size: clamp(32px, 8vw, 90px);
+
     line-height: 0.95;
     font-weight: 800;
-    margin-bottom: 30px;
+
+    margin-bottom: clamp(16px, 3vw, 30px);
+
     text-transform: uppercase;
 }
 
 .hero-content p {
-    font-size: 24px;
-    letter-spacing: 2px;
+    font-size: clamp(14px, 2.5vw, 24px);
+
+    letter-spacing: clamp(0.5px, 0.2vw, 2px);
+
     font-family: "Roboto", sans-serif;
     font-weight: 100;
-    margin-bottom: 40px;
+
+    margin-bottom: clamp(20px, 4vw, 40px);
+
     color: #FBFBFB;
+
+    max-width: 90%;
 }
 
-/* =========================
-   DUŻE LAPTOPY
-========================= */
+/* ========================================
+   LAPTOP
+======================================== */
 @media (max-width: 1400px) {
-    .hero-content h1 {
-        font-size: 72px;
-    }
-
-    .hero-content p {
-        font-size: 22px;
-    }
 
     .hero-content img {
-        max-width: 500px;
+        width: min(70vw, 500px);
     }
 }
 
-/* =========================
-   TABLETY / MAŁE LAPTOPY
-========================= */
+/* ========================================
+   TABLET
+======================================== */
 @media (max-width: 1024px) {
-    .hero-content {
-        padding: 30px;
-    }
 
-    .hero-content h1 {
-        font-size: 60px;
-    }
-
-    .hero-content p {
-        font-size: 20px;
-        letter-spacing: 1px;
-    }
-
-    .hero-content img {
-        max-width: 420px;
-    }
-}
-
-/* =========================
-   WIĘKSZE TELEFONY / TABLETY PIONOWO
-========================= */
-@media (max-width: 768px) {
     .hero {
-        height: 75vh;
+        height: 85vh;
     }
 
     .hero-img {
-        height: 75vh;
+        height: 100%;
         object-fit: cover;
-        object-position: -1400px center;
-    }
-
-    .hero-content {
-        padding: 30px;
-    }
-
-    .hero-content h1 {
-        font-size: 58px; /* było 46px */
-        line-height: 1;
-        margin-bottom: 24px;
-    }
-
-    .hero-content p {
-        font-size: 22px; /* było 18px */
-        margin-bottom: 30px;
+        object-position: center;
     }
 
     .hero-content img {
-        max-width: 420px; /* było 320px */
+        width: min(68vw, 420px);
     }
 }
 
-/* =========================
-   MOBILE
-========================= */
-@media (max-width: 600px) {
-    .hero {
-        height: 70vh;
-    }
-
-    .hero-img {
-        height: 70vh;
-        object-fit: cover;
-        object-position: -1400px center;
-    }
-
-    .hero-content h1 {
-        font-size: 46px; /* było 36px */
-    }
-
-    .hero-content p {
-        font-size: 20px; /* było 16px */
-        letter-spacing: 1px;
-    }
-
-    .hero-content img {
-        max-width: 340px; /* było 260px */
-    }
-}
-
-/* =========================
-   SMALL MOBILE
-========================= */
-@media (max-width: 500px) {
-    .hero-content {
-        padding: 20px;
-    }
-
-    .hero-content h1 {
-        font-size: 38px; /* było 30px */
-    }
-
-    .hero-content p {
-        font-size: 17px; /* było 14px */
-        margin-bottom: 20px;
-    }
-
-    .hero-content img {
-        max-width: 280px; /* było 220px */
-    }
-}
-
-/* =========================
-   BARDZO MAŁE EKRANY
-========================= */
-@media (max-width: 380px) {
-    .hero-content h1 {
-        font-size: 30px; /* było 24px */
-    }
-
-    .hero-content p {
-        font-size: 15px; /* było 13px */
-    }
-
-    .hero-content img {
-        max-width: 220px; /* było 180px */
-    }
-}
