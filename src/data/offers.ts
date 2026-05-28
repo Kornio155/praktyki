@@ -24,6 +24,8 @@ export type Offer = {
     perks?: OfferPerk[];
     image?: string;
     type: string;
+    imagePosition?: string;
+
 
 };
 
@@ -32,6 +34,7 @@ export const offers: Offer[] = [
         slug: 'treningi-medyczne',
         title: 'Treningi medyczne',
         desc: 'Wróć do sprawności bez bólu',
+        imagePosition: "center 60%",
         image: medyczne,
         details:
             'Jeśli jesteś po urazie, masz przeciążenia lub dolegliwości bólowe, ten trening pomoże Ci poprawić sprawność, zmniejszyć ból i bezpiecznie wrócić do aktywności, żebyś znów mógł czuć się pewnie we własnym ciele i funkcjonować bez ograniczeń.',
@@ -172,6 +175,7 @@ export const offers: Offer[] = [
         slug: 'odchudzanie',
         title: 'Odchudzanie',
         desc: 'Tłuszcze się pali!',
+        imagePosition: "center 80%",
         image: odchudzanie,
         details:
             'Jeśli Twoim celem jest pozbycie się nadmiernych kilogramów, , ten trening połączy intensywną pracę z dopasowaniem do Twoich możliwości, dzięki czemu efekty będą widoczne, a proces bezpieczny.',
@@ -268,6 +272,7 @@ export const offers: Offer[] = [
         title: 'Plany treningowe',
         desc: 'Plan pod kątem Twoich potrzeb',
         image: plany,
+        imagePosition: "center 80%",
         details:
             'Najlepszy plan treningowy to taki, który jest dopasowany do Twoich możliwości treningowych!  Nie każdy ma możliwośc trenowania 4-5 razy w tygodniu po dwie godziny. Dlatego przygotowuję plany ćwiczeń uwględniające to, że nie mieszkasz na siłowni i masz wiele innych obowiązków w życiu prócz cwiczeń.',
         type:'offer',

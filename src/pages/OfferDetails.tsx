@@ -64,8 +64,10 @@ const OfferDetails = () => {
                             className="offer-details-image"
                             src={offer.image}
                             alt={offer.title}
+                            style={{
+                                objectPosition: offer.imagePosition
+                            }}
                         />
-
                     </div>
 
                     {/* CONTENT */}

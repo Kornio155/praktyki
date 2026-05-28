@@ -557,7 +557,7 @@
     }
 
     .offer-back-btn {
-        position: static; /* usuwa absolute */
+        position: static;
         width: 100%;
         margin: 0;
     }
