@@ -31,6 +31,10 @@
     display: block;
 }
 
+
+/* Specjalna klasa dla trenidngu medycznego */
+
+
 /* CIEMNA NAKŁADKA */
 
 .offer-details-image-wrapper::after {

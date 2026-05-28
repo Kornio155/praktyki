@@ -65,7 +65,12 @@ const OfferDetails = () => {
                             src={offer.image}
                             alt={offer.title}
                             style={{
-                                objectPosition: offer.imagePosition
+                                objectPosition:
+                                    offer.slug === "treningi-medyczne"
+                                        ? "center 92%"
+                                        : offer.slug === "treningi-motoryczne"
+                                            ? "center 0"
+                                            : offer.imagePosition
                             }}
                         />
                     </div>
