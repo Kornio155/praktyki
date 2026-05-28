@@ -316,7 +316,7 @@ export const offers: Offer[] = [
     },
     {
         slug: 'treningi-dla-dwojga',
-        title: 'Treningi dla dwojga / grupowe',
+        title: 'Treningi dla dwojga / w małych grupach',
         desc: 'Druga osoba to najlepsza motywacja i lepsza cena ;)!',
         image: dladwojga,
         type: 'service',
