@@ -1,5 +1,5 @@
 import {type IconName} from '../assets/icons'
-import medyczne from '../assets/oferty/medyczne.png'
+import medyczne from '../assets/oferty/medyczne.jpg'
 import funkcjonalne from '../assets/oferty/funkcjonalne.png'
 import motoryczne from '../assets/oferty/motoryczne.png'
 import odchudzanie from '../assets/oferty/odchudzanie.png'
@@ -34,7 +34,7 @@ export const offers: Offer[] = [
         slug: 'treningi-medyczne',
         title: 'Treningi medyczne',
         desc: 'Wróć do sprawności bez bólu',
-        imagePosition: "center 60%",
+        imagePosition: "center 80%",
         image: medyczne,
         details:
             'Jeśli jesteś po urazie, masz przeciążenia lub dolegliwości bólowe, ten trening pomoże Ci poprawić sprawność, zmniejszyć ból i bezpiecznie wrócić do aktywności, żebyś znów mógł czuć się pewnie we własnym ciele i funkcjonować bez ograniczeń.',
