@@ -7,7 +7,7 @@ import plany from '../assets/oferty/plany.png'
 import ogolne from '../assets/oferty/ogolne.png'
 import dladwojga from '../assets/oferty/dladwojga.png';
 import games from '../assets/oferty/grupy.png';
-import english from '../assets/oferty/anglia.svg';
+import english from '../assets/oferty/english.png';
 
 
 export type OfferPerk = {
@@ -116,59 +116,6 @@ export const offers: Offer[] = [
             }
         ]
     },
-
-    {
-        slug: 'odchudzanie',
-        title: 'Odchudzanie',
-        desc: 'Redukcja tkanki tłuszczowej',
-        image: odchudzanie,
-        details:
-            'Jeśli Twoim celem jest pozbycie się nadmiernych kilogramów, , ten trening połączy intensywną pracę z dopasowaniem do Twoich możliwości, dzięki czemu efekty będą widoczne, a proces bezpieczny.',
-        type:'offer',
-        perks: [
-            {
-                icon: 'map',
-                label: 'Poradnik skutecznego odchudzania',
-                details: 'Opracowany poradnik, który pomoże Ci zrzucić kilogramy łatwiej.'
-            },
-            {
-                icon: 'lifting',
-                label: 'Dopasowany trening',
-                details: 'Treningi skrojone w 100% pod Twoje potrzeby.'
-            },
-            {
-                icon: 'waistline',
-                label: 'Pomiary składu ciała',
-                details: 'Analiza % udziału tkanki tłuszczowej w ciele.'
-            },
-            {
-                icon: 'calculator',
-                label: 'Zapotrzebowanie kaloryczne',
-                details: 'Wyliczone na podstawie pomiarów składu ciała.'
-            },
-            {
-                icon: 'nutrition',
-                label: 'Wytyczne żywieniowe',
-                details: 'Wytyczne pod kątem Twojego zapotrzebowania.'
-            },
-            {
-                icon: 'support',
-                label: 'Kontakt i wsparcie 24/7',
-                details: 'Pytaj, o co chcesz i kiedy chcesz :)'
-            },
-            {
-                icon: 'heart',
-                label: 'Zaangażowanie',
-                details: 'W 100% !'
-            },
-            {
-                icon:'light_bulb',
-                label: 'Dostęp do wiedzy i doświadczenia',
-                details: 'Służę pomocą w każdej sytuacji!'
-            }
-        ]
-    },
-
     {
         slug: 'treningi-motoryczne',
         title: 'Treningi motoryczne',
@@ -220,6 +167,59 @@ export const offers: Offer[] = [
             }
         ]
     },
+
+    {
+        slug: 'odchudzanie',
+        title: 'Odchudzanie',
+        desc: 'Tłuszcze się pali!',
+        image: odchudzanie,
+        details:
+            'Jeśli Twoim celem jest pozbycie się nadmiernych kilogramów, , ten trening połączy intensywną pracę z dopasowaniem do Twoich możliwości, dzięki czemu efekty będą widoczne, a proces bezpieczny.',
+        type:'offer',
+        perks: [
+            {
+                icon: 'map',
+                label: 'Poradnik skutecznego odchudzania',
+                details: 'Opracowany poradnik, który pomoże Ci zrzucić kilogramy łatwiej.'
+            },
+            {
+                icon: 'lifting',
+                label: 'Dopasowany trening',
+                details: 'Treningi skrojone w 100% pod Twoje potrzeby.'
+            },
+            {
+                icon: 'waistline',
+                label: 'Pomiary składu ciała',
+                details: 'Analiza % udziału tkanki tłuszczowej w ciele.'
+            },
+            {
+                icon: 'calculator',
+                label: 'Zapotrzebowanie kaloryczne',
+                details: 'Wyliczone na podstawie pomiarów składu ciała.'
+            },
+            {
+                icon: 'nutrition',
+                label: 'Wytyczne żywieniowe',
+                details: 'Wytyczne pod kątem Twojego zapotrzebowania.'
+            },
+            {
+                icon: 'support',
+                label: 'Kontakt i wsparcie 24/7',
+                details: 'Pytaj, o co chcesz i kiedy chcesz :)'
+            },
+            {
+                icon: 'heart',
+                label: 'Zaangażowanie',
+                details: 'W 100% !'
+            },
+            {
+                icon:'light_bulb',
+                label: 'Dostęp do wiedzy i doświadczenia',
+                details: 'Służę pomocą w każdej sytuacji!'
+            }
+        ]
+    },
+
 
     {
         slug: 'treningi-ogolnorozwojowe',
@@ -316,7 +316,7 @@ export const offers: Offer[] = [
     },
     {
         slug: 'treningi-dla-dwojga',
-        title: 'Treningi dla dwojga / grupowe',
+        title: 'Treningi dla dwojga / w małych grupach',
         desc: 'Druga osoba to najlepsza motywacja i lepsza cena ;)!',
         image: dladwojga,
         type: 'service',
@@ -332,10 +332,10 @@ export const offers: Offer[] = [
     },
     {
         slug: 'personal-training-in-english',
-        title: 'Personal training (English)',
+        title: 'Personal training sessions in English',
         image: english,
-        desc: 'Personal training session in English',
         type: 'service',
+        desc: 'Personal training sessions in English',
         details: 'I provide personal training sessions in English – perfect for international clients living in Poland or anyone who feels more comfortable communicating in English. Feel free to reach out and book your session – I’ll be happy to help you achieve your fitness goals. For more information, feel free to contact me using any of the available options on my website or by clicking the button below. See you on trainings!'
     }
 ];
