@@ -75,7 +75,7 @@ html {
 
 .scroll-top-btn {
   width: 50%;
-  max-width: 420px;
+  height: 1px;
 
   padding: 20px 25px;
   border-radius: 25px;
@@ -86,7 +86,7 @@ html {
   background: #FBFBFB;
   color: #010013;
 
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
 
   display: flex;

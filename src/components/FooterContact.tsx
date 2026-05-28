@@ -8,7 +8,7 @@ const FooterContact: React.FC = () => {
                 className="scroll-top-btn"
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
-                ↑ Na górę ↑
+                {" ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ Na górę ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ "}
             </button>
 
             <div className="footer-contact-row">
