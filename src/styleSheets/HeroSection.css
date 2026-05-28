@@ -92,7 +92,7 @@
     .hero-img {
         height: 100%;
         object-fit: cover;
-        object-position: center;
+        object-position: 80%;
     }
 
     .hero-content img {
@@ -100,3 +100,44 @@
     }
 }
 
+/* ========================================
+   MOBILE
+======================================== */
+@media (max-width: 768px) {
+
+
+
+    .hero-img {
+        height: 100%;
+        object-fit: cover;
+
+        /* 🔥 mocniejsze przesunięcie w prawo */
+        object-position: 77% center;
+    }
+
+
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+@media (max-width: 500px) {
+
+    .hero-img {
+        object-position: 80% center;
+    }
+
+
+}
+
+/* ========================================
+   VERY SMALL
+======================================== */
+@media (max-width: 380px) {
+
+    .hero-img {
+        object-position: 78% center;
+    }
+
+
+}
