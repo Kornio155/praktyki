@@ -32,7 +32,13 @@ const OfferSection: React.FC = () => {
                                     <div className="img-wrapper">
                                         <img
                                             className={`offer-grid-img ${
-                                                item.slug === "personal-training-in-english" ? "dark-image" : ""
+                                                item.slug === "personal-training-in-english"
+                                                    ? "dark-image"
+                                                    : ""
+                                            } ${
+                                                item.slug === "treningi-medyczne"
+                                                    ? "img-right-medical"
+                                                    : ""
                                             }`}
                                             src={item.image}
                                         />

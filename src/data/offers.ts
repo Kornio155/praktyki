@@ -331,6 +331,7 @@ export const offers: Offer[] = [
         slug: 'gry-i-zabawy',
         title: 'Gry i zabawy',
         image: games,
+        imagePosition: "center 40%",
         desc: 'Aktywność, integracja, dobra zabawa!',
         type: 'service',
         details: 'Jeśli szukasz aktywnej formy zajęć dla grup zapraszam do kontaktu! Prowadzę szereg gier i zabawruchowych, które zapewnią ruch, integrację i pozytywne doświadczenia w dobrej atmosferze w każdej ekipie!'

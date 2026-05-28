@@ -224,3 +224,7 @@
 .dark-image {
     filter: brightness(0.8);
 }
+
+.img-right-medical {
+    object-position: 15% center;
+}
