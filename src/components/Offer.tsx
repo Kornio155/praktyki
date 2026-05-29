@@ -1,18 +1,42 @@
-import React, {useState} from "react";
-import {offers} from "../data/offers.ts";
+import React, { useEffect, useState } from "react";
+import { offers } from "../data/offers.ts";
 import { useNavigate } from "react-router-dom";
-import "../styleSheets/OfferSection.css"
+import "../styleSheets/OfferSection.css";
 
 const OfferSection: React.FC = () => {
     const navigate = useNavigate();
     const [activeOffer, setActiveOffer] = useState<string | null>(null);
     const [isMobile] = useState(window.innerWidth <= 650);
 
+    // 👉 powrót do pozycji po wejściu z podstrony
+    useEffect(() => {
+        const scrollToId = sessionStorage.getItem("offerScrollTo");
+
+        if (scrollToId) {
+            const el = document.getElementById(scrollToId);
+            if (el) {
+                setTimeout(() => {
+                    el.scrollIntoView({ behavior: "smooth", block: "center" });
+                }, 50);
+            }
+        }
+    }, []);
+
+    const handleNavigate = (slug: string) => {
+        // 👉 zapisz scroll + element
+        sessionStorage.setItem("offerScrollTo", slug);
+
+        navigate(`/offer/${slug}`, {
+            state: {
+                from: "offer-grid",
+                scrollTo: slug
+            }
+        });
+    };
 
     return (
         <>
             <section id="offer" className="offer">
-
                 <div className="offer-container">
                     <h2>Oferta</h2>
 
@@ -23,18 +47,12 @@ const OfferSection: React.FC = () => {
                                 key={index}
                                 id={item.slug}
                                 onClick={() => {
-
                                     if (window.innerWidth <= 650 && activeOffer !== item.slug) {
                                         setActiveOffer(item.slug);
                                         return;
                                     }
 
-                                    navigate(`/offer/${item.slug}`, {
-                                        state: {
-                                            from: "offer-grid",
-                                            scrollTo: item.slug
-                                        }
-                                    });
+                                    handleNavigate(item.slug);
                                 }}
                             >
                                 <div className="card-inner">
@@ -52,6 +70,7 @@ const OfferSection: React.FC = () => {
                                                     : ""
                                             }`}
                                             src={item.image}
+                                            alt={item.title}
                                         />
                                     </div>
 
@@ -62,17 +81,13 @@ const OfferSection: React.FC = () => {
                                             className="details-btn"
                                             onClick={(e) => {
                                                 e.stopPropagation();
+
                                                 if (isMobile && activeOffer !== item.slug) {
                                                     setActiveOffer(item.slug);
                                                     return;
                                                 }
 
-                                                navigate(`/offer/${item.slug}`, {
-                                                    state: {
-                                                        from: "offer-grid",
-                                                        scrollTo: item.slug
-                                                    }
-                                                });
+                                                handleNavigate(item.slug);
                                             }}
                                         >
                                             Więcej
@@ -83,10 +98,9 @@ const OfferSection: React.FC = () => {
                         ))}
                     </div>
                 </div>
-
             </section>
         </>
     );
-}
+};
 
 export default OfferSection;
