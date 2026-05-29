@@ -1,7 +1,7 @@
 import {useLocation, useParams} from "react-router-dom";
 import { offers } from "../data/offers";
 import "../styleSheets/OfferDetailsPage.css";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import ContactModal from "../components/ContactModal";
 import { icons } from "../assets/icons";
 import logo from "../assets/logo.svg";
@@ -51,6 +51,24 @@ const OfferDetails = () => {
         return () => clearInterval(interval);
     }, [isOrbitPaused]);
 
+    const orbitRef = useRef(null);
+
+    useEffect(() => {
+        const handleOutside = (e) => {
+            if (orbitRef.current && !orbitRef.current.contains(e.target)) {
+                setIsOrbitPaused(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleOutside);
+        document.addEventListener("touchstart", handleOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleOutside);
+            document.removeEventListener("touchstart", handleOutside);
+        };
+    }, []);
+
 
 
     return (
@@ -87,7 +105,7 @@ const OfferDetails = () => {
 
                     {/* ORBIT */}
                     {!isService && (
-                        <div className="offer-perks-orbit">
+                        <div className="offer-perks-orbit" ref={orbitRef}>
 
                             <div
                                 className="orbit"
@@ -131,6 +149,11 @@ const OfferDetails = () => {
                                                         className="orbit-icon"
                                                         onMouseEnter={() => setIsOrbitPaused(true)}
                                                         onMouseLeave={() => setIsOrbitPaused(false)}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            setIsOrbitPaused(true);
+                                                        }}
+                                                        onTouchStart={() => setIsOrbitPaused(true)}
                                                     >
                                                         <img
                                                             src={icons[item.icon]}
