@@ -249,3 +249,10 @@
         font-size: 12px;
     }
 }
+.card:hover .details-btn,
+.card:focus-within .details-btn {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;  /* 🔥 */
+    pointer-events: auto !important;
+}
