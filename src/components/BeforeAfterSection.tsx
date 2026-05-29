@@ -34,7 +34,7 @@ const items = [
 export default function BeforeAfter() {
     const carouselRef = useRef<HTMLDivElement>(null);
 
-    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
     const [hovered, setHovered] = useState(false);
     const [isNavHovered, setIsNavHovered] = useState(false);
 
@@ -150,7 +150,7 @@ export default function BeforeAfter() {
             isHoldActive.current = true;
             isDragging.current = true;
             isInteracting.current = true;
-        }, 1000); // HOLD 1s
+        }, 100); // HOLD 0.1s
     };
 
     // MOVE
@@ -323,19 +323,7 @@ export default function BeforeAfter() {
         setTimeout(loopCheck, 400);
     };
 
-    useEffect(() => {
-        const onKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "Escape") {
-                setSelectedImage(null);
-            }
-        };
 
-        window.addEventListener("keydown", onKeyDown);
-
-        return () => {
-            window.removeEventListener("keydown", onKeyDown);
-        };
-    }, []);
 
     useEffect(() => {
         const handleOutsideTouch = (e: TouchEvent) => {
@@ -347,6 +335,7 @@ export default function BeforeAfter() {
                 isDragging.current = false;
                 isInteracting.current = false;
                 isHoldActive.current = false;
+                isCentering.current = false;
 
                 if (holdTimeout.current) {
                     clearTimeout(holdTimeout.current);
@@ -424,13 +413,8 @@ export default function BeforeAfter() {
                                     const el =
                                         e.currentTarget as HTMLElement;
 
-                                    // CENTER ALWAYS
+                                    // tylko centruj
                                     scrollToCenter(el);
-
-                                    // OPEN MODAL AFTER CENTER
-                                    setTimeout(() => {
-                                        setSelectedImage(item.image);
-                                    }, 350);
                                 }}
                             >
                                 <img
@@ -457,19 +441,7 @@ export default function BeforeAfter() {
                 </div>
             </div>
 
-            {selectedImage && (
-                <div
-                    className="ba-modal"
-                    onClick={() => setSelectedImage(null)}
-                >
-                    <div className="ba-modal-content">
-                        <img
-                            src={selectedImage}
-                            alt="preview"
-                        />
-                    </div>
-                </div>
-            )}
+
         </section>
     );
 }

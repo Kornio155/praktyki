@@ -59,11 +59,15 @@ const OfferDetails = () => {
         return () => clearInterval(interval);
     }, [isOrbitPaused]);
 
-    const orbitRef = useRef(null);
+
+
+    const orbitRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-        const handleOutside = (e) => {
-            if (orbitRef.current && !orbitRef.current.contains(e.target)) {
+        const handleOutside = (e: MouseEvent | TouchEvent) => {
+            const target = e.target as Node;
+
+            if (orbitRef.current && !orbitRef.current.contains(target)) {
                 setIsOrbitPaused(false);
             }
         };
