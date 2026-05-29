@@ -1,5 +1,5 @@
 import {type IconName} from '../assets/icons'
-import medyczne from '../assets/oferty/medyczne.jpg'
+import medyczne from '../assets/oferty/medyczne.png'
 import funkcjonalne from '../assets/oferty/funkcjonalne.png'
 import motoryczne from '../assets/oferty/motoryczne.png'
 import odchudzanie from '../assets/oferty/odchudzanie.png'
