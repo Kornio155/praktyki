@@ -190,6 +190,11 @@
         padding: 50px 12px;
     }
 
+    .Contact h2{
+        text-align: center;
+        width: 100%;
+    }
+
     .Contact-content {
         gap: 12px;
     }

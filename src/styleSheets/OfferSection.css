@@ -77,6 +77,11 @@
         font-size: 12px;
         margin: 4px auto;
     }
+
+    .offer h2{
+        text-align: center;
+        width: 100%;
+    }
 }
 
 /* bardzo małe telefony */

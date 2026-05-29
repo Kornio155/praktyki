@@ -22,6 +22,11 @@
     .before-after h2 {
         padding: 0 24px;
     }
+
+.before-after {
+    text-align: center;
+    width: 100%;
+}
 }
 
 @media (max-width: 600px) {
