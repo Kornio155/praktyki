@@ -12,14 +12,17 @@ const OfferSection: React.FC = () => {
     useEffect(() => {
         const scrollToId = sessionStorage.getItem("offerScrollTo");
 
-        if (scrollToId) {
-            const el = document.getElementById(scrollToId);
-            if (el) {
-                setTimeout(() => {
-                    el.scrollIntoView({ behavior: "smooth", block: "center" });
-                }, 50);
-            }
+        if (!scrollToId) return;
+
+        const el = document.getElementById(scrollToId);
+
+        if (el) {
+            setTimeout(() => {
+                el.scrollIntoView({ behavior: "smooth", block: "center" });
+            }, 50);
         }
+
+        sessionStorage.removeItem("offerScrollTo"); // 🔥 KLUCZ
     }, []);
 
     const handleNavigate = (slug: string) => {
