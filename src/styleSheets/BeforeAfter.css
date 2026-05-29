@@ -14,19 +14,21 @@
     max-width: 1140px;
     margin:  0 100px 50px 190px;
     text-align: left;
-    font-size: 60px;
+    font-size: 50px;
     box-sizing: border-box;
 }
 
 @media (max-width: 1023px) {
     .before-after h2 {
         padding: 0 24px;
+        text-align: center;
+        margin: 0 auto 50px auto;
     }
 
-.before-after {
-    text-align: center;
-    width: 100%;
-}
+    .before-after {
+        text-align: center;
+        width: 100%;
+    }
 }
 
 @media (max-width: 600px) {
