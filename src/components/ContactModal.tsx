@@ -71,6 +71,13 @@ export default function ContactModal({ isOpen, onClose }: Props) {
             return alert("Zły telefon");
         }
 
+        // 👇 OKNO POTWIERDZENIA
+        const confirmed = window.confirm(
+            "Czy dane są poprawne?\n\nPo wysłaniu nie będziesz mógł wysłać kolejnej wiadomości przez 12 godzin."
+        );
+
+        if (!confirmed) return;
+
         setLoading(true);
 
         try {
@@ -91,11 +98,12 @@ export default function ContactModal({ isOpen, onClose }: Props) {
 
             const data = await res.json();
 
-            if (!res.ok) {
+            if (!data.success) {
                 throw new Error(data.message || "Błąd wysyłki");
             }
 
             localStorage.setItem("last_send_time", String(Date.now()));
+
             if (email) {
                 localStorage.setItem(
                     `last_email_${email.toLowerCase()}`,
