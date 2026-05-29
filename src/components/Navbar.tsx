@@ -23,10 +23,32 @@ const Navbar: React.FC = () => {
                 </Link>
 
                 <ul className={`navbar-links ${menuOpen ? "active" : ""}`}>
-                    <li><a href="/#contact">Kontakt</a></li>
-                    <li><a href="/#offer">Oferta</a></li>
-                    <li><a href="/#before-after">Efekty</a></li>
-                    <li><Link to="/about">O mnie</Link></li>
+                    <li>
+                        <a href="/#contact" onClick={() => setMenuOpen(false)}>
+                            Kontakt
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/#offer" onClick={() => setMenuOpen(false)}>
+                            Oferta
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/#before-after" onClick={() => setMenuOpen(false)}>
+                            Efekty
+                        </a>
+                    </li>
+
+                    <li>
+                        <Link
+                            to="/about"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            O mnie
+                        </Link>
+                    </li>
 
                     <button
                         className="navbar-btn mobile-btn"

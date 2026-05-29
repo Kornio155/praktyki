@@ -1,6 +1,6 @@
 .offer {
     background: #0F0F0F;
-    color: #E4F0F6;
+    color: #FBFBFB;
     padding: 80px 0;
 }
 
@@ -150,7 +150,7 @@
 
 .card h3 {
     background: #252525;
-    color: #E4F0F6;
+    color: #FBFBFB;
 
     margin: 0;
     font-size: 19px;
@@ -171,7 +171,7 @@
 }
 
 .card-desc {
-    color: #E4F0F6;
+    color: #FBFBFB;
     font-size: 18px;
     text-align: center;
     line-height: 1.25;
@@ -196,7 +196,7 @@
     border-radius: 10px;
 
     background: #0F0F0F;
-    color: #E4F0F6;
+    color: #FBFBFB;
     cursor: pointer;
 
     transform: translateY(20px);
