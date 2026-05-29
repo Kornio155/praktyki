@@ -6,6 +6,8 @@ import "../styleSheets/OfferSection.css"
 const OfferSection: React.FC = () => {
     const navigate = useNavigate();
     const [activeOffer, setActiveOffer] = useState<string | null>(null);
+    const [isMobile] = useState(window.innerWidth <= 650);
+
 
     return (
         <>
@@ -57,6 +59,11 @@ const OfferSection: React.FC = () => {
                                             className="details-btn"
                                             onClick={(e) => {
                                                 e.stopPropagation();
+                                                if (isMobile && activeOffer !== item.slug) {
+                                                    setActiveOffer(item.slug);
+                                                    return;
+                                                }
+
                                                 navigate(`/offer/${item.slug}`);
                                             }}
                                         >
