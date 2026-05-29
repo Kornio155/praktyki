@@ -30,7 +30,10 @@ const OfferSection: React.FC = () => {
                                     }
 
                                     navigate(`/offer/${item.slug}`, {
-                                        state: { scrollTo: item.slug }
+                                        state: {
+                                            from: "offer-grid",
+                                            scrollTo: item.slug
+                                        }
                                     });
                                 }}
                             >
@@ -64,7 +67,12 @@ const OfferSection: React.FC = () => {
                                                     return;
                                                 }
 
-                                                navigate(`/offer/${item.slug}`);
+                                                navigate(`/offer/${item.slug}`, {
+                                                    state: {
+                                                        from: "offer-grid",
+                                                        scrollTo: item.slug
+                                                    }
+                                                });
                                             }}
                                         >
                                             Więcej

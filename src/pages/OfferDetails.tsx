@@ -24,16 +24,24 @@ const OfferDetails = () => {
     const location = useLocation();
 
     const handleBack = () => {
-        const target = location.state?.scrollTo;
+        const state = location.state as {
+            from?: string;
+            scrollTo?: string;
+        } | null;
+
+        if (state?.from === "offer-grid") {
+            navigate("/");
+
+            setTimeout(() => {
+                if (state.scrollTo) {
+                    document.getElementById(state.scrollTo)
+                        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+            }, 100);
+            return;
+        }
 
         navigate("/");
-
-        setTimeout(() => {
-            if (target) {
-                document.getElementById(target)
-                    ?.scrollIntoView({ behavior: "smooth", block: "center" });
-            }
-        }, 100);
     };
     const perks = offer.perks ?? [];
 
