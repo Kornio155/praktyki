@@ -13,7 +13,7 @@ import kamila from "../assets/przedIPo/kamila_1200x1200.png";
 import natalia from "../assets/przedIPo/natalia_1200x1200.png";
 import bogdan from "../assets/przedIPo/bogdan_1200x1200.png";
 import bogus from "../assets/przedIPo/bogus_1200x1200.png";
-import aleks2 from "../assets/przedIPo/a_1200x1200.png"
+import aleks2 from "../assets/przedIPo/a_1200x1200.png";
 
 const items = [
     { id: 1, text: "Aleks = =", image: aleks },
@@ -41,6 +41,9 @@ export default function BeforeAfter() {
     const duplicated = [...items, ...items, ...items];
 
     const isDragging = useRef(false);
+    const isInteracting = useRef(false);
+    const isCentering = useRef(false);
+
     const startX = useRef(0);
     const startScrollLeft = useRef(0);
 
@@ -50,9 +53,13 @@ export default function BeforeAfter() {
 
     const animationFrame = useRef<number | null>(null);
 
-    // CLICK vs DRAG detection
-    const pointerDownTime = useRef(0);
-    const clickCandidate = useRef(true);
+    // HOLD TO DRAG
+    const holdTimeout = useRef<number | null>(null);
+    const isHoldActive = useRef(false);
+
+    // CLICK DETECTION
+    const pressStartTime = useRef(0);
+    const movedTooMuch = useRef(false);
 
     const stopMomentum = () => {
         if (animationFrame.current) {
@@ -73,6 +80,33 @@ export default function BeforeAfter() {
         if (container.scrollLeft <= 0) {
             container.scrollLeft += singleSetWidth;
         }
+    };
+
+    // CENTER CLICKED ITEM
+    const scrollToCenter = (el: HTMLElement) => {
+        const container = carouselRef.current;
+        if (!container) return;
+
+        isCentering.current = true;
+
+        const containerRect = container.getBoundingClientRect();
+        const itemRect = el.getBoundingClientRect();
+
+        const containerCenter = containerRect.width / 2;
+        const itemCenter =
+            itemRect.left - containerRect.left + itemRect.width / 2;
+
+        const target =
+            container.scrollLeft + (itemCenter - containerCenter);
+
+        container.scrollTo({
+            left: target,
+            behavior: "smooth",
+        });
+
+        setTimeout(() => {
+            isCentering.current = false;
+        }, 500);
     };
 
     const startMomentum = () => {
@@ -96,37 +130,40 @@ export default function BeforeAfter() {
         animationFrame.current = requestAnimationFrame(animate);
     };
 
-    const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    // START PRESS
+    const startPress = (clientX: number) => {
         const container = carouselRef.current;
         if (!container) return;
 
         stopMomentum();
 
-        isDragging.current = true;
-        clickCandidate.current = true;
+        pressStartTime.current = performance.now();
+        movedTooMuch.current = false;
 
-        startX.current = e.clientX;
+        startX.current = clientX;
         startScrollLeft.current = container.scrollLeft;
 
-        lastX.current = e.clientX;
+        lastX.current = clientX;
         lastTime.current = performance.now();
 
-        pointerDownTime.current = performance.now();
-
-        container.setPointerCapture(e.pointerId);
+        holdTimeout.current = window.setTimeout(() => {
+            isHoldActive.current = true;
+            isDragging.current = true;
+            isInteracting.current = true;
+        }, 1000); // HOLD 1s
     };
 
-    const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    // MOVE
+    const moveDrag = (clientX: number) => {
         if (!isDragging.current) return;
 
         const container = carouselRef.current;
         if (!container) return;
 
-        const dx = e.clientX - startX.current;
-        const dt = performance.now() - pointerDownTime.current;
+        const dx = clientX - startX.current;
 
-        if (Math.abs(dx) > 8 || dt > 150) {
-            clickCandidate.current = false;
+        if (Math.abs(dx) > 8) {
+            movedTooMuch.current = true;
         }
 
         container.scrollLeft = startScrollLeft.current - dx;
@@ -135,34 +172,62 @@ export default function BeforeAfter() {
 
         const now = performance.now();
 
-        const deltaX = e.clientX - lastX.current;
+        const deltaX = clientX - lastX.current;
         const deltaTime = now - lastTime.current;
 
         if (deltaTime > 0) {
             velocity.current = deltaX / deltaTime;
         }
 
-        lastX.current = e.clientX;
+        lastX.current = clientX;
         lastTime.current = now;
     };
 
-    const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
-        const container = carouselRef.current;
-        if (!container) return;
+    // END PRESS
+    const endPress = () => {
+        if (holdTimeout.current) {
+            clearTimeout(holdTimeout.current);
+        }
 
-        isDragging.current = false;
-
-        container.releasePointerCapture(e.pointerId);
-
-        if (!clickCandidate.current) {
+        if (isDragging.current) {
             startMomentum();
         }
 
+        isDragging.current = false;
+        isInteracting.current = false;
+
         setTimeout(() => {
-            clickCandidate.current = true;
+            isHoldActive.current = false;
         }, 50);
     };
 
+    // MOUSE EVENTS
+    const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+        startPress(e.clientX);
+    };
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        moveDrag(e.clientX);
+    };
+
+    const handleMouseUp = () => {
+        endPress();
+    };
+
+    // TOUCH EVENTS
+    const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+        startPress(e.touches[0].clientX);
+    };
+
+    const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+        moveDrag(e.touches[0].clientX);
+    };
+
+    const handleTouchEnd = () => {
+        endPress();
+    };
+
+    // INIT POSITION
     useEffect(() => {
         const container = carouselRef.current;
         if (!container) return;
@@ -172,6 +237,7 @@ export default function BeforeAfter() {
         });
     }, []);
 
+    // AUTO SCROLL
     const autoScrollFrame = useRef<number | null>(null);
 
     useEffect(() => {
@@ -181,10 +247,6 @@ export default function BeforeAfter() {
         let lastTime = performance.now();
 
         const speed = 0.035;
-// możesz zmieniać:
-// 0.02 = bardzo wolno
-// 0.035 = elegancko
-// 0.06 = szybciej
 
         const animate = (time: number) => {
             const delta = time - lastTime;
@@ -193,11 +255,11 @@ export default function BeforeAfter() {
             const shouldPause =
                 hovered ||
                 isNavHovered ||
-                isDragging.current;
+                isDragging.current ||
+                isCentering.current;
 
             if (!shouldPause) {
                 container.scrollLeft += speed * delta;
-
                 loopCheck();
             }
 
@@ -221,13 +283,20 @@ export default function BeforeAfter() {
         const container = carouselRef.current;
         if (!container) return;
 
-        const firstCard = container.querySelector<HTMLElement>(".ba-item");
+        const firstCard =
+            container.querySelector<HTMLElement>(".ba-item");
+
         if (!firstCard) return;
 
-        const gap = parseInt(getComputedStyle(container).gap || "24") || 24;
+        const gap =
+            parseInt(getComputedStyle(container).gap || "24") || 24;
+
         const step = firstCard.offsetWidth + gap;
 
-        container.scrollBy({ left: step, behavior: "smooth" });
+        container.scrollBy({
+            left: step,
+            behavior: "smooth",
+        });
 
         setTimeout(loopCheck, 400);
     };
@@ -236,24 +305,60 @@ export default function BeforeAfter() {
         const container = carouselRef.current;
         if (!container) return;
 
-        const firstCard = container.querySelector<HTMLElement>(".ba-item");
+        const firstCard =
+            container.querySelector<HTMLElement>(".ba-item");
+
         if (!firstCard) return;
 
-        const gap = parseInt(getComputedStyle(container).gap || "24") || 24;
+        const gap =
+            parseInt(getComputedStyle(container).gap || "24") || 24;
+
         const step = firstCard.offsetWidth + gap;
 
-        container.scrollBy({ left: -step, behavior: "smooth" });
+        container.scrollBy({
+            left: -step,
+            behavior: "smooth",
+        });
 
         setTimeout(loopCheck, 400);
     };
 
     useEffect(() => {
         const onKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "Escape") setSelectedImage(null);
+            if (e.key === "Escape") {
+                setSelectedImage(null);
+            }
         };
 
         window.addEventListener("keydown", onKeyDown);
-        return () => window.removeEventListener("keydown", onKeyDown);
+
+        return () => {
+            window.removeEventListener("keydown", onKeyDown);
+        };
+    }, []);
+
+    useEffect(() => {
+        const handleOutsideTouch = (e: TouchEvent) => {
+            const container = carouselRef.current;
+
+            if (!container) return;
+
+            if (!container.contains(e.target as Node)) {
+                isDragging.current = false;
+                isInteracting.current = false;
+                isHoldActive.current = false;
+
+                if (holdTimeout.current) {
+                    clearTimeout(holdTimeout.current);
+                }
+            }
+        };
+
+        document.addEventListener("touchstart", handleOutsideTouch);
+
+        return () => {
+            document.removeEventListener("touchstart", handleOutsideTouch);
+        };
     }, []);
 
     return (
@@ -283,32 +388,49 @@ export default function BeforeAfter() {
                     ref={carouselRef}
                     className="ba-carousel"
                     onMouseEnter={() => setHovered(true)}
-                    onMouseLeave={() => setHovered(false)}
-                    onPointerDown={handlePointerDown}
-                    onPointerMove={handlePointerMove}
-                    onPointerUp={handlePointerUp}
-                    onPointerCancel={handlePointerUp}
+                    onMouseLeave={() => {
+                        setHovered(false);
+
+                        isDragging.current = false;
+                        isInteracting.current = false;
+                        isHoldActive.current = false;
+
+                        if (holdTimeout.current) {
+                            clearTimeout(holdTimeout.current);
+                        }
+                    }}
+                    onMouseDown={handleMouseDown}
+                    onMouseMove={handleMouseMove}
+                    onMouseUp={handleMouseUp}
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
                 >
                     {duplicated.map((item, index) => (
-                        <div key={`${item.id}-${index}`} className="ba-item">
+                        <div
+                            key={`${item.id}-${index}`}
+                            className="ba-item"
+                        >
                             <div
                                 className="ba-image-wrapper"
-                                onPointerUp={(e) => {
-                                    console.log("CLICK IMAGE:", item.image);
-                                    console.log("clickCandidate:", clickCandidate.current);
-                                    e.stopPropagation();
-                                    console.log("CLICK IMAGE:", item.image);
-                                    console.log("clickCandidate:", clickCandidate.current);
-
-                                    const dt = performance.now() - pointerDownTime.current;
-
-                                    const isQuickTap = dt < 250 && clickCandidate.current;
-                                    console.log("CLICK IMAGE:", item.image);
-                                    console.log("clickCandidate:", clickCandidate.current);
-
-                                    if (isQuickTap) {
-                                        setSelectedImage(item.image);
+                                onClick={(e) => {
+                                    if (
+                                        movedTooMuch.current ||
+                                        isHoldActive.current
+                                    ) {
+                                        return;
                                     }
+
+                                    const el =
+                                        e.currentTarget as HTMLElement;
+
+                                    // CENTER ALWAYS
+                                    scrollToCenter(el);
+
+                                    // OPEN MODAL AFTER CENTER
+                                    setTimeout(() => {
+                                        setSelectedImage(item.image);
+                                    }, 350);
                                 }}
                             >
                                 <img
@@ -316,14 +438,17 @@ export default function BeforeAfter() {
                                     alt={item.text}
                                     draggable={false}
                                 />
+
                                 <div className="ba-overlay">
                                     <p>
-                                        {item.text.split(" =").map((t, i) => (
-                                            <span key={i}>
-                                                {t}
-                                                <br />
-                                            </span>
-                                        ))}
+                                        {item.text
+                                            .split(" =")
+                                            .map((t, i) => (
+                                                <span key={i}>
+                                                    {t}
+                                                    <br />
+                                                </span>
+                                            ))}
                                     </p>
                                 </div>
                             </div>
@@ -338,7 +463,10 @@ export default function BeforeAfter() {
                     onClick={() => setSelectedImage(null)}
                 >
                     <div className="ba-modal-content">
-                        <img src={selectedImage} alt="preview" />
+                        <img
+                            src={selectedImage}
+                            alt="preview"
+                        />
                     </div>
                 </div>
             )}
