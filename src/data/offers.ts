@@ -174,7 +174,7 @@ export const offers: Offer[] = [
     {
         slug: 'odchudzanie',
         title: 'Odchudzanie',
-        desc: 'Tłuszcze się pali!',
+        desc: 'Tłuszcz się pali!',
         imagePosition: "center 80%",
         image: odchudzanie,
         details:

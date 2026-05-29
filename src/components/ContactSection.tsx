@@ -5,6 +5,7 @@ import "../styleSheets/ContactSection.css";
 const ContactSection: React.FC = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [activeCard, setActiveCard] = useState<string | null>(null);
 
     return (
         <>
@@ -68,6 +69,7 @@ const ContactSection: React.FC = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="location-button"
+
                                 >
                                     Zobacz na mapie
                                 </a>
@@ -99,11 +101,21 @@ const ContactSection: React.FC = () => {
 
                         {/* INSTAGRAM */}
                         <a
-                            href="https://www.instagram.com/moveability_adam_rybaczyk/"
+                            href={
+                                activeCard === "instagram"
+                                    ? "https://www.instagram.com/moveability_adam_rybaczyk/"
+                                    : undefined
+                            }
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="Contact-card"
+                            className={`Contact-card ${activeCard === "instagram" ? "active" : ""}`}
                             id="sociale1"
+                            onClick={(e) => {
+                                if (window.innerWidth <= 650 && activeCard !== "instagram") {
+                                    e.preventDefault();
+                                    setActiveCard("instagram");
+                                }
+                            }}
                         >
 
                             <img
@@ -124,11 +136,21 @@ const ContactSection: React.FC = () => {
 
                         {/* FACEBOOK */}
                         <a
-                            href="https://www.facebook.com/Moveability.Olsztyn?locale=pl_PL"
+                            href={
+                                activeCard === "facebook"
+                                    ? "https://www.facebook.com/Moveability.Olsztyn?locale=pl_PL"
+                                    : undefined
+                            }
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="Contact-card"
+                            className={`Contact-card ${activeCard === "facebook" ? "active" : ""}`}
                             id="sociale2"
+                            onClick={(e) => {
+                                if (window.innerWidth <= 650 && activeCard !== "facebook") {
+                                    e.preventDefault();
+                                    setActiveCard("facebook");
+                                }
+                            }}
                         >
 
                             <img
@@ -149,7 +171,15 @@ const ContactSection: React.FC = () => {
                         {/* BIG CARD */}
                         <div
                             className="Big-card big-card-icon"
-                            onClick={() => setIsModalOpen(true)}
+                            onClick={() => {
+
+                                if (window.innerWidth <= 650 && activeCard !== "contact") {
+                                    setActiveCard("contact");
+                                    return;
+                                }
+
+                                setIsModalOpen(true);
+                            }}
                         >
 
                             <img

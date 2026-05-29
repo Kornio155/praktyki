@@ -1,11 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import {offers} from "../data/offers.ts";
 import { useNavigate } from "react-router-dom";
 import "../styleSheets/OfferSection.css"
 
 const OfferSection: React.FC = () => {
     const navigate = useNavigate();
-
+    const [activeOffer, setActiveOffer] = useState<string | null>(null);
 
     return (
         <>
@@ -17,14 +17,20 @@ const OfferSection: React.FC = () => {
                     <div className="offer-grid">
                         {offers.map((item, index) => (
                             <div
-                                className="card"
+                                className={`card ${activeOffer === item.slug ? "active" : ""}`}
                                 key={index}
-                                onClick={() =>
+                                id={item.slug}
+                                onClick={() => {
+
+                                    if (window.innerWidth <= 650 && activeOffer !== item.slug) {
+                                        setActiveOffer(item.slug);
+                                        return;
+                                    }
+
                                     navigate(`/offer/${item.slug}`, {
                                         state: { scrollTo: item.slug }
-                                    })
-                                }
-                                id={item.slug}
+                                    });
+                                }}
                             >
                                 <div className="card-inner">
                                     <h3>{item.title}</h3>
