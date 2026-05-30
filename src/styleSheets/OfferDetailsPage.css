@@ -4,7 +4,7 @@
     min-height: 100vh;
 
     background: #0F0F0F;
-    color: #E4F0F6;
+    color: #FBFBFB;
 
     padding: 0;
     overflow: hidden;
@@ -382,7 +382,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
 
-    color: white;
+    color: #FBFBFB;
 }
 
 .orbit-center-overlay span {
