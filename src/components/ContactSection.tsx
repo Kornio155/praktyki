@@ -6,19 +6,17 @@ const ContactSection: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [activeCard, setActiveCard] = useState<string | null>(null);
 
-    // Uniwersalna funkcja obsługująca kliknięcie w kartę na mobilkach
     const handleCardClick = (cardName: string) => {
         if (window.innerWidth <= 650) {
             setActiveCard(cardName);
         }
     };
 
-    // Warunek sprawdzający, czy na mobilu link w przycisku powinien być aktywny
     const isLinkActive = (cardName: string) => {
         if (window.innerWidth <= 650) {
             return activeCard === cardName;
         }
-        return true; // Na desktopie linki są zawsze aktywne
+        return true;
     };
 
     return (
@@ -163,8 +161,13 @@ const ContactSection: React.FC = () => {
                         <div
                             className={`Big-card big-card-icon ${activeCard === "contact" ? "active" : ""}`}
                             onClick={() => {
-                                if (window.innerWidth <= 650 && activeCard !== "contact") {
-                                    setActiveCard("contact");
+                                if (window.innerWidth <= 650) {
+                                    // Jeśli karta jest już aktywna, kliknięcie gdziekolwiek (w nią lub przycisk) otwiera modal
+                                    if (activeCard === "contact") {
+                                        setIsModalOpen(true);
+                                    } else {
+                                        setActiveCard("contact");
+                                    }
                                 } else {
                                     setIsModalOpen(true);
                                 }
@@ -180,13 +183,13 @@ const ContactSection: React.FC = () => {
                                 <button
                                     className="big-card-btn"
                                     onClick={(e) => {
-                                        // Zapobiega podwójnemu wywołaniu modala, jeśli kliknięto bezpośrednio w przycisk na desktopie
-                                        e.stopPropagation();
-                                        if (isLinkActive("contact")) {
+                                        // Na mobilu pozwalamy, aby kliknięcie bąbelkowało do głównego diva (rodzica).
+                                        // Na desktopie odpalamy modal bezpośrednio tutaj (chociaż rodzic też go odpali, więc zapobiegamy dublowaniu).
+                                        if (window.innerWidth > 650) {
+                                            e.stopPropagation();
                                             setIsModalOpen(true);
                                         }
                                     }}
-                                    style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
                                 >
                                     Skontaktuj się
                                 </button>

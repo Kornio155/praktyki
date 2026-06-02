@@ -75,20 +75,15 @@
     transform: translateY(-3px);
 }
 
-/* BUTTON */
+/* BUTTON GŁÓWNY (DESKTOP) */
 .navbar-btn {
     background: #FBFBFB;
     color: #010013;
-
     border: none;
-
     padding: 12px 24px;
-
     border-radius: 999px;
-
     font-weight: bold;
     cursor: pointer;
-
     transition: 0.3s;
 }
 
@@ -101,12 +96,9 @@
     display: none;
     width: 42px;
     height: 42px;
-
     background: transparent;
     border: none;
-
     cursor: pointer;
-
     flex-direction: column;
     justify-content: center;
     gap: 6px;
@@ -120,7 +112,7 @@
     transition: 0.3s;
 }
 
-/* ukryj mobile button na desktop */
+/* domyślnie ukryj mobilny przycisk na dużych ekranach */
 .mobile-btn {
     display: none;
 }
@@ -129,7 +121,6 @@
    DUŻE TABLETY
 ========================= */
 @media (max-width: 1200px) {
-
     .navbar {
         padding: 16px 24px;
     }
@@ -149,41 +140,11 @@
 }
 
 /* =========================
-   TABLETY
+   TABLETY (MENU ROZWIJANE)
 ========================= */
 @media (max-width: 950px) {
-
     .navbar {
         padding: 14px 20px;
-    }
-
-    .navbar-links {
-        gap: 18px;
-    }
-
-    .navbar-links li {
-        width: 80%;
-    }
-
-    .navbar-links a {
-        width: 100%;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        padding: 14px 20px;
-
-        background: rgba(255,255,255,0.05);
-
-        border-radius: 14px;
-
-        /* RESPONSYWNY TEKST */
-        font-size: clamp(16px, 2.5vw, 22px);
-
-        line-height: 1.2;
-
-        text-align: center;
     }
 
     .desktop-btn {
@@ -196,31 +157,21 @@
 
     .navbar-links {
         position: absolute;
-
         top: calc(100% + 15px);
         left: 0;
-
         width: 100%;
-
         background: rgba(0, 0, 0, 0.95);
-
         backdrop-filter: blur(20px);
-
         border-radius: 20px;
-
         padding: 30px 20px;
-
         flex-direction: column;
         align-items: center;
-
-        gap: 24px;
-
+        gap: 16px;
         opacity: 0;
         pointer-events: none;
-
         transform: translateY(-10px);
-
         transition: 0.3s ease;
+        box-sizing: border-box; /* Zabezpieczenie przed rozpychaniem paddingiem */
     }
 
     .navbar-links.active {
@@ -229,19 +180,54 @@
         transform: translateY(0);
     }
 
-    .desktop-btn {
-        display: none;
+    .navbar-links li {
+        width: 80%;
     }
 
-    .mobile-btn {
-        width: 80%;
-
-        margin-top: 10px;
-
-        /* RESPONSYWNY TEKST */
-        font-size: clamp(16px, 2.5vw, 22px);
-
+    .navbar-links a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 14px 20px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 14px;
+        font-size: clamp(16px, 2.5vw, 22px);
+        line-height: 1.2;
+        text-align: center;
+        box-sizing: border-box; /* Wyrównanie box-modelu */
+    }
+
+    /* 🔥 WYMUSZENIE IDENTYCZNEJ SZEROKOŚCI JAK KAFIELKI (80%) */
+    .mobile-btn.mobile-special-btn {
+        display: flex !important;           /* Zmienione na flex, by tekst centrował się identycznie jak w <a> */
+        justify-content: center;
+        align-items: center;
+
+        width: 80% !important;              /* Dokładnie tyle samo co .navbar-links li */
+        max-width: none !important;         /* Usuwamy sztywny limit, kafelki też go nie mają */
+
+        background: #FBFBFB !important;
+        color: #0F0F0F !important;
+        border: 2px solid #FBFBFB !important;
+        font-weight: bold;
+
+        padding: 14px 20px !important;      /* Identyczny padding jak w .navbar-links a */
+        border-radius: 14px !important;     /* Identyczny radius */
+        font-size: clamp(16px, 2.5vw, 22px) !important; /* Identyczny clamp rozmiaru czcionki */
+        line-height: 1.2 !important;
+        text-align: center;
+
+        margin-top: 15px !important;        /* Margines odsuwający od ostatniego linku */
+        margin-bottom: 5px !important;
+
+        transition: 0.3s ease;
+        box-sizing: border-box;             /* Gwarancja identycznego wyrównania krawędzi */
+    }
+
+    .mobile-btn.mobile-special-btn:active {
+        background: #e0e0e0 !important;
+        border-color: #e0e0e0 !important;
     }
 }
 
@@ -249,13 +235,10 @@
    MOBILE
 ========================= */
 @media (max-width: 600px) {
-
     .navbar {
         width: calc(100% - 20px);
         top: 10px;
-
         padding: 14px 16px;
-
         border-radius: 16px;
     }
 
@@ -271,17 +254,15 @@
         font-size: 16px;
     }
 
-    .navbar-btn {
-        width: 100%;
-        text-align: center;
-    }
+    /* 🔥 Usunąłem stąd regułę width: 100% dla przycisku.
+       Dzięki temu przycisk zachowuje width: 80%, dokładnie tak samo jak elementy <li> wyżej.
+    */
 }
 
 /* =========================
    SMALL MOBILE
 ========================= */
 @media (max-width: 400px) {
-
     .logo {
         height: 28px;
     }

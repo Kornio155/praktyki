@@ -7,7 +7,6 @@ import '../styleSheets/NavBar.css'
 
 const Navbar: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
@@ -17,9 +16,12 @@ const Navbar: React.FC = () => {
                 <Link
                     to="/"
                     className="logo"
-                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                    onClick={() => {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                        setMenuOpen(false); // 🔥 Zamyka menu po kliknięciu w logo
+                    }}
                 >
-                    <img src={logo} />
+                    <img src={logo} alt="Logo" />
                 </Link>
 
                 <ul className={`navbar-links ${menuOpen ? "active" : ""}`}>
@@ -50,9 +52,13 @@ const Navbar: React.FC = () => {
                         </Link>
                     </li>
 
+                    {/* Przycisk mobilny na samym dole listy linków */}
                     <button
-                        className="navbar-btn mobile-btn"
-                        onClick={() => setIsModalOpen(true)}
+                        className="navbar-btn mobile-btn mobile-special-btn"
+                        onClick={() => {
+                            setIsModalOpen(true);
+                            setMenuOpen(false); // Zamyka menu po otwarciu modala
+                        }}
                     >
                         Poproś o kontakt
                     </button>
@@ -72,6 +78,7 @@ const Navbar: React.FC = () => {
                     <span></span>
                     <span></span>
                     <span></span>
+
                 </button>
             </nav>
 
