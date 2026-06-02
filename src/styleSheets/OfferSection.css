@@ -33,9 +33,8 @@
 }
 
 /* telefon - 2 kolumny */
+/* telefon - 2 kolumny */
 @media (max-width: 768px) {
-
-
     .offer-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
@@ -45,12 +44,12 @@
     .card {
         width: 100%;
         max-width: none;
-        min-height: 300px; /* było 380px */
+        min-height: 300px;
         aspect-ratio: auto;
     }
 
     .offer-grid-img {
-        height: 130px; /* było 180px */
+        height: 130px;
     }
 
     .card h3 {
@@ -67,31 +66,41 @@
     }
 
     .card-content {
-        padding: 0 !important;
+        padding: 0 0 8px 0 !important;
         margin: 0 !important;
         gap: 0 !important;
     }
+
     .card-content > * {
         margin-top: 0 !important;
         margin-bottom: 0 !important;
     }
 
+    /* 👇 POPRAWIONY BLOK MOBILNEGO PRZYCISKU (ZACHOWUJE TWOJE STYLOWANIE) */
     .details-btn {
-        opacity: 1;
-        transform: none;
-        pointer-events: auto;
-
         padding: 6px 12px;
         font-size: 12px;
-        margin: 4px auto;
+        margin: auto auto 4px auto !important; /* Trzyma przycisk na dole */
+
+        /* Reset efektów hover z desktopu dla stanu nieaktywnego */
+        transform: none !important;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
     }
 
-    .offer h2{
+    /* Pokazuje przycisk w oryginalnym kolorze dopiero po aktywacji karty */
+    .card.active .details-btn {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .offer h2 {
         text-align: center;
         width: 100%;
         font-size: 36px;
         margin-bottom: 30px;
-
     }
 }
 
@@ -202,36 +211,36 @@
 /* ================= BUTTON ================= */
 
 .details-btn {
-    margin: 5px auto;
+    /* To zapewnia, że na desktopie przycisk też zawsze będzie na dole */
+    margin: auto auto 0 auto;
+
     display: block;
     width: fit-content;
-
     padding: 10px 22px;
-
     border: none;
     border-radius: 10px;
 
+    /* Twoje oryginalne kolory */
     background: #0F0F0F;
     color: #FBFBFB;
     cursor: pointer;
 
     transform: translateY(20px);
     opacity: 0;
-
-    visibility: hidden;   /* 🔥 DODAJ TO */
+    visibility: hidden;
     pointer-events: none;
-
     transition: 0.3s ease;
 }
 
 .card:hover .details-btn {
     transform: translateY(0);
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
 }
 
 .details-btn:hover {
-    background: #333;
+    background: #333; /* Ciemniejszy szary tylko po realnym najechaniu myszką */
 }
 
 /* ================= IMAGE WRAPPER ================= */

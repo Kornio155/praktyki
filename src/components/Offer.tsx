@@ -6,29 +6,24 @@ import "../styleSheets/OfferSection.css";
 const OfferSection: React.FC = () => {
     const navigate = useNavigate();
     const [activeOffer, setActiveOffer] = useState<string | null>(null);
-    const [isMobile] = useState(window.innerWidth <= 650);
 
-    // 👉 powrót do pozycji po wejściu z podstrony
+    // 👉 Powrót do pozycji po wejściu z podstrony
     useEffect(() => {
         const scrollToId = sessionStorage.getItem("offerScrollTo");
-
         if (!scrollToId) return;
 
         const el = document.getElementById(scrollToId);
-
         if (el) {
             setTimeout(() => {
                 el.scrollIntoView({ behavior: "smooth", block: "center" });
             }, 50);
         }
 
-        sessionStorage.removeItem("offerScrollTo"); // 🔥 KLUCZ
+        sessionStorage.removeItem("offerScrollTo");
     }, []);
 
     const handleNavigate = (slug: string) => {
-        // 👉 zapisz scroll + element
         sessionStorage.setItem("offerScrollTo", slug);
-
         navigate(`/offer/${slug}`, {
             state: {
                 from: "offer-grid",
@@ -50,12 +45,17 @@ const OfferSection: React.FC = () => {
                                 key={index}
                                 id={item.slug}
                                 onClick={() => {
-                                    if (window.innerWidth <= 650 && activeOffer !== item.slug) {
-                                        setActiveOffer(item.slug);
-                                        return;
+                                    if (window.innerWidth <= 650) {
+                                        // Mobilki: pierwsze kliknięcie aktywuje, drugie przekierowuje
+                                        if (activeOffer === item.slug) {
+                                            handleNavigate(item.slug);
+                                        } else {
+                                            setActiveOffer(item.slug);
+                                        }
+                                    } else {
+                                        // Desktop: zawsze przekierowuje od razu
+                                        handleNavigate(item.slug);
                                     }
-
-                                    handleNavigate(item.slug);
                                 }}
                             >
                                 <div className="card-inner">
@@ -83,14 +83,14 @@ const OfferSection: React.FC = () => {
                                         <button
                                             className="details-btn"
                                             onClick={(e) => {
-                                                e.stopPropagation();
+                                                // e.stopPropagation() nie jest już potrzebne,
+                                                // ponieważ kliknięcie w przycisk może naturalnie "wypłynąć" do karty,
+                                                // a karta i tak wykona tę samą logikę nawigacji.
 
-                                                if (isMobile && activeOffer !== item.slug) {
+                                                if (window.innerWidth <= 650 && activeOffer !== item.slug) {
+                                                    e.stopPropagation(); // Blokujemy bąbelkowanie tylko przy pierwszym kliknięciu na mobilu, żeby nie odpalić logiki karty
                                                     setActiveOffer(item.slug);
-                                                    return;
                                                 }
-
-                                                handleNavigate(item.slug);
                                             }}
                                         >
                                             Więcej
